@@ -10,14 +10,14 @@ import {
 } from "reactstrap"
 import Img from "gatsby-image"
 import Slugify from "../utils/slugify"
-const Post = ({ title, author, path, date, body, fluid, tags }) => {
+const Post = ({ title, author, slug, date, body, fluid, tags }) => {
   return (
     <Card>
-      <Link to={path}>
+      <Link to={slug}>
         <Img className="card-image-top" fluid={fluid} />
       </Link>
       <CardBody>
-        <Link to={path}>
+        <Link to={slug}>
           <CardTitle>{title}</CardTitle>
         </Link>
         <CardSubtitle>
@@ -29,15 +29,15 @@ const Post = ({ title, author, path, date, body, fluid, tags }) => {
         <ul className="post-tags">
           {tags.map(tag => (
             <li>
-              <Link to={`/tag/${Slugify}(tag)`}>
-                <Badge color="primary" className="text-uppercase">
-                  {tag}
-                </Badge>
-              </Link>
+              {/* <Link to={`/tag/${Slugify}(tag)`}> 수정해야함 */}
+              <Badge color="primary" className="text-uppercase">
+                {tag}
+              </Badge>
+              {/* </Link> */}
             </li>
           ))}
         </ul>
-        <Link to={path} className="btn btn-outline-primary float-right">
+        <Link to={slug} className="btn btn-outline-primary float-right">
           Read More
         </Link>
       </CardBody>
