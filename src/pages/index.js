@@ -3,7 +3,10 @@ import { graphql, StaticQuery } from "gatsby"
 import Layout from "../components/layout"
 import Post from "../components/Post"
 import SEO from "../components/seo"
+import SideBar from "../components/Sidebar"
+import Footer from "../components/Footer"
 import { Row, Col } from "reactstrap"
+
 const IndexPage = () => (
   <Layout>
     <SEO title="Home" />
@@ -38,9 +41,12 @@ const IndexPage = () => (
             height: "100%",
             backgroundColor: "rgba(0,0,0,0.4)",
           }}
-        ></div>
+        >
+          <SideBar></SideBar>
+        </div>
       </Col>
     </Row>
+    <Footer />
   </Layout>
 )
 
