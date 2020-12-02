@@ -5,10 +5,18 @@ import Layout from "../components/layout"
 import { Link } from "gatsby"
 import Img from "gatsby-image"
 import { Badge, CardBody, CardSubtitle, Card, Row, Col } from "reactstrap"
+import { DiscussionEmbed } from "disqus-react"
 const BlogPostTemplate = ({ data, location }) => {
   const post = data.markdownRemark
   const siteTitle = data.site.siteMetadata?.title || `Title`
 
+  const disqusShortname = "hun95"
+  const baseUrl = "https://hun95.github.io"
+  const disqusConfig = {
+    identifier: data.markdownRemark.id,
+    title: post.title,
+    url: baseUrl,
+  }
   return (
     <Layout location={location} title={siteTitle}>
       <h1>{post.frontmatter.title}</h1>
@@ -39,6 +47,7 @@ const BlogPostTemplate = ({ data, location }) => {
               </ul>
             </CardBody>
           </Card>
+          <DiscussionEmbed shortname={disqusShortname} config={disqusConfig} />
         </Col>
 
         <Col md="4">
