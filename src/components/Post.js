@@ -9,8 +9,8 @@ import {
   Badge,
 } from "reactstrap"
 import Img from "gatsby-image"
-import Slugify from "../utils/slugify"
-const Post = ({ title, author, slug, date, body, fluid, tags }) => {
+
+const Post = ({ title, slug, date, body, fluid, tags }) => {
   return (
     <Card>
       <Link to={slug}>
@@ -22,18 +22,17 @@ const Post = ({ title, author, slug, date, body, fluid, tags }) => {
         </Link>
         <CardSubtitle>
           <span className="text-info">{date}</span> by{" "}
-          <span className="text-info">{author}</span>
         </CardSubtitle>
 
         <CardText>{body}</CardText>
         <ul className="post-tags">
           {tags.map(tag => (
             <li>
-              {/* <Link to={`/tag/${Slugify}(tag)`}> 수정해야함 */}
-              <Badge color="primary" className="text-uppercase">
-                {tag}
-              </Badge>
-              {/* </Link> */}
+              <Link to={`/tag/${tag}`}>
+                <Badge color="primary" className="text-uppercase">
+                  {tag}
+                </Badge>
+              </Link>
             </li>
           ))}
         </ul>

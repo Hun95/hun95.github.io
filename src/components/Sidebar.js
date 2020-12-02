@@ -7,14 +7,14 @@ const SideBar = () => (
     <Card>
       <CardBody>
         <CardTitle className="text-center text-uppercase mb-3">
-          Newsletter
+          뉴스레터
         </CardTitle>
         <Form className="text-center">
           <FormGroup>
             <Input type="email" name="email" placeholder="Your Email" />
           </FormGroup>
           <button className="btn btn-outline-success text-uppercase">
-            Subscribe
+            구독
           </button>
         </Form>
       </CardBody>
@@ -22,9 +22,7 @@ const SideBar = () => (
 
     <Card>
       <CardBody>
-        <CardTitle className="text-center text-uppercase">
-          Advertiesment
-        </CardTitle>
+        <CardTitle className="text-center text-uppercase">광고</CardTitle>
         <img
           src="https://via.placeholder.com/320x200"
           alt="Advert"
@@ -35,9 +33,7 @@ const SideBar = () => (
 
     <Card>
       <CardBody>
-        <CardTitle className="text-center text-uppercase">
-          Recent Post
-        </CardTitle>
+        <CardTitle className="text-center text-uppercase">최신글</CardTitle>
         <StaticQuery
           query={sidebarQuery}
           render={data => {
@@ -45,7 +41,7 @@ const SideBar = () => (
               <div>
                 {data.allMarkdownRemark.edges.map(({ node }) => (
                   <Card key={node.id}>
-                    <Link to={node.frontmatter.path}>
+                    <Link to={node.fields.slug}>
                       <Img
                         className="card-image-top"
                         fluid={node.frontmatter.image.childImageSharp.fluid}
@@ -53,7 +49,7 @@ const SideBar = () => (
                     </Link>
                     <CardBody>
                       <CardTitle>
-                        <Link to={node.frontmatter.path}>
+                        <Link to={node.fields.slug}>
                           {node.frontmatter.title}
                         </Link>
                       </CardTitle>
@@ -80,7 +76,7 @@ const sidebarQuery = graphql`
           id
           frontmatter {
             title
-            path
+
             image {
               childImageSharp {
                 fluid(maxWidth: 300) {
@@ -88,6 +84,9 @@ const sidebarQuery = graphql`
                 }
               }
             }
+          }
+          fields {
+            slug
           }
         }
       }

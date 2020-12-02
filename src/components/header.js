@@ -24,13 +24,13 @@ const Header = ({ siteTitle }) => {
           <Collapse isOpen={isOpen} navbar>
             <Nav className="ml-auto" navbar>
               <NavItem>
-                <NavLink href="/team">Team</NavLink>
+                <NavLink href="/team">팀</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="/tags">Tags</NavLink>
+                <NavLink href="/tags">태그</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="/about">About</NavLink>
+                <NavLink href="/about">소개</NavLink>
               </NavItem>
             </Nav>
           </Collapse>

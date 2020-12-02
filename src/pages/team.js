@@ -7,7 +7,7 @@ import SEO from "../components/seo"
 const TeamPage = () => (
   <Layout>
     <SEO title="TeamPage" />
-    <h1>Our Team</h1>
+    <h1>팀</h1>
   </Layout>
 )
 

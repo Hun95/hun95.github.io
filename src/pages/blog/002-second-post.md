@@ -1,22 +1,13 @@
 ---
-title: 'Second post - Introduction'
+title: '두번째'
 date: 2020-11-30 21:00:00
-author: 'John'
-path: '/second-post'
+
+
 image: '../../images/2.jpg'
 tags:
 - code
 - tut
+- hello-world
 ---
 
-Today, we are goona talk about Html5,
-Today, we are goona talk about Html5
-Today, we are goona talk about Html5
-Today, we are goona talk about Html5
-Today, we are goona talk about Html5
-Today, we are goona talk about Html5
-Today, we are goona talk about Html5
-Today, we are goona talk about Html5
-Today, we are goona talk about Html5
-
-Today, we are goona talk about Html5
+안녕하세요 저는 박세훈이라고 합니다.

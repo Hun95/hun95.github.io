@@ -1,13 +1,12 @@
 ---
-title: 'First post - Introduction'
+title: '첫번째'
 date: 2020-11-30 20:00:00
 author: 'Sehun'
-image: '../../images/1.jpg'
+image: "../../../images/1.jpg"
 tags:
 - code
 - design
 ---
 
 
-Welcome to Code Blog, I hope you enjoy out content,
-![image](1.jpg)
+안녕하세요 저는 박세훈이라고 합니다.안녕하세요 저는 박세훈이라고 합니다.안녕하세요 저는 박세훈이라고 합니다.안녕하세요 저는 박세훈이라고 합니다.안녕하세요 저는 박세훈이라고 합니다.

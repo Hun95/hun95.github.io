@@ -1,63 +1,50 @@
 import React from "react"
-import { Link, graphql } from "gatsby"
-
+import { graphql } from "gatsby"
+import Sidebar from "../components/Sidebar"
 import Layout from "../components/layout"
-import SEO from "../components/seo"
-import Img from "gatsby"
+import { Link } from "gatsby"
+import Img from "gatsby-image"
+import { Badge, CardBody, CardSubtitle, Card, Row, Col } from "reactstrap"
 const BlogPostTemplate = ({ data, location }) => {
   const post = data.markdownRemark
   const siteTitle = data.site.siteMetadata?.title || `Title`
-  const { previous, next } = data
 
   return (
     <Layout location={location} title={siteTitle}>
-      <SEO
-        title={post.frontmatter.title}
-        description={post.frontmatter.description || post.excerpt}
-      />
-      <article
-        className="blog-post"
-        itemScope
-        itemType="http://schema.org/Article"
-      >
-        <header>
-          <h1 itemProp="headline">{post.frontmatter.title}</h1>
-          <p>{post.frontmatter.date}</p>
-        </header>
-        <section
-          dangerouslySetInnerHTML={{ __html: post.html }}
-          itemProp="articleBody"
-        />
+      <h1>{post.frontmatter.title}</h1>
 
-        <hr />
-        <footer></footer>
-      </article>
-      <nav className="blog-post-nav">
-        <ul
-          style={{
-            display: `flex`,
-            flexWrap: `wrap`,
-            justifyContent: `space-between`,
-            listStyle: `none`,
-            padding: 0,
-          }}
-        >
-          <li>
-            {previous && (
-              <Link to={previous.fields.slug} rel="prev">
-                ← {previous.frontmatter.title}
-              </Link>
-            )}
-          </li>
-          <li>
-            {next && (
-              <Link to={next.fields.slug} rel="next">
-                {next.frontmatter.title} →
-              </Link>
-            )}
-          </li>
-        </ul>
-      </nav>
+      <Row>
+        <Col md="8">
+          <Card>
+            <Img
+              className="card-image-top"
+              fluid={post.frontmatter.image.childImageSharp.fluid}
+            />
+            <CardBody>
+              <CardSubtitle>
+                <span className="text-info">{post.date}</span>
+                <span className="text-info">{post.date}</span>
+              </CardSubtitle>
+              <div
+                dangerouslySetInnerHTML={{ __html: data.markdownRemark.html }}
+              />
+              <ul className="post-tags">
+                {post.frontmatter.tags.map(tag => (
+                  <li key={tag}>
+                    <Link to={`../../tag/${tag}`}>
+                      <Badge color="primary">{tag}</Badge>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </CardBody>
+          </Card>
+        </Col>
+
+        <Col md="4">
+          <Sidebar />
+        </Col>
+      </Row>
     </Layout>
   )
 }
@@ -65,11 +52,7 @@ const BlogPostTemplate = ({ data, location }) => {
 export default BlogPostTemplate
 
 export const pageQuery = graphql`
-  query BlogPostBySlug(
-    $id: String!
-    $previousPostId: String
-    $nextPostId: String
-  ) {
+  query BlogPostBySlug($id: String!) {
     site {
       siteMetadata {
         title
@@ -91,22 +74,6 @@ export const pageQuery = graphql`
             }
           }
         }
-      }
-    }
-    previous: markdownRemark(id: { eq: $previousPostId }) {
-      fields {
-        slug
-      }
-      frontmatter {
-        title
-      }
-    }
-    next: markdownRemark(id: { eq: $nextPostId }) {
-      fields {
-        slug
-      }
-      frontmatter {
-        title
       }
     }
   }
