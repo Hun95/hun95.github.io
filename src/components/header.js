@@ -27,7 +27,7 @@ const Header = ({ siteTitle }) => {
                 <NavLink href="/team">팀</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="/tags">태그</NavLink>
+                <NavLink href="/tag">태그</NavLink>
               </NavItem>
               <NavItem>
                 <NavLink href="/about">소개</NavLink>

@@ -1,6 +1,6 @@
 const path = require(`path`)
 const { createFilePath } = require(`gatsby-source-filesystem`)
-
+const _ = require("lodash")
 exports.createPages = async ({ graphql, actions, reporter }) => {
   const { createPage } = actions
 
@@ -13,12 +13,14 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       {
         allMarkdownRemark(
           sort: { fields: [frontmatter___date], order: ASC }
-          limit: 1000
+          limit: 2000
         ) {
-          nodes {
-            id
-            fields {
-              slug
+          edges {
+            node {
+              id
+              fields {
+                slug
+              }
             }
           }
         }
@@ -31,10 +33,9 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       `There was an error loading your blog posts`,
       result.errors
     )
-    return
   }
 
-  const posts = result.data.allMarkdownRemark.nodes
+  const posts = result.data.allMarkdownRemark.edges.node
 
   // Create blog posts pages
   // But only if there's at least one markdown file found at "content/blog" (defined in gatsby-config.js)
@@ -45,6 +46,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       createPage({
         path: post.fields.slug,
         component: blogPost,
+
         context: {
           id: post.id,
         },
@@ -65,6 +67,51 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
       value,
     })
   }
+}
+
+//
+
+exports.createPages = async ({ graphql, actions }) => {
+  const { createPage } = actions
+
+  const hello = await graphql(
+    `
+      {
+        allMarkdownRemark(
+          sort: { order: DESC, fields: [frontmatter___date] }
+          limit: 2000
+        ) {
+          edges {
+            node {
+              fields {
+                slug
+              }
+              frontmatter {
+                tags
+              }
+            }
+          }
+        }
+        tagsGroup: allMarkdownRemark(limit: 2000) {
+          group(field: frontmatter___tags) {
+            fieldValue
+          }
+        }
+      }
+    `
+  )
+  const tagsTemplate = path.resolve(`src/templates/tags-page.js`)
+  const tags = hello.data.tagsGroup.group
+
+  tags.forEach(tag => {
+    createPage({
+      path: `/tag/${_.kebabCase(tag.fieldValue)}/`,
+      component: tagsTemplate,
+      context: {
+        tag: tag.fieldValue,
+      },
+    })
+  })
 }
 
 exports.createSchemaCustomization = ({ actions }) => {
@@ -107,5 +154,6 @@ exports.createSchemaCustomization = ({ actions }) => {
     type Fields {
       slug: String
     }
+  
   `)
 }
