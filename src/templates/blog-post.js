@@ -61,20 +61,20 @@ const BlogPostTemplate = ({ data, location }) => {
 export default BlogPostTemplate
 
 export const pageQuery = graphql`
-  query BlogPostBySlug($id: String!) {
+  query($slug: String!) {
     site {
       siteMetadata {
         title
       }
     }
-    markdownRemark(id: { eq: $id }) {
+    markdownRemark(fields: { slug: { eq: $slug } }) {
       id
       excerpt(pruneLength: 160)
       html
       frontmatter {
         title
         date(formatString: "YYYY년 MM월 DD일")
-        description
+
         tags
         image {
           childImageSharp {
