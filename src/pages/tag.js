@@ -1,54 +1,60 @@
 import React from "react"
-import PropTypes from "prop-types"
 
 // Utilities
-import kebabCase from "lodash/kebabCase"
+// import kebabCase from "lodash/kebabCase"
 
 // Components
 import { Helmet } from "react-helmet"
-import { Link, graphql } from "gatsby"
+import { graphql } from "gatsby"
 
 const TagsPage = ({
   data: {
-    allMarkdownRemark: { group },
+    allMarkdownRemark: { group, edges },
     site: {
       siteMetadata: { title },
     },
   },
-}) => (
-  <div>
-    <Helmet title={title} />
-    <div>
-      <h1>Tags</h1>
-      <ul>
-        {group.map(tag => (
-          <li key={tag.fieldValue}>
-            <Link to={`/tag/${kebabCase(tag.fieldValue)}/`}>
-              {tag.fieldValue} ({tag.totalCount})
-            </Link>
-          </li>
-        ))}
-      </ul>
-    </div>
-  </div>
-)
+}) => {
+  const changeFilter = () => {
+    //만약 tag.fieldValue 값이 === frontmatter.tag에 있으면
+    //frontmatter.tag가 소속한 frontmatter.title 의 문서를 불러온다.
 
-TagsPage.propTypes = {
-  data: PropTypes.shape({
-    allMarkdownRemark: PropTypes.shape({
-      group: PropTypes.arrayOf(
-        PropTypes.shape({
-          fieldValue: PropTypes.string.isRequired,
-          totalCount: PropTypes.number.isRequired,
-        }).isRequired
-      ),
-    }),
-    site: PropTypes.shape({
-      siteMetadata: PropTypes.shape({
-        title: PropTypes.string.isRequired,
-      }),
-    }),
-  }),
+    const textTitle = edges.map(nodes => nodes.node.frontmatter)
+    const taggg = group.map(tag => tag.fieldValue)
+
+    // console.log(taggg)
+    // console.log(textTitle)
+    // console.log(textTitle[1].tags[0])
+  }
+
+  return (
+    <div>
+      <Helmet title={title} />
+      <div>
+        <h1>Tags</h1>
+        <div></div>
+        <ul>
+          {group.map(tag => (
+            <li key={tag.fieldValue}>
+              <button
+                onChange={changeFilter}
+                onClick={changeFilter}
+                style={{ backgroundColor: "red" }}
+              >
+                {tag.fieldValue} ({tag.totalCount})
+              </button>
+            </li>
+          ))}
+        </ul>
+
+        <ul>
+          {edges.map(nodes => (
+            <li>{nodes.node.frontmatter.title}</li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  )
 }
 
 export default TagsPage
@@ -61,6 +67,14 @@ export const pageQuery = graphql`
       }
     }
     allMarkdownRemark(limit: 2000) {
+      edges {
+        node {
+          frontmatter {
+            title
+            tags
+          }
+        }
+      }
       group(field: frontmatter___tags) {
         fieldValue
         totalCount
