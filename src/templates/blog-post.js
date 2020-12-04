@@ -47,7 +47,7 @@ const BlogPostTemplate = ({ data, location }) => {
               </ul>
             </CardBody>
           </Card>
-          {/* <DiscussionEmbed shortname={disqusShortname} config={disqusConfig} /> */}
+          <DiscussionEmbed shortname={disqusShortname} config={disqusConfig} />
         </Col>
 
         <Col md="4">

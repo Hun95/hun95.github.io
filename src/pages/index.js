@@ -20,6 +20,7 @@ const IndexPage = () => (
               <div>
                 {data.allMarkdownRemark.edges.map(({ node }) => (
                   <Post
+                    key={node.frontmatter.slug}
                     title={node.frontmatter.title}
                     slug={node.fields.slug}
                     date={node.frontmatter.date}
