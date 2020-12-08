@@ -1,16 +1,16 @@
-import React from "react"
-import PropTypes from "prop-types"
+import React from "react";
+import PropTypes from "prop-types";
 
 // Utilities
-import kebabCase from "lodash/kebabCase"
+import kebabCase from "lodash/kebabCase";
 
 // Components
-import { Helmet } from "react-helmet"
-import { Link, graphql } from "gatsby"
+import { Helmet } from "react-helmet";
+import { Link, graphql } from "gatsby";
 
 const TagsPage = ({
   data: {
-    allMarkdownRemark: { group },
+    allMdx: { group },
     site: {
       siteMetadata: { title },
     },
@@ -31,7 +31,7 @@ const TagsPage = ({
       </ul>
     </div>
   </div>
-)
+);
 
 TagsPage.propTypes = {
   data: PropTypes.shape({
@@ -49,9 +49,9 @@ TagsPage.propTypes = {
       }),
     }),
   }),
-}
+};
 
-export default TagsPage
+export default TagsPage;
 
 export const pageQuery = graphql`
   query {
@@ -60,11 +60,11 @@ export const pageQuery = graphql`
         title
       }
     }
-    allMarkdownRemark(limit: 2000) {
+    allMdx(limit: 2000) {
       group(field: frontmatter___tags) {
         fieldValue
         totalCount
       }
     }
   }
-`
+`;

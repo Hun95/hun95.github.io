@@ -1,11 +1,11 @@
-import React from "react"
-import { graphql, StaticQuery } from "gatsby"
-import Layout from "../components/layout"
-import Post from "../components/Post"
-import SEO from "../components/seo"
-import SideBar from "../components/Sidebar"
-import Footer from "../components/Footer"
-import { Row, Col } from "reactstrap"
+import React from "react";
+import { graphql, StaticQuery } from "gatsby";
+import Layout from "../components/layout";
+import Post from "../components/Post";
+import SEO from "../components/seo";
+// import SideBar from "../components/Sidebar";
+import Footer from "../components/Footer";
+import { Row, Col } from "reactstrap";
 
 const IndexPage = () => (
   <Layout>
@@ -18,9 +18,9 @@ const IndexPage = () => (
           render={data => {
             return (
               <div>
-                {data.allMarkdownRemark.edges.map(({ node }) => (
+                {data.allMdx.edges.map(({ node }) => (
                   <Post
-                    key={node.frontmatter.slug}
+                    key={node.fields.slug}
                     title={node.frontmatter.title}
                     slug={node.fields.slug}
                     date={node.frontmatter.date}
@@ -30,7 +30,7 @@ const IndexPage = () => (
                   />
                 ))}
               </div>
-            )
+            );
           }}
         />
       </Col>
@@ -42,20 +42,21 @@ const IndexPage = () => (
             backgroundColor: "rgba(0,0,0,0.4)",
           }}
         >
-          <SideBar></SideBar>
+          {/* <SideBar></SideBar> */}
         </div>
       </Col>
     </Row>
     <Footer />
   </Layout>
-)
+);
 
 const indexQuery = graphql`
   query {
-    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
+    allMdx(sort: { fields: [frontmatter___date], order: DESC }) {
       edges {
         node {
           id
+          body
           frontmatter {
             title
             date(formatString: "MMM Do YYYY")
@@ -77,6 +78,6 @@ const indexQuery = graphql`
       }
     }
   }
-`
+`;
 
-export default IndexPage
+export default IndexPage;

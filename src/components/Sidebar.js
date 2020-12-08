@@ -1,7 +1,7 @@
-import React from "react"
-import { graphql, StaticQuery, Link } from "gatsby"
-import { Form, FormGroup, Input, Card, CardTitle, CardBody } from "reactstrap"
-import Img from "gatsby-image"
+import React from "react";
+import { graphql, StaticQuery, Link } from "gatsby";
+import { Form, FormGroup, Input, Card, CardTitle, CardBody } from "reactstrap";
+import Img from "gatsby-image";
 const SideBar = () => (
   <div>
     <Card>
@@ -57,23 +57,21 @@ const SideBar = () => (
                   </Card>
                 ))}
               </div>
-            )
+            );
           }}
         />
       </CardBody>
     </Card>
   </div>
-)
+);
 
 const sidebarQuery = graphql`
   query sidebarQuery {
-    allMarkdownRemark(
-      sort: { fields: [frontmatter___date], order: DESC }
-      limit: 3
-    ) {
+    allMdx(sort: { fields: [frontmatter___date], order: DESC }, limit: 3) {
       edges {
         node {
           id
+          slug
           frontmatter {
             title
 
@@ -85,13 +83,10 @@ const sidebarQuery = graphql`
               }
             }
           }
-          fields {
-            slug
-          }
         }
       }
     }
   }
-`
+`;
 
-export default SideBar
+export default SideBar;
