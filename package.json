@@ -26,12 +26,17 @@
     "gatsby-transformer-sharp": "^2.6.0",
     "gh-pages": "^3.1.0",
     "lodash": "^4.17.20",
+    "mdx-utils": "^0.2.0",
     "node-sass": "^4.0.0",
+    "prism-core": "^2.0.2",
+    "prism-react-renderer": "^1.1.1",
     "prop-types": "^15.7.2",
     "react": "^16.12.0",
     "react-bootstrap": "^1.4.0",
     "react-dom": "^16.12.0",
+    "react-dom-confetti": "^0.2.0",
     "react-helmet": "^6.1.0",
+    "react-live": "^2.2.3",
     "reactstrap": "^8.7.1"
   },
   "devDependencies": {

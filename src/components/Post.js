@@ -25,7 +25,7 @@ const Post = ({ title, slug, date, body, fluid, tags }) => {
         </CardSubtitle>
 
         <CardText>{body}</CardText>
-        {/* <ul className="post-tags">
+        <ul className="post-tags">
           {tags.map(tag => (
             <li>
               <Link to={`/tag/${tag}`}>
@@ -35,7 +35,7 @@ const Post = ({ title, slug, date, body, fluid, tags }) => {
               </Link>
             </li>
           ))}
-        </ul> */}
+        </ul>
         <Link to={slug} className="btn btn-outline-primary float-right">
           Read More
         </Link>
