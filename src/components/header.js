@@ -1,6 +1,5 @@
-import PropTypes from "prop-types"
-import React, { useState } from "react"
-import "../styles/index.scss"
+import React, { useState } from "react";
+import "../styles/index.scss";
 import {
   Collapse,
   Navbar,
@@ -8,44 +7,48 @@ import {
   NavbarBrand,
   Nav,
   NavItem,
-  NavLink,
-} from "reactstrap"
+} from "reactstrap";
+import { Link } from "gatsby";
 const Header = ({ siteTitle }) => {
-  const [isOpen, setIsOpen] = useState(false)
+  const [isOpen, setIsOpen] = useState(false);
 
-  const toggle = () => setIsOpen(!isOpen)
+  const toggle = () => setIsOpen(!isOpen);
 
   return (
     <div>
-      <Navbar fixed="top" light expand="sm">
+      <Navbar fixed="top" light expand="lg">
         <div className="container">
-          <NavbarBrand href="/">{siteTitle}</NavbarBrand>
-          <NavbarToggler onClick={toggle} />
+          <Link activeStyle={{ color: "red", backgroundColor: "gray" }} to="/">
+            {siteTitle}
+          </Link>
+          <NavbarToggler onClick={toggle} style={{ color: "white" }} />
           <Collapse isOpen={isOpen} navbar>
             <Nav className="ml-auto" navbar>
-              <NavItem>
-                <NavLink href="/team">팀</NavLink>
+              <NavItem className="Navmargin">
+                <Link
+                  to="/team"
+                  activeStyle={{ color: "red" }}
+                  partiallyActive={true}
+                >
+                  팀
+                </Link>
               </NavItem>
-              <NavItem>
-                <NavLink href="/tag">태그</NavLink>
+              <NavItem className="Navmargin">
+                <Link to="/tag" activeStyle={{ color: "red" }}>
+                  태그
+                </Link>
               </NavItem>
-              <NavItem>
-                <NavLink href="/about">소개</NavLink>
+              <NavItem className="Navmargin">
+                <Link to="/about" activeStyle={{ color: "red" }}>
+                  소개
+                </Link>
               </NavItem>
             </Nav>
           </Collapse>
         </div>
       </Navbar>
     </div>
-  )
-}
+  );
+};
 
-Header.propTypes = {
-  siteTitle: PropTypes.string,
-}
-
-Header.defaultProps = {
-  siteTitle: ``,
-}
-
-export default Header
+export default Header;

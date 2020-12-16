@@ -20,20 +20,28 @@ h1 {
   text-align: center;
 }
 .navbar {
-  background-color: white;
+  background-color: gray;
   // border-right: 1px solid rgba(0, 0, 0, 0.4);
   // border-left: 1px solid rgba(0, 0, 0, 0.4);
   border-bottom: 1px solid rgba(0, 0, 0, 0.4);
   line-height: 1;
 }
+
+.Navmargin {
+  margin-right: 20px;
+}
 .navbar-light .navbar-nav .nav-link,
 .navbar-light .navbar-brand {
-  color: #0056b3;
+  color: gray;
   &:hover {
-    color: #007bff;
+    color: white;
   }
 }
 ul {
   list-style: none;
   padding: 0;
+}
+
+.active {
+  background-color: red;
 }

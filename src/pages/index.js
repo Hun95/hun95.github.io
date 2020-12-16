@@ -6,33 +6,14 @@ import SEO from "../components/seo";
 // import SideBar from "../components/Sidebar";
 import Footer from "../components/Footer";
 import { Row, Col } from "reactstrap";
-
+import { HeroContainer, HeroContent } from "../styles/Styled";
 const IndexPage = () => (
   <Layout>
     <SEO title="Home" />
     <h1>홈</h1>
     <Row>
-      <Col md="8">
-        <StaticQuery
-          query={indexQuery}
-          render={data => {
-            return (
-              <div>
-                {data.allMdx.edges.map(({ node }) => (
-                  <Post
-                    key={node.fields.slug}
-                    title={node.frontmatter.title}
-                    slug={node.fields.slug}
-                    date={node.frontmatter.date}
-                    body={node.excerpt}
-                    fluid={node.frontmatter.image.childImageSharp.fluid}
-                    tags={node.frontmatter.tags}
-                  />
-                ))}
-              </div>
-            );
-          }}
-        />
+      <Col md="12">
+        <Post />
       </Col>
       <Col md="4">
         <div
@@ -44,9 +25,13 @@ const IndexPage = () => (
         >
           {/* <SideBar></SideBar> */}
         </div>
+
+        <HeroContainer>
+          <HeroContent>hello</HeroContent>
+        </HeroContainer>
+        <Footer />
       </Col>
     </Row>
-    <Footer />
   </Layout>
 );
 
