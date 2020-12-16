@@ -20,11 +20,15 @@ h1 {
   text-align: center;
 }
 .navbar {
-  background-color: black;
+  background-color: gray;
   // border-right: 1px solid rgba(0, 0, 0, 0.4);
   // border-left: 1px solid rgba(0, 0, 0, 0.4);
   border-bottom: 1px solid rgba(0, 0, 0, 0.4);
   line-height: 1;
+}
+
+.Navmargin {
+  margin-right: 20px;
 }
 .navbar-light .navbar-nav .nav-link,
 .navbar-light .navbar-brand {
