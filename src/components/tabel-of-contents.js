@@ -32,6 +32,7 @@ function createItems(items, activeHash, ulStyle) {
     items &&
     items.map((item, index) => {
       const isActive = item.url === `#${activeHash}`;
+
       return (
         <li key={item.url}>
           {item.url && (
