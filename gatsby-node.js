@@ -61,8 +61,8 @@ exports.onCreateNode = async ({ node, actions, getNode }) => {
 exports.createPages = async ({ actions, graphql, reporter }) => {
   const { createPage } = actions;
 
-  const blogPostTemplate = path.resolve("src/templates/blog-post.js");
-  const tagTemplate = path.resolve("src/templates/tags-page.js");
+  const blogPostTemplate = path.resolve("src/templates/Blog-post.js");
+  const tagTemplate = path.resolve("src/templates/Tags-page.js");
 
   const result = await graphql(`
     {
@@ -90,7 +90,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
       }
     }
   `);
-  console.log(JSON.stringify(result, null, 4));
+  // console.log(JSON.stringify(result, null, 4));
   // handle errors
   if (result.errors) {
     reporter.panicOnBuild(`Error while running GraphQL query.`);

@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    title: `수염난친구`,
+    title: `수염난친구들`,
     description: `hello`,
     author: `hun95`,
   },
@@ -62,7 +62,16 @@ module.exports = {
         background_color: `#663399`,
         theme_color: `#663399`,
         display: `minimal-ui`,
-        icon: `src/images/icon.png`, // This path is relative to the root of the site.
+        icon: `src/images/logo.png`, // This path is relative to the root of the site.
+      },
+    },
+
+    `gatsby-transformer-json`,
+
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `./src/data/`,
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality

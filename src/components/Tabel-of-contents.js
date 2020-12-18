@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "gatsby";
 
-import { useActiveHash } from "../hooks/use-active.hash";
+import { useActiveHash } from "../hooks/Use-active-hash";
 
 const getHeadingIds = (toc, traverseFullDepth = true, recursionDepth = 1) => {
   const idList = [];

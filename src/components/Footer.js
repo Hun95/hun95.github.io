@@ -1,4 +1,4 @@
-import React from "react"
+import React from "react";
 
 const Footer = () => (
   <div className="site-footer">
@@ -7,13 +7,15 @@ const Footer = () => (
     <div className="footer-social-links">
       <ul className="social-links-list">
         <li>
-          <a href="https://www.facebook.com" target="_blank" rel="noreferrer">
-            <i class="fab fa-facebook-f fa-2x"></i>
-          </a>
+          <a
+            href="https://www.facebook.com"
+            target="_blank"
+            rel="noreferrer"
+          ></a>
         </li>
       </ul>
     </div>
   </div>
-)
+);
 
-export default Footer
+export default Footer;

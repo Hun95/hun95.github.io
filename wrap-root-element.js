@@ -1,6 +1,6 @@
 import React from "react";
 import { MDXProvider } from "@mdx-js/react";
-import { Code } from "./src/components/code";
+import { Code } from "./src/components/Code";
 import { preToCodeBlock } from "mdx-utils";
 
 const components = {
@@ -14,5 +14,7 @@ const components = {
   },
 };
 export const wrapRootElement = ({ element }) => (
-  <MDXProvider components={components}>{element}</MDXProvider>
+  <MDXProvider components={components}>
+    <main>{element}</main>
+  </MDXProvider>
 );

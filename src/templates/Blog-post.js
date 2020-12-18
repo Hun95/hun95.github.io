@@ -1,13 +1,13 @@
 import React from "react";
 import { graphql } from "gatsby";
 // import Sidebar from "../components/Sidebar";
-import TableOfContents from "../components/tabel-of-contents";
-import Layout from "../components/layout";
+import TableOfContents from "../components/Tabel-of-contents";
+import Layout from "../components/Layout";
 import { Link } from "gatsby";
 import Img from "gatsby-image";
 import { Badge, CardBody, CardSubtitle, Card, Row, Col } from "reactstrap";
 import { DiscussionEmbed } from "disqus-react";
-import "../styles/index.scss";
+
 import { MDXRenderer } from "gatsby-plugin-mdx";
 const BlogPostTemplate = ({ data, location }) => {
   const post = data.mdx;
@@ -75,7 +75,7 @@ export const pageQuery = graphql`
     mdx(fields: { slug: { eq: $slug } }) {
       id
       excerpt(pruneLength: 160)
-      html
+
       body
       tableOfContents
       frontmatter {
