@@ -34,7 +34,8 @@ const copyToClipboard = str => {
 
 const Wrapp = styled.div`
   max-width: 100%;
-  font: 8px;
+  font-size: 1em;
+  line-height: 120%;
 `;
 const Wrapper = props => <div style={{ font: "8px" }} {...props} />;
 const ConfettiWrapper = props => (
