@@ -14,7 +14,5 @@ const components = {
   },
 };
 export const wrapRootElement = ({ element }) => (
-  <MDXProvider components={components}>
-    <main>{element}</main>
-  </MDXProvider>
+  <MDXProvider components={components}>{element}</MDXProvider>
 );

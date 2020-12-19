@@ -2,23 +2,23 @@ import React from "react";
 import Highlight, { defaultProps } from "prism-react-renderer";
 import { LiveProvider, LiveEditor, LiveError, LivePreview } from "react-live";
 import theme from "prism-react-renderer/themes/nightOwl";
-import Confetti from "react-dom-confetti";
+// import Confetti from "react-dom-confetti";
 import styled from "styled-components";
 
-const config = {
-  angle: 90,
-  spread: 360,
-  startVelocity: 40,
-  elementCount: 70,
-  dragFriction: 0.12,
-  duration: 3000,
-  stagger: 3,
-  width: "10px",
-  height: "10px",
-  perspective: "500px",
+// const config = {
+//   angle: 90,
+//   spread: 360,
+//   startVelocity: 40,
+//   elementCount: 70,
+//   dragFriction: 0.12,
+//   duration: 3000,
+//   stagger: 3,
+//   width: "10px",
+//   height: "10px",
+//   perspective: "500px",
 
-  colors: ["#a864fd", "#29cdff", "#78ff44", "#ff718d", "#fdff6a"],
-};
+//   colors: ["#a864fd", "#29cdff", "#78ff44", "#ff718d", "#fdff6a"],
+// };
 
 const copyToClipboard = str => {
   const el = document.createElement("textarea");
@@ -32,7 +32,11 @@ const copyToClipboard = str => {
   document.body.removeChild(el);
 };
 
-const Wrapper = props => <div style={{ position: "relative" }} {...props} />;
+const Wrapp = styled.div`
+  max-width: 100%;
+  font: 8px;
+`;
+const Wrapper = props => <div style={{ font: "8px" }} {...props} />;
 const ConfettiWrapper = props => (
   <div style={{ position: "absolute", top: 0, right: 0 }} {...props} />
 );
@@ -40,17 +44,16 @@ const ConfettiWrapper = props => (
 const Btn = styled.div`
   border-radius: 8px;
   white-space: nowrap;
-  font-size: 15px;
+  font-size: 14px;
   margin-left: 4%;
   text-decoration: none;
   position: absolute;
   top: 2px;
   outline: none;
   left: 0;
-  background-color: gray;
+  background-color: #e2e8f022;
   padding: 3px 2px;
   color: white;
-  font-weight: bold;
 `;
 const Button = props => (
   <button
@@ -90,7 +93,7 @@ export const Code = ({ codeString, children, language, ...props }) => {
     );
   } else {
     return (
-      <Wrapper>
+      <Wrapp>
         <Highlight
           {...defaultProps}
           code={codeString}
@@ -120,7 +123,7 @@ export const Code = ({ codeString, children, language, ...props }) => {
               <Btn>{language}</Btn>
 
               {tokens.map((line, i) => (
-                <div {...getLineProps({ line, key: i })} style={style}>
+                <div {...getLineProps({ line, key: i })} style={{ style }}>
                   {line.map((token, key) => (
                     <span {...getTokenProps({ token, key })} />
                   ))}
@@ -129,10 +132,10 @@ export const Code = ({ codeString, children, language, ...props }) => {
             </pre>
           )}
         </Highlight>
-        <ConfettiWrapper>
+        {/* <ConfettiWrapp>
           <Confetti active={isCopied} config={config} />
-        </ConfettiWrapper>
-      </Wrapper>
+        </ConfettiWrapper> */}
+      </Wrapp>
     );
   }
 };

@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 import logo from "../images/logo.png";
 import { Link } from "gatsby";
 import styled from "styled-components";
@@ -7,15 +7,29 @@ import { menuData } from "../data/MenuData";
 const Header = ({ siteTitle }) => {
   const [color, setColor] = useState();
   const [list, setList] = useState(menuData);
-
-  const mouseOver = () => {
-    if (list[0].link === "/tag") {
-      setColor("red");
-
-      setTimeout(() => setColor(""), 1100);
-    } else {
+  const age = list.filter(links => {
+    if (links.link === "/tag") {
+      return links.title;
     }
-  };
+  });
+
+  console.log(age);
+  // console.log(age);
+  // const mouseOver = () => {
+  //   if (age[0]) {
+  //     setColor("red");
+
+  //     setTimeout(() => setColor(""), 1100);
+  //   } else if (age[1]) {
+  //     setColor("blue");
+
+  //     setTimeout(() => setColor(""), 1100);
+  //   } else if (age[2]) {
+  //     setColor("black");
+
+  //     setTimeout(() => setColor(""), 1100);
+  //   }
+  // };
 
   return (
     <Nav>
@@ -26,7 +40,7 @@ const Header = ({ siteTitle }) => {
       <NavMenu>
         {menuData.map((item, index) => (
           <NavItem
-            onMouseOver={mouseOver}
+            onClick={age}
             to={item.link}
             key={index}
             style={{ backgroundColor: color }}

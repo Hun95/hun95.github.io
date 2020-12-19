@@ -10,10 +10,13 @@ import { HeroContainer, HeroContent } from "../components/styles/Styled";
 const IndexPage = () => (
   <Layout>
     <SEO title="Home" />
-    <h1>홈</h1>
+    <h1>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores quo sequi
+      eaque mollitia id at ipsam illo et autem. Dolore tempora corporis eius
+      similique odit iusto quisquam cupiditate velit neque.
+    </h1>
     {/* 
     <Post /> */}
-
     <HeroContainer>
       <HeroContent>hello</HeroContent>
     </HeroContainer>

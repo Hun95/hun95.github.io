@@ -27,7 +27,6 @@ const Layout = ({ children }) => {
       <GlobalStyle />
       <Header siteTitle={data.site.siteMetadata?.title || `Title`} />
 
-      <div className="container" id="content"></div>
       <Main>{children}</Main>
     </>
   );
@@ -36,9 +35,5 @@ const Layout = ({ children }) => {
 export default Layout;
 
 const Main = styled.div`
-  display: grid;
-  max-width: 100%;
-
-  position: relative;
   padding: 0.5rem calc((100vw - 970px) / 2);
 `;
