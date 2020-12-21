@@ -71,12 +71,12 @@ export const GlobalStyle = createGlobalStyle`
   /* 1.200 Minor Third Type Scale */
   --fontSize-0: 0.833rem;
   --fontSize-1: 1rem;
-  --fontSize-2: 1.2rem;
-  --fontSize-3: 1.44rem;
-  --fontSize-4: 1.728rem;
-  --fontSize-5: 2.074rem;
-  --fontSize-6: 2.488rem;
-  --fontSize-7: 2.986rem;
+  --fontSize-2: 1.1rem;
+  --fontSize-3: 1.15rem;
+  --fontSize-4: 1.2rem;
+  --fontSize-5: 1.3rem;
+  --fontSize-6: 1.5rem;
+  --fontSize-7: 2rem;
   --color-primary: #005b99;
   --color-text: #2e353f;
   --color-text-light: #4f5969;
@@ -192,7 +192,7 @@ p {
 
 ul,
 ol {
-  margin-left: var(--spacing-0);
+  margin-left: 1.5rem;
   margin-right: var(--spacing-0);
   padding: var(--spacing-0);
   margin-bottom: var(--spacing-8);
@@ -221,17 +221,20 @@ li > ul {
 
 blockquote {
   color: var(--color-text-light);
-  margin-left: calc(-1 * var(--spacing-6));
+  margin-left: 1rem;
   margin-right: var(--spacing-8);
   padding: var(--spacing-0) var(--spacing-0) var(--spacing-0) var(--spacing-6);
   border-left: var(--spacing-1) solid var(--color-primary);
   font-size: var(--fontSize-2);
   font-style: italic;
   margin-bottom: var(--spacing-8);
+
+  
 }
 
 blockquote > :last-child {
   margin-bottom: var(--spacing-0);
+  
 }
 
 blockquote > ul,

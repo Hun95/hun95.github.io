@@ -107,7 +107,7 @@ export const Code = ({ codeString, children, language, ...props }) => {
               style={{
                 ...style,
                 padding: "3rem 2rem 2rem 2rem",
-
+                marginBottom: "1.5rem",
                 position: "relative",
               }}
             >

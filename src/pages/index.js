@@ -15,8 +15,8 @@ const IndexPage = () => (
       eaque mollitia id at ipsam illo et autem. Dolore tempora corporis eius
       similique odit iusto quisquam cupiditate velit neque.
     </h1>
-    {/* 
-    <Post /> */}
+
+    <Post />
     <HeroContainer>
       <HeroContent>hello</HeroContent>
     </HeroContainer>

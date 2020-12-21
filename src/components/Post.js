@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, useStaticQuery, graphql } from "gatsby";
-import { Card, CardTitle, CardText, CardSubtitle, CardBody } from "reactstrap";
-import Img from "gatsby-image";
+
+import styled from "styled-components";
 import PostInTags from "../components/Post-in-tags";
 const Post = () => {
   const data = useStaticQuery(graphql`
@@ -39,29 +39,14 @@ const Post = () => {
     <>
       {edges.map(({ node }) => (
         <Card>
-          <Link to={node.fields.slug}>
-            <Img
-              className="card-image-top"
-              fluid={node.frontmatter.image.childImageSharp.fluid}
-            />
-          </Link>
-          <CardBody>
-            <Link to={node.fields.slug}>
-              <CardTitle>{node.frontmatter.title}</CardTitle>
-            </Link>
-            <CardSubtitle>
-              <span className="text-info">{node.frontmatter.date}</span>
-            </CardSubtitle>
+          <CardTitle>
+            <Link to={node.fields.slug}>{node.frontmatter.title}</Link>
+          </CardTitle>
 
-            <CardText>{node.excerpt}</CardText>
+          <span className="text-info">{node.frontmatter.date}</span>
 
-            <Link
-              to={node.fields.slug}
-              className="btn btn-outline-primary float-right"
-            >
-              Read More
-            </Link>
-          </CardBody>
+          {node.excerpt}
+
           <PostInTags props={node.frontmatter.tags} />
         </Card>
       ))}
@@ -70,3 +55,18 @@ const Post = () => {
 };
 
 export default Post;
+
+const Card = styled.div`
+  border: 1px solid gray;
+  padding-bottom: 1rem;
+  margin-bottom: 1rem;
+  max-width: calc(100vh - 40px);
+  min-height: calc(100vh -500px);
+`;
+
+const CardTitle = styled.div`
+  margin-bottom: 1rem;
+
+  font-size: 30px;
+  font-weight: bold;
+`;

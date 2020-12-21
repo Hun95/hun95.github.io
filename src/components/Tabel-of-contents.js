@@ -67,6 +67,7 @@ function TableOfContents({ items }) {
     },
     color: "red",
   };
+
   return items ? (
     <nav>
       <h2 style={{ textAlign: `center` }}>🎈</h2>

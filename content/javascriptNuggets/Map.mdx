@@ -1,0 +1,206 @@
+---
+title: "javascript nuggets map"
+date: 2020-12-09 10:24:29
+tags: ["javascript"]
+
+image: "../../src/images/2.jpg"
+---
+
+##### 들어가기 전에
+
+##### 📌 대괄호 중괄호 소괄호 영어로 어떻게 쓸까?
+
+**()** 소괄호 = Parentheses  
+**{}** 중괄호 = Curly bracket or Culry brace 곱슬거리는 브라켓  
+**[]** 대괄호 = Squre bracket 네모난 브라켓
+
+자바스크립트를 사용하기 위해 필수적으로 알아야 할 함수에 대해  
+유튜브에 외국인이 강의한 내용을  
+듣고 정리한 글임을 알립니다.
+
+---
+
+# 🚀 Map Function
+
+## 🔨 ES6 Arrow Function
+
+### 📌 Arrow Function 작성법 2가지
+
+##### index.js
+
+```jsx
+.
+    1. const ages = people.map(()=>());
+
+    2. const ages = people.map(()=>{ return });
+
+    3. const function;
+
+       const ages = people.map(function);
+
+```
+
+#### ◼ 첫번째
+
+() => **()**  
+괄호안에 return을 적지 않아도 값이 반환된다.  
+특별한 일 없으면 이 함수가 가장 문법적으로 깔끔하게 보인다.
+
+#### ◼ 두번째
+
+() => **{retrun}**  
+화살표 함수 뒤에 Curly bracket이 온다.  
+중괄호 내부에 return 을 넣어줘야 한다.
+
+#### ◼ 세번째 (번외)
+
+map 함수 () 내부에 외부에서 정의한 함수 이름을 넣어도 된다.  
+함수가 많이 복잡하다면 따로 빼서 깔끔하게 함수 명을 넣는 것도 좋은 방법이다.
+
+## 🔨 Map 함수 사용은 어디에?
+
+객체 속성의 값에 접근할 때 사용합니다.
+예를들어 보겠습니다.
+
+```js
+const someone = { name: "Lady Gaga", job: "Singer" };
+console.log(someone.name);
+```
+
+위의 경우에는 map 함수가 쓰이지 않았습니다.  
+객체가 하나이기 때문에 객체.속성으로 바로 데이터에 접근할 수 있습니다.  
+위에서는 객체의 속성에 접근하기 위해 map함수를 사용한다고 했는데 어찌된 일일까요?
+
+#### 😁 객체가 여러 개일 때 map 함수를 사용합니다.
+
+```js
+const peoples = [
+  { name: "Lady Gaga", job: "Singer" },
+  { name: "Paul Smith", job: "Singer" },
+  { name: "Paul Lee", job: "CEO" },
+];
+```
+
+위와 같은 경우의 데이터가 주어졌습니다.  
+우리는 peoples에 있는 모든 사람의 name을 출력해야 한다고 가정해봅시다.
+
+```console
+peoples[0].name
+값=> "Lady Gaga"
+peoples[1].name
+값 => "Paul Smith"
+peoples[2].name
+값 => "Paul Lee"
+```
+
+Map 함수를 이용하지 않고 직접 데이터에 접근할 수 있습니다.  
+만약 데이터가 100개이고, 100개 전부를 출력해야 한다면,  
+100개 html코드 작성해야 합니다.  
+**굉장히 비효율적입니다.**  
+데이터를 추가해서 102개가 된다면 html코드를 2번 더 작성해야 합니다.
+
+Map 함수를 이용하여 코드를 짠다면,  
+데이터가 추가되도, HTML 코드를 작성하지 않아도 됩니다.
+
+## 🔨Map 함수 사용법
+
+### 📌 기본 사용법
+
+###### index.js
+
+```js
+const people = [
+  {
+    name: "Lady gaga",
+    age: 32,
+    job: "Singer",
+  },
+  {
+    name: "Post Malon",
+    age: 28,
+    job: "Singer",
+  },
+
+  {
+    name: "John Sina",
+    age: 40,
+    job: "Wrestler",
+  },
+
+  {
+    name: "Lee",
+    age: 60,
+    job: "President",
+  },
+];
+```
+
+배열 안에 객체 한 개를 더 추가했고  
+속성 값 나이도 추가해줬습니다.
+자 이제 객체 내에 전체 나이를 불러와봅시다.
+
+##### index.js
+
+```js
+const peopleAge = people.map(ages => ages.age);
+const peopleAgeReturn = people.map(ages => {
+  return ages.age;
+});
+const peopleOld = people.map(old => old.age);
+const DoubbleAge = people.map(ages => ages.age * 2);
+const Hello = people.map(hello => "hello world");
+```
+
+```console
+peopleAge = [32, 28, 40, 60];
+peopleAgeReturn = [32, 28, 40, 60];
+peopleOld = [32, 28, 40, 60];
+DoubbleAge = [64, 56, 80, 120];
+Hello = {'hello world', 'hello world', 'hello world', 'hello world',}
+```
+
+peopleAge, peopleAgeReturn, peopleOld 의 값이 같습니다.  
+여기서 추론할 수 있는 것들은
+
+1. 화살표 함수 뒤에 {return} or 생략 둘 다 값이 같다.
+2. map 뒤에 변수 // **.map(old or ages** //는 아무거나 사용해도 아무런 상관이 없다.
+3. 반환되는 값은 배열 형태다. [] 안에 담긴다.
+4. 사칙연산을 이용하거나 문자열을 사용해 값을 바꿀 수가 있다.
+
+### 📌 HTML에 출력하기
+
+```html
+<div id="list"></div>
+<script>
+  const people = [
+    {
+      name: "Lady gaga",
+      age: 32,
+      job: "Singer",
+    },
+    {
+      name: "Post Malon",
+      age: 28,
+      job: "Singer",
+    },
+
+    {
+      name: "John Sina",
+      age: 40,
+      job: "Wrestler",
+    },
+
+    {
+      name: "Lee",
+      age: 60,
+      job: "President",
+    },
+  ];
+  const name = people.map(ages => `<h3>${ages.age}</h3>`);
+  const result = document.querySelector("#list");
+  result.innerHtml = name.join("");
+</script>
+```
+
+한번 같이 해보세요  
+.join('') 함수를 쓰는 이유는 같이 출력되는 "," 컴마를 없애주기 위함입니다.

@@ -23,9 +23,10 @@ const BlogPostTemplate = ({ data, location }) => {
       <BlogLayout>
         <MDXRenderer>{post.body}</MDXRenderer>
       </BlogLayout>
-      <TableLayout>
+      {/* <TableLayout>
         <TableOfContents items={post.tableOfContents.items} />
-      </TableLayout>
+      </TableLayout> */}
+      <div>{post.tableOfContents.items.url}</div>
       <DiscussionEmbed shortname={disqusShortname} config={disqusConfig} />
     </Layout>
   );
@@ -68,6 +69,10 @@ const BlogLayout = styled.div`
   justify-content: center;
   transform: translate(10px);
   padding: 50px 0;
+
+  @media screen and (max-width: 768px) {
+    transform: none;
+  }
 `;
 
 const TableLayout = styled.div`
