@@ -13,7 +13,6 @@ const Header = ({ siteTitle }) => {
     }
   });
 
-  console.log(age);
   // console.log(age);
   // const mouseOver = () => {
   //   if (age[0]) {
@@ -33,7 +32,7 @@ const Header = ({ siteTitle }) => {
 
   return (
     <Nav>
-      <NavTitle to="/">
+      <NavTitle to='/'>
         <LogoImg src={logo} />
         {siteTitle}
       </NavTitle>
@@ -56,20 +55,20 @@ const Header = ({ siteTitle }) => {
 export default Header;
 
 const Nav = styled.div`
-  background-color: #ababab;
+  background-color: #ffffff;
   max-width: 100%;
   display: flex;
 
   position: relative;
   border: none;
-
+  box-shadow: 0 20px 10px -15px rgba(197, 192, 249, 0.2);
   text-decoration: none;
   justify-content: space-between;
   padding: 0.5rem calc((100vw - 1000px) / 2);
 `;
 
 const NavTitle = styled(Link)`
-  color: #fff;
+  color: #000;
 
   display: flex;
 

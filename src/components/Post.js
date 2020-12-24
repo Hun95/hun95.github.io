@@ -13,6 +13,7 @@ const Post = () => {
 
             frontmatter {
               title
+              subtitle
               date(formatString: "YYYY년 MM월 DD일")
               tags
               image {
@@ -37,36 +38,73 @@ const Post = () => {
 
   return (
     <>
-      {edges.map(({ node }) => (
-        <Card>
-          <CardTitle>
-            <Link to={node.fields.slug}>{node.frontmatter.title}</Link>
-          </CardTitle>
+      <CardWrapper>
+        {edges.map(({ node }) => (
+          <Card>
+            <CardTitle>
+              <Link to={node.fields.slug}>{node.frontmatter.title}</Link>
+            </CardTitle>
+            <CardSubTitle>{node.frontmatter.subtitle}</CardSubTitle>
+            <span className='text-info'>{node.frontmatter.date}</span>
 
-          <span className="text-info">{node.frontmatter.date}</span>
-
-          {node.excerpt}
-
-          <PostInTags props={node.frontmatter.tags} />
-        </Card>
-      ))}
+            <PostInTags props={node.frontmatter.tags} />
+          </Card>
+        ))}
+      </CardWrapper>
     </>
   );
 };
 
 export default Post;
-
-const Card = styled.div`
-  border: 1px solid gray;
+const CardWrapper = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-content: space-between;
+  grid-gap: 1rem;
   padding-bottom: 1rem;
   margin-bottom: 1rem;
-  max-width: calc(100vh - 40px);
-  min-height: calc(100vh -500px);
+  @media only screen and (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
+`;
+const Card = styled.section`
+  background: #ffffff;
+  border-radius: 0 0 5px 5px;
+  box-shadow: 0 20px 10px -15px rgba(197, 192, 249, 0.2);
+  position: relative;
+  z-index: 0;
+  height: 250px;
+  max-width: 100%;
+  max-height: 100%;
 `;
 
-const CardTitle = styled.div`
+const CardTitle = styled.p`
+  margin-top: 1.4rem;
   margin-bottom: 1rem;
+  text-align: center;
+  font-size: 20px;
+  padding: 0 30px;
+  height: 28px;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 
-  font-size: 30px;
   font-weight: bold;
+
+  a {
+    color: black;
+  }
+  &:hover {
+  }
+`;
+
+const CardSubTitle = styled.p`
+  margin-left: 5%;
+  height: 28px;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-align: left;
 `;

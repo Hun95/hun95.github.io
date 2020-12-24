@@ -19,6 +19,7 @@ export const GlobalStyle = createGlobalStyle`
      font-family: 'MapoGoldenPier', sans-serif;
      margin: 0;
      padding: 0;
+
     
  }
  /* CSS Custom Properties Definitions */
@@ -98,6 +99,7 @@ html {
   font-size: var(--fontSize-root);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+       background: #fcfcff;
 }
 
 body {

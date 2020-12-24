@@ -1,0 +1,576 @@
+---
+title: "React 기본 기본 기본 기본 기본 기본"
+date: 2020-12-21 14:06:59
+
+image: "../../src/images/2.jpg"
+tags: ["react"]
+---
+
+# 🚀 첫 컴포넌트
+
+```jsx
+import React from "react";
+import ReactDom from "react-dom";
+function Greeting() {
+  return (
+    <div>
+      <h1>hello world</h1>
+    </div>
+  );
+}
+
+ReactDom.render(<Greeting />, document.getElementById("root"));
+```
+
+```jsx
+import React from "react";
+import ReactDom from "react-dom";
+
+const Greeting = () => {
+  return React.createElement(
+    "div",
+    {},
+    React.createElement("h1", {}, "hello world")
+  );
+};
+
+ReactDom.render(<Greeting />, document.getElementById("root"));
+```
+
+두개가 같다.
+
+# 🚀 JSX
+
+JSX Rules
+return single element
+div / section / article or Fragment
+use camelCase for html attribute
+className = class
+close every element
+formatting
+
+Jsx fragment = <> </> = <React.Fragment></React.Fragment>
+
+# 🚀 Nested Components, React Tools
+
+## 🔨 Nested Components
+
+```jsx
+import React from "react";
+import ReactDom from "react-dom";
+// function Greeting() {
+//   return <h4>this is john and this is my first componet</h4>;
+// }
+function Greeting() {
+  return (
+    <div>
+      <Person />
+      <p>this is my messages</p>
+    </div>
+  );
+}
+const Person = () => <h2>john doe</h2>;
+
+ReactDom.render(<Greeting />, document.getElementById("root"));
+```
+
+# 🚀 Mini Book project
+
+---
+
+📌 번외
+src
+./ = same directory
+../ =>
+
+width:90vw == vw == // viewwidth
+
+# 🚀 Jsx css
+
+style={{}}
+curly brace
+
+first culry => javascript
+second =>
+and Capital Carmel
+
+style={{}} 내부에 넣는 속성이 더 stronger than index.css 등등
+라이브러리를 사용할 때는 꼭 체크할 것.
+
+# 🚀 JSX javascript
+
+```jsx
+const author = "Jane";
+const Book = () => {
+  const title = "I love you to the moon";
+  return (
+    <>
+      <article className='book'>
+        <div className='box'></div>
+        <h1>{title}</h1>
+        <h3>{author.toUpperCase()}</h3>
+        <p>{11 + 11}</p>
+      </article>
+    </>
+  );
+};
+```
+
+함수 바깥쪽에 정의된 것들도 끌어다가 사용할 수 있고
+{} curly brace 안에는 연산도 가능하다.
+
+```jsx
+
+const author = 'jane';
+const title = 'The ant';
+const img = 'https://img.etoday.co.kr/pto_db/2016/09/600/20160926045630_944170_1080_720.jpg';
+
+function BookList() {
+  return (
+    <section className="booklist">
+      <Book />
+    </section>
+  );
+}
+
+const Book = () => {
+  return (
+    <>
+      <article className="book">
+        <img src={img} />
+        <h1>{title}</h1>
+        <h3>{author.toUpperCase()}</h3>
+        <p>{11 + 11}</p>
+      </article>
+    </>
+  );
+
+```
+
+이렇게 표현한다면 굉장히 깔끔하게 표현된다.
+
+🚀 PROPS
+
+```jsx
+const Book = props => {
+  console.log(props);
+
+  return (
+    <>
+      <article className='book'>
+        <img src={img} />
+        <h1>{title}</h1>
+        <h3>{author.toUpperCase()}</h3>
+        <p>{11 + 11}</p>
+      </article>
+    </>
+  );
+};
+```
+
+📌 Props라는 변수는 아무 이름이나 상관없지만 대중적으로 props라고 사용하기 때문에
+그렇게 쓰겠다.
+props를 콘솔로그에 찍어보면
+
+```console
+{} === Object가 반환됨을 확인할 수 있다.
+```
+
+```jsx
+function BookList() {
+  return (
+    <section className='booklist'>
+      <Book />
+      <Book />
+      <Book />
+    </section>
+  );
+}
+
+const Book = props => {
+  console.log(props);
+
+  return (
+    <>
+      <article className='book'>
+        <img src={img} />
+        <h1>{title}</h1>
+        <h3>{author.toUpperCase()}</h3>
+        <p>{11 + 11}</p>
+      </article>
+    </>
+  );
+};
+```
+
+위와 같이 3번 Book을 출력하면
+Object가 3번 출력된다
+
+```console
+{}
+{}
+{}
+```
+
+만약에
+
+```jsx
+function BookList() {
+  return (
+    <section className='booklist'>
+      <Book job='developer' />
+      <Book title='random title' number={12} />
+      <Book />
+    </section>
+  );
+}
+```
+
+위와같이 찍는다면
+
+```console
+{job:developer}
+{title: "random title", number:12}
+{}
+
+```
+
+와 같은 결과를 얻을 수 있다.
+
+```jsx
+function Booklist() {
+  return <Book job='developer' />;
+}
+const Book = props => {
+  <p>{props.job}</p>;
+};
+```
+
+Props는 Immutable Data 즉, 변하지 않는 데이터다.
+상위(부모) 컴포넌트에서 하위(자식) 컴포넌트로 데이터를 넘겨줄 때 사용한다.
+
+위의 예에서 보자면,  
+job="developer" 이라고 값이 정의된 거다.  
+속성처럼 사용되는 건 그냥 문법이다.
+
+(참조 : https://medium.com/@yeon22/react-js-react-js%EC%9D%98-props-%EC%82%AC%EC%9A%A9%EB%B0%A9%EB%B2%95-bc59a5c257a, https://react.vlpt.us/basic/05-props.html )
+
+```jsx
+const firstBook = {
+  author: "jane",
+  title: "The ant",
+  img:
+    "https://img.etoday.co.kr/pto_db/2016/09/600/20160926045630_944170_1080_720.jpg",
+};
+const secondBook = {
+  author: "kane",
+  title: "The useState",
+  img:
+    "https://img.etoday.co.kr/pto_db/2016/09/600/20160926045630_944170_1080_720.jpg",
+};
+
+function BookList() {
+  return (
+    <section className='booklist'>
+      <Book
+        img={firstBook.img}
+        title={firstBook.title}
+        author={firstBook.author}
+      />
+      <Book
+        img={secondBook.img}
+        title={secondBook.title}
+        author={secondBook.author}
+      />
+      <Book />
+    </section>
+  );
+}
+
+const Book = props => {
+  console.log(props);
+
+  return (
+    <>
+      <article className='book'>
+        <img src={props.img} />
+        <h1>{props.title}</h1>
+        <h3>{props.author}</h3>
+      </article>
+    </>
+  );
+};
+```
+
+Props를 사용하여 위와 같은 구조를 얻을 수 있다.
+
+# 🚀 Props Destructuring
+
+```jsx
+const Book = props => {
+  const { img, title, author } = props;
+
+  return (
+    <>
+      <article className='book'>
+        <img src={img} />
+        <h1>{title}</h1>
+        <h3>{author}</h3>
+      </article>
+    </>
+  );
+};
+```
+
+or
+
+```jsx
+const Book = ({ img, title, author }) => {
+  return (
+    <>
+      <article className='book'>
+        <img src={img} />
+        <h1>{title}</h1>
+        <h3>{author}</h3>
+      </article>
+    </>
+  );
+};
+```
+
+🚀 Props Children
+
+```jsx
+function BookList() {
+  return (
+    <section className='booklist'>
+      <Book
+        img={firstBook.img}
+        title={firstBook.title}
+        author={firstBook.author}
+      >
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique
+          delectus
+        </p>
+        <h1>hello</h1>
+      </Book>
+      <Book
+        img={secondBook.img}
+        title={secondBook.title}
+        author={secondBook.author}
+      />
+      <Book />
+    </section>
+  );
+}
+
+const Book = ({ img, title, author, children }) => {
+  return (
+    <>
+      <article className='book'>
+        <img src={img} />
+        <h1>{title}</h1>
+        <h3>{author}</h3>
+        {children}
+      </article>
+    </>
+  );
+};
+```
+
+children이라는 props를 받아오면 부모로부터 정의되지 않은 것들을 모두 가져온다.
+
+```jsx
+const Book = props => {
+  const { img, title, author } = props;
+  console.log(props);
+  return (
+    <>
+      <article className='book'>
+        <img src={img} />
+        <h1>{title}</h1>
+        <h3>{author}</h3>
+        {props.children}
+      </article>
+    </>
+  );
+};
+```
+
+비구조와할당이 아니고 props를 넣어준다면
+children은 정의하지 않는다
+왜냐하면
+
+```console
+props를 콘솔에 찍었을 때
+children이 딸려서 같이 출력되기 때문이다.
+
+```
+
+하지만 const { img, title, author, children } = props;
+으로 사용해도 되기 때문에 보통은 위와 같은 방법을 사용한다 편리하기 때문
+
+# 🚀 Proper List
+
+```jsx
+const books = [
+  {
+    id: 1,
+    author: "jane",
+    title: "The ant",
+    img:
+      "https://img.etoday.co.kr/pto_db/2016/09/600/20160926045630_944170_1080_720.jpg",
+  },
+  {
+    id: 2,
+    author: "kane",
+    title: "The useState",
+    img:
+      "https://img.etoday.co.kr/pto_db/2016/09/600/20160926045630_944170_1080_720.jpg",
+  },
+  {
+    id: 3,
+    author: "kane",
+    title: "The useState",
+    img:
+      "https://img.etoday.co.kr/pto_db/2016/09/600/20160926045630_944170_1080_720.jpg",
+  },
+];
+
+function BookList() {
+  return (
+    <section className='booklist'>
+      {books.map(book => {
+        return <Book key={book.id} book={book}></Book>;
+      })}
+    </section>
+  );
+}
+
+const Book = props => {
+  const { img, title, author } = props.book;
+
+  return (
+    <>
+      <article className='book'>
+        <img src={img} />
+        <h1>{title}</h1>
+        <h3>{author}</h3>
+      </article>
+    </>
+  );
+};
+```
+
+key 값에
+
+```jsx
+books.map((book, index) => {
+  return <Book key={index} book={book}></Book>;
+});
+```
+
+리액트에서 고유의 key를 요구한다.
+이런 식으로 해도 되지만, index는 배열이 변하면서 값이 변할 수 있고
+id 값은 고유의 값이기 때문에 key에는 id를 넣는 것을 추천한다.
+
+# 🚀 Spread Operator
+
+```jsx
+const books = [
+  {
+    id: 1,
+    author: "jane",
+    title: "The ant",
+    img:
+      "https://img.etoday.co.kr/pto_db/2016/09/600/20160926045630_944170_1080_720.jpg",
+  },
+  {
+    id: 2,
+    author: "kane",
+    title: "The useState",
+    img:
+      "https://img.etoday.co.kr/pto_db/2016/09/600/20160926045630_944170_1080_720.jpg",
+  },
+  {
+    id: 3,
+    author: "kane",
+    title: "The useState",
+    img:
+      "https://img.etoday.co.kr/pto_db/2016/09/600/20160926045630_944170_1080_720.jpg",
+  },
+];
+
+function BookList() {
+  return (
+    <section className='booklist'>
+      {books.map(book => {
+        return <Book key={book.id} {...book}></Book>;
+      })}
+    </section>
+  );
+}
+
+const Book = ({ img, title, author }) => {
+  return (
+    <>
+      <article className='book'>
+        <img src={img} />
+        <h1>{title}</h1>
+        <h3>{author}</h3>
+      </article>
+    </>
+  );
+};
+```
+
+# 🚀 Event Basic
+
+```jsx
+onClick={() => complexExample()}
+
+```
+
+요런 식으로 () => 해줘야 개별적으로 실행됨
+
+```jsx
+e.target;
+```
+
+콘솔에 찍어봤을 때  
+movementX sceenX type 등등 여러가지 타입이 나온다  
+앞으로 자주 사용할 것이기 때문에 익혀두는 게 좋다고 함.
+
+# 🚀 임포트 디폴트
+
+ES6의 문법이다.
+
+```jsx
+export default const name = () =>{
+
+}
+or
+
+
+const  name = () =>{
+
+}
+
+export default name
+export 뒤에 default 가 붙으면
+
+
+
+```
+
+임폴트 할 때 이름을 아무거나 지어도 상관없지만
+붙어있지 않으면, {} curly brace 안에 꼭 같은 이름을 넣어줘야 한다.
+
+🚀 netlify Build 및 배포
+
+접속해서
+
+만들어진 리엑트 앱 npm run build 후에
+build 폴더를 끌어다가 놓으면 자동으로 배포됨..
+엄청편함

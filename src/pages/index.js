@@ -4,23 +4,18 @@ import Layout from "../components/Layout";
 import Post from "../components/Post";
 import SEO from "../components/Seo";
 // import SideBar from "../components/Sidebar";
-import Footer from "../components/Footer";
-import { Row, Col } from "reactstrap";
-import { HeroContainer, HeroContent } from "../components/styles/Styled";
+import styled from "styled-components";
+import Banner from "../components/Banner";
 const IndexPage = () => (
   <Layout>
-    <SEO title="Home" />
-    <h1>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores quo sequi
-      eaque mollitia id at ipsam illo et autem. Dolore tempora corporis eius
-      similique odit iusto quisquam cupiditate velit neque.
-    </h1>
-
-    <Post />
-    <HeroContainer>
-      <HeroContent>hello</HeroContent>
-    </HeroContainer>
-    <Footer />
+    <SEO title='Home' />
+    <Banner />
+    <Mainwrapper>
+      <Post />
+      <SubmenuWrap>
+        <Submenu>hi</Submenu>
+      </SubmenuWrap>
+    </Mainwrapper>
   </Layout>
 );
 
@@ -55,3 +50,33 @@ const IndexPage = () => (
 // `;
 
 export default IndexPage;
+
+const SubmenuWrap = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+  margin-left: 1rem;
+  @media only screen and (max-width: 768px) {
+    display: none;
+  }
+`;
+const Submenu = styled.div`
+  position: sticky;
+  overflow: auto;
+  top: 0;
+
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: blue;
+  height: 50px;
+`;
+const Mainwrapper = styled.div`
+  display: grid;
+  grid-template-columns: 4fr 1fr;
+
+  justify-content: space-between;
+  @media only screen and (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
+`;

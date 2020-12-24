@@ -33,9 +33,9 @@ const copyToClipboard = str => {
 };
 
 const Wrapp = styled.div`
-  max-width: 100%;
   font-size: 1em;
   line-height: 120%;
+  overflow: auto;
 `;
 const Wrapper = props => <div style={{ font: "8px" }} {...props} />;
 const ConfettiWrapper = props => (
@@ -83,7 +83,6 @@ const Button = props => (
 export const Code = ({ codeString, children, language, ...props }) => {
   const [isCopied, setIsCopied] = React.useState(false);
 
-  console.log(language);
   if (props["react-live"]) {
     return (
       <LiveProvider code={codeString} noInline={true}>

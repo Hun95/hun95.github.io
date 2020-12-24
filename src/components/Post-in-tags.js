@@ -15,7 +15,9 @@ export default PostInTags;
 
 const Tag = styled(Link)`
   background-color: blue;
+
   color: white;
+
   margin-right: 1rem;
   border: none;
   border-radius: 2rem;
