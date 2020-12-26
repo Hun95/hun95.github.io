@@ -172,7 +172,6 @@ h1 > a {
   color: inherit;
   text-decoration: none;
 }
-
 h2 > a,
 h3 > a,
 h4 > a,
@@ -258,7 +257,7 @@ table thead tr th {
 /* Link */
 
 a {
-  color: var(--color-primary);
+  color: inherit;
   text-decoration: none;
 }
 

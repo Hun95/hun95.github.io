@@ -1,9 +1,8 @@
 ---
-title: "React 어드밴스 가 글자가 넘는다면 어떻게 될 것인가요?"
+title: 'React Advanced'
 date: 2020-12-22 09:57:47
-subtitle:
-image: "../../src/images/2.jpg"
-tags: ["react"]
+subtitle: '리엑트 useState, useEffect 등 고급 기술에 대해 배워봅시다.'
+tags: ['react']
 ---
 
 # 🚀 Overview
@@ -11,12 +10,12 @@ tags: ["react"]
 # 🚀 UseState가 필요한 이유
 
 ```jsx
-import React from "react";
+import React from 'react';
 
 const ErrorExample = () => {
-  let title = "random title";
+  let title = 'random title';
   const handleClick = () => {
-    title = "hello people";
+    title = 'hello people';
     console.log(title);
   };
   return (
@@ -73,19 +72,19 @@ value = 1 이고
 setValue는 1 값을 즉 value값을 바꿔주는 함수라고 생각하면 되겠다.
 
 ```jsx
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
 const UseStateBasics = () => {
   // console.log(useState('hello world'));
   // const value = useState(1)[0];
   // const handler = useState(1)[1];
   // console.log(value, handler);
-  const [text, setText] = useState("11");
+  const [text, setText] = useState('11');
   const handleClick = () => {
-    if (text === "11") {
-      setText("hello world");
+    if (text === '11') {
+      setText('hello world');
     } else {
-      setText("11");
+      setText('11');
     }
   };
   return (
@@ -116,8 +115,8 @@ cannot call conditionally
 # 🚀 useState array
 
 ```jsx
-import React, { useState } from "react";
-import { data } from "../../../data";
+import React, { useState } from 'react';
+import { data } from '../../../data';
 
 const UseStateArray = () => {
   const [people, setPeople] = useState(data);
@@ -153,16 +152,16 @@ invoke된 값을 filter함수를 이용해 하나씩 remove하는 작업이다.
 # 🚀 useState Object
 
 ```jsx
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
 const UseStateObject = () => {
   const [person, setPerson] = useState({
-    name: "sehun",
+    name: 'sehun',
     age: 26,
-    message: "hello world",
+    message: 'hello world',
   });
   const changeMessage = () => {
-    setPerson({ ...person, message: "hi" });
+    setPerson({ ...person, message: 'hi' });
   };
   return (
     <>
@@ -184,7 +183,7 @@ export default UseStateObject;
 # 🚀 simple counter
 
 ```jsx
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
 const UseStateCounter = () => {
   const [value, setValue] = useState(0);
@@ -201,7 +200,7 @@ const UseStateCounter = () => {
   };
   return (
     <>
-      <section style={{ margin: "4rem 0" }}>
+      <section style={{ margin: '4rem 0' }}>
         <h2>regular counter</h2>
         <h1>{value}</h1>
       </section>
@@ -216,7 +215,7 @@ const UseStateCounter = () => {
       </button>
 
       <div>
-        <section style={{ margin: "4rem 0" }}>
+        <section style={{ margin: '4rem 0' }}>
           <h2>more complex counter</h2>
           <h1>{value}</h1>
         </section>
@@ -342,7 +341,7 @@ useEffect를 사용했을 때는 무조건 cleanup을 해줘야 한다
 addEventlistner을 실행했으면 무조건 removeEventListner을 해줘야 한다.
 
 ```jsx
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from 'react';
 
 // cleanup function
 // second argument
@@ -355,14 +354,14 @@ const UseEffectCleanup = () => {
   };
 
   useEffect(() => {
-    console.log("useEffect");
-    window.addEventListener("resize", checkSize);
+    console.log('useEffect');
+    window.addEventListener('resize', checkSize);
     return () => {
-      console.log("cleanup");
-      window.removeEventListener("resize", checkSize);
+      console.log('cleanup');
+      window.removeEventListener('resize', checkSize);
     };
   }, []);
-  console.log("render");
+  console.log('render');
   return (
     <>
       <h1>window</h1>
@@ -385,12 +384,12 @@ https://developer.mozilla.org/ko/docs/Web/Events
 # 🚀 Multiple return
 
 ```jsx
-import React, { useState, useEffect } from "react";
-const url = "https://api.github.com/users/QuincyLarson";
+import React, { useState, useEffect } from 'react';
+const url = 'https://api.github.com/users/QuincyLarson';
 const MultipleReturns = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
-  const [user, setUser] = useState("default user");
+  const [user, setUser] = useState('default user');
 
   useEffect(() => {
     fetch(url)
@@ -451,12 +450,12 @@ user라는 변수안에 담는데, user.login의 정보를 가져오고 싶다.
 # 🚀 short- circuit evaluation
 
 ```jsx
-import React, { useState } from "react";
+import React, { useState } from 'react';
 // short-circuit evaluation
 // ternary operator
 
 const ShortCircuit = () => {
-  const [text, setText] = useState("");
+  const [text, setText] = useState('');
   const [isError, setIsError] = useState(false);
   // const firstValue = text || 'hello world';
   // const secondValue = text && 'hello world';
@@ -465,7 +464,7 @@ const ShortCircuit = () => {
     <>
       {/* <h1>{firstValue}</h1>
       <h1>value : {secondValue}</h1> */}
-      <h1>{text || "john doe"}</h1>
+      <h1>{text || 'john doe'}</h1>
       <button
         className='btn'
         onClick={() => {
@@ -496,7 +495,7 @@ setIsError에다가 true넣으면 한번누르면 고정되고
 # 🚀 Show - hide
 
 ```jsx
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from 'react';
 
 const ShowHide = () => {
   const [show, setShow] = useState(false);
@@ -516,14 +515,14 @@ const Item = () => {
   };
   const [size, setSize] = useState(window.innerWidth);
   useEffect(() => {
-    window.addEventListener("resize", checkSize);
+    window.addEventListener('resize', checkSize);
     // return () => {
     //   window.removeEventListener('resize', checkSize);
     // };
   }, []);
 
   return (
-    <div style={{ marginTOp: "2rem" }}>
+    <div style={{ marginTOp: '2rem' }}>
       <h1>windows</h1>
       <h2>size : {size} </h2>
     </div>
@@ -540,7 +539,7 @@ addEventListener가 왔으면 removeEventListener 가 꼭 와야 한다.
 # 🚀 Form
 
 ```jsx
-import React, { useState } from "react";
+import React, { useState } from 'react';
 // JS
 // const input = document.getElementById('myText');
 // const inputValue = input.value
@@ -549,7 +548,7 @@ import React, { useState } from "react";
 
 const ControlledInputs = () => {
   const handleSubmit = e => {
-    console.log("hi");
+    console.log('hi');
   };
   return (
     <>
@@ -579,23 +578,23 @@ export default ControlledInputs;
 ```jsx
 const handleSubmit = e => {
   e.preventDefault();
-  console.log("hi");
+  console.log('hi');
 };
 ```
 
 e.preventDefault() 를 넣어주면 리로딩되는 걸 막아준다.
-그렇기 때문에 console에 로그가 ㄸ뜬다
+그렇기 때문에 console에 로그가 뜬다
 
 ```jsx
-import React, { useState } from "react";
+import React, { useState } from 'react';
 // JS
 // const input = document.getElementById('myText');
 // const inputValue = input.value
 // React
 // value, onChange
 const ControlledInputs = () => {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
   const [people, setPeople] = useState([]);
   const handleForm = e => {
     e.preventDefault();
@@ -604,10 +603,10 @@ const ControlledInputs = () => {
       setPeople(people => {
         return [...people, person];
       });
-      setName("");
-      setEmail("");
+      setName('');
+      setEmail('');
     } else {
-      alert("아직 더 입력해주세요");
+      alert('아직 더 입력해주세요');
     }
   };
 
@@ -633,7 +632,7 @@ const ControlledInputs = () => {
             value={name}
             onChange={e => setName(e.target.value)}
           />
-          <button type='submit' style={{ display: "block", width: "500px" }}>
+          <button type='submit' style={{ display: 'block', width: '500px' }}>
             CLick
           </button>
         </div>
@@ -686,9 +685,181 @@ const person = {firstname, email}
 
 alert을 띄워서 창을 다 채우라고 알려주면 된다.
 
-# 🚀 Multiple Input 복습하기
+# 🚀 Multiple Input (복습 필수)
 
-우선 배운 것을 얘기해보자면
 현재 위에서 사용하던 방식은 각 인풋별로 useState()를 만들었다.
 하지만 입력해야되는 input창이 많아질수록 관리하기 힘들어지기 때문에
 일괄적으로 관리하는 방법을 제시한다.
+
+```jsx
+import React, { useState } from 'react';
+// JS
+// const input = document.getElementById('myText');
+// const inputValue = input.value
+// React
+// value, onChange
+// dynamic object keys
+
+const ControlledInputs = () => {
+  // const [firstName, setFirstName] = useState('');
+  // const [email, setEmail] = useState('');
+  // const [age, setAge] = useState('');
+  const [person, setPerson] = useState({ firstName: '', email: '', age: '' });
+  const [people, setPeople] = useState([]);
+  const handleChange = e => {
+    const name = e.target.name;
+    const value = e.target.value;
+    console.log(name, value);
+  };
+
+  const handleSubmit = e => {
+    e.preventDefault();
+  };
+  return (
+    <>
+      <article>
+        <form className='form'>
+          <div className='form-control'>
+            <label htmlFor='firstName'>Name : </label>
+            <input
+              type='text'
+              id='firstName'
+              name='firstName'
+              value={person.firstName}
+              onChange={handleChange}
+            />
+          </div>
+          <div className='form-control'>
+            <label htmlFor='email'>Email : </label>
+            <input
+              type='email'
+              id='email'
+              name='email'
+              value={person.email}
+              onChange={handleChange}
+            />
+          </div>
+
+          <div className='form-control'>
+            <label htmlFor='age'>Age : </label>
+            <input
+              type='text'
+              id='age'
+              name='age'
+              value={person.age}
+              onChange={handleChange}
+            />
+          </div>
+          <button type='submit' onClick={handleSubmit}>
+            add person
+          </button>
+        </form>
+        {people.map((person, index) => {
+          const { id, firstName, email } = person;
+          return (
+            <div className='item' key={id}>
+              <h4>{firstName}</h4>
+              <p>{email}</p>
+            </div>
+          );
+        })}
+      </article>
+    </>
+  );
+};
+
+export default ControlledInputs;
+```
+
+우선 위와 같은 코드를 볼 수 있다.
+
+input에 value와 name property가 있다.  
+onChange 안에는 handleChange라는 함수가 존재한다.  
+handleChange라는 함수는 event.target.value와 e.target.name을 콘솔에 찍는다.
+handleChange라는 함수가 각 input 항목에 잇기 때문에
+텍스트를 input에 입력했을 때, 어떤 input창인지와 어떤 걸 입력했는지를 가져올 수 있게 된다.
+
+dynamic object properties
+
+```jsx
+const [person, setPerson] = useState({ firstName: '', email: '', age: '' });
+const [people, setPeople] = useState([]);
+const handleChange = e => {
+  const name = e.target.name;
+  const value = e.target.value;
+  setPerson({ ...person, [name]: value });
+  //setPerson({..person, firstName: value})
+  console.log(name, value);
+};
+```
+
+// 안에 있는 것은 다이나믹 하지 않은 것이고
+위의 작성된 함수는 다이나믹하게 되어 있다.
+
+```jsx
+const handleSubmit = e => {
+  e.preventDefault();
+  if (person.firstName && person.email && person.age) {
+    const newPerson = { ...person, id: new Date().getTime().toString() };
+    setPeople([...people, newPerson]);
+    setPerson({ firstName: '', email: '', age: '' });
+  }
+};
+```
+
+handle Change 로 person이라는 객체에 입력값을 담는다.
+handleSubmit으로는 만약에 입력받은 person의 창에 name email age가 다 입력됬다면,
+newPerson이라는 객체를 만들어서 기존에 person값을 그대로 가져온 상태로 id를 현재 시간을 추가해준다.
+Peope에도 마찬가지로 기존 값에다가 newPerson을 추가해준다.
+그리고 person을 리셋한다.
+
+사실 위 과정에서
+
+```jsx
+const handleSubmit = e => {
+  e.preventDefault();
+  setPeople([...people, person]);
+  setPerson({ firstName: '', email: '', age: '' });
+};
+```
+
+newPerson를 새로 만들어서 id값을 추가해줄 필요는 없다.
+
+# 🚀 UseRef
+
+```jsx
+import React, { useEffect, useRef } from 'react';
+
+// preserves value
+// DOES NOT trigger re-render
+// target DOM nodes/elements
+
+const UseRefBasics = () => {
+  const refContainer = useRef(null);
+  const divContainer = useRef(null);
+  const handleSubmit = e => {
+    e.preventDefault();
+    console.log(refContainer.current.value);
+    console.log(divContainer.current);
+  };
+  useEffect(() => {
+    console.log(refContainer.current);
+    refContainer.current.focus();
+  });
+  return (
+    <>
+      <form className='form' onSubmit={handleSubmit}>
+        <div>
+          <input type='text' ref={refContainer} />
+          <button type='submit'>Submit</button>
+        </div>
+      </form>
+      <div ref={divContainer}>hello world</div>
+    </>
+  );
+};
+
+export default UseRefBasics;
+```
+
+useRef는 바뀌어도 렌더링되지 않는다.

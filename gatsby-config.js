@@ -10,13 +10,13 @@ module.exports = {
     `gatsby-plugin-catch-links`,
     `gatsby-transformer-remark`,
 
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `images`,
-        path: `${__dirname}/src/images`,
-      },
-    },
+    // {
+    //   resolve: `gatsby-source-filesystem`,
+    //   options: {
+    //     name: `images`,
+    //     path: `${__dirname}/src/images`,
+    //   },
+    // },
     {
       resolve: `gatsby-plugin-mdx`,
       options: {

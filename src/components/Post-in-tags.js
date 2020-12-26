@@ -1,25 +1,34 @@
 import React from "react";
 import { Link } from "gatsby";
 import styled from "styled-components";
+
 const PostInTags = ({ props }) => {
   return (
-    <div>
+    <TagWrap>
       {props.map(tag => (
         <Tag to={`tag/${tag}`}>{tag}</Tag>
       ))}
-    </div>
+    </TagWrap>
   );
 };
 
 export default PostInTags;
 
 const Tag = styled(Link)`
-  background-color: blue;
+  background-color: #ffd42a;
 
-  color: white;
+  color: black;
+  font-size: 10px;
 
   margin-right: 1rem;
   border: none;
   border-radius: 2rem;
   padding: 1% 1%;
+  &:hover {
+    background: #fff5cc;
+  }
+`;
+
+const TagWrap = styled.div`
+  margin-left: 30px;
 `;

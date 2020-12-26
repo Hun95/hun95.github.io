@@ -16,13 +16,13 @@ const Post = () => {
               subtitle
               date(formatString: "YYYY년 MM월 DD일")
               tags
-              image {
-                childImageSharp {
-                  fluid(maxWidth: 600) {
-                    ...GatsbyImageSharpFluid
-                  }
-                }
-              }
+              # image {
+              #   childImageSharp {
+              #     fluid(maxWidth: 600) {
+              #       ...GatsbyImageSharpFluid
+              #     }
+              #   }
+              # }
             }
             fields {
               slug
@@ -40,15 +40,14 @@ const Post = () => {
     <>
       <CardWrapper>
         {edges.map(({ node }) => (
-          <Card>
-            <CardTitle>
-              <Link to={node.fields.slug}>{node.frontmatter.title}</Link>
-            </CardTitle>
-            <CardSubTitle>{node.frontmatter.subtitle}</CardSubTitle>
-            <span className='text-info'>{node.frontmatter.date}</span>
-
-            <PostInTags props={node.frontmatter.tags} />
-          </Card>
+          <Link to={node.fields.slug}>
+            <Card>
+              <CardTitle>🚀{node.frontmatter.title}</CardTitle>
+              <CardSubTitle>◼ {node.frontmatter.subtitle}</CardSubTitle>
+              <PostInTags props={node.frontmatter.tags} />
+              <CardDate>📆{node.frontmatter.date}</CardDate>
+            </Card>
+          </Link>
         ))}
       </CardWrapper>
     </>
@@ -63,28 +62,37 @@ const CardWrapper = styled.div`
   grid-gap: 1rem;
   padding-bottom: 1rem;
   margin-bottom: 1rem;
+  max-width: 100%;
+
   @media only screen and (max-width: 768px) {
     grid-template-columns: 1fr;
   }
 `;
 const Card = styled.section`
   background: #ffffff;
+  display: grid;
+  grid-template-columns: repeat(2fr, 500px);
+  cursor: pointer;
   border-radius: 0 0 5px 5px;
   box-shadow: 0 20px 10px -15px rgba(197, 192, 249, 0.2);
   position: relative;
   z-index: 0;
   height: 250px;
-  max-width: 100%;
-  max-height: 100%;
+  width: 100%;
+
+  &:hover {
+    transition: all 0.3s ease-in-out;
+    transform: translateY(-5px);
+  }
 `;
 
-const CardTitle = styled.p`
+const CardTitle = styled.h2`
   margin-top: 1.4rem;
   margin-bottom: 1rem;
-  text-align: center;
-  font-size: 20px;
-  padding: 0 30px;
-  height: 28px;
+  text-align: left;
+  line-height: 2rem;
+  margin-left: 10px;
+  height: 30px;
   display: -webkit-box;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
@@ -100,11 +108,22 @@ const CardTitle = styled.p`
 `;
 
 const CardSubTitle = styled.p`
-  margin-left: 5%;
-  height: 28px;
+  margin-top: 20px;
+  text-align: left;
+  font-size: 10px;
+  height: 30px;
+  margin-left: 20px;
   display: -webkit-box;
-  -webkit-line-clamp: 1;
+  -webkit-line-clamp: 2;
+
   -webkit-box-orient: vertical;
   overflow: hidden;
-  text-align: left;
+  padding-right: 10px;
+`;
+
+const CardDate = styled.p`
+  font-size: 5px;
+  text-align: right;
+  margin-right: 10px;
+  margin-top: 20px;
 `;

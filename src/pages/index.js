@@ -3,7 +3,7 @@ import React from "react";
 import Layout from "../components/Layout";
 import Post from "../components/Post";
 import SEO from "../components/Seo";
-// import SideBar from "../components/Sidebar";
+import Submenu from "../components/Submenu";
 import styled from "styled-components";
 import Banner from "../components/Banner";
 const IndexPage = () => (
@@ -12,9 +12,7 @@ const IndexPage = () => (
     <Banner />
     <Mainwrapper>
       <Post />
-      <SubmenuWrap>
-        <Submenu>hi</Submenu>
-      </SubmenuWrap>
+      <Submenu />
     </Mainwrapper>
   </Layout>
 );
@@ -51,26 +49,6 @@ const IndexPage = () => (
 
 export default IndexPage;
 
-const SubmenuWrap = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-
-  margin-left: 1rem;
-  @media only screen and (max-width: 768px) {
-    display: none;
-  }
-`;
-const Submenu = styled.div`
-  position: sticky;
-  overflow: auto;
-  top: 0;
-
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: blue;
-  height: 50px;
-`;
 const Mainwrapper = styled.div`
   display: grid;
   grid-template-columns: 4fr 1fr;
