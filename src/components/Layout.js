@@ -6,7 +6,6 @@
  */
 
 import React from 'react';
-import Banner from '../components/Banner';
 import { useStaticQuery, graphql } from 'gatsby';
 import styled from 'styled-components';
 import Header from './Header';

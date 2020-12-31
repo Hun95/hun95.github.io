@@ -13,22 +13,22 @@ const Header = ({ siteTitle }) => {
     }
   });
 
-  // console.log(age);
-  // const mouseOver = () => {
-  //   if (age[0]) {
-  //     setColor("red");
+  console.log(age);
+  const mouseOver = () => {
+    if (age[0]) {
+      setColor('red');
 
-  //     setTimeout(() => setColor(""), 1100);
-  //   } else if (age[1]) {
-  //     setColor("blue");
+      setTimeout(() => setColor(''), 1100);
+    } else if (age[1]) {
+      setColor('blue');
 
-  //     setTimeout(() => setColor(""), 1100);
-  //   } else if (age[2]) {
-  //     setColor("black");
+      setTimeout(() => setColor(''), 1100);
+    } else if (age[2]) {
+      setColor('black');
 
-  //     setTimeout(() => setColor(""), 1100);
-  //   }
-  // };
+      setTimeout(() => setColor(''), 1100);
+    }
+  };
 
   return (
     <Nav>
@@ -80,7 +80,7 @@ const NavTitle = styled(Link)`
   font-weight: bold;
 `;
 
-const Bar = styled.div``;
+// const Bar = styled.div``;
 const LogoImg = styled.img`
   margin-right: 10px;
   width: 40px;
@@ -110,8 +110,8 @@ const NavMenu = styled.div`
   }
 `;
 
-const Pop = styled.div`
-  width: 50px;
-  height: 20px;
-  position: relavie;
-`;
+// const Pop = styled.div`
+//   width: 50px;
+//   height: 20px;
+//   position: relavie;
+// `;

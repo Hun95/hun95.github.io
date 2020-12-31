@@ -1,5 +1,3 @@
-import React from 'react';
-
 export const submenuData = [
   {
     id: 1,

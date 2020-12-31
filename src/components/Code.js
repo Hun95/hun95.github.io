@@ -22,20 +22,6 @@ const Wrapp = styled.article`
   width: 100%;
 `;
 
-const Btn = styled.div`
-  border-radius: 8px;
-  white-space: nowrap;
-  font-size: 14px;
-  margin-left: 4%;
-  text-decoration: none;
-  position: absolute;
-  top: 2px;
-  outline: none;
-  left: 0;
-  background-color: #e2e8f022;
-  padding: 3px 2px;
-  color: white;
-`;
 const Pre = styled.pre`
   background: #1e1e1e;
   padding: 1rem 1.5rem;
