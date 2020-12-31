@@ -1,14 +1,14 @@
-import React, { useState } from "react";
-import logo from "../images/logo.png";
-import { Link } from "gatsby";
-import styled from "styled-components";
-import { menuData } from "../data/MenuData";
+import React, { useState } from 'react';
+import logo from '../images/logo.png';
+import { Link } from 'gatsby';
+import styled from 'styled-components';
+import { menuData } from '../data/MenuData';
 
 const Header = ({ siteTitle }) => {
   const [color, setColor] = useState();
   const [list, setList] = useState(menuData);
   const age = list.filter(links => {
-    if (links.link === "/tag") {
+    if (links.link === '/tag') {
       return links.title;
     }
   });

@@ -1,46 +1,26 @@
-import React from "react";
-import Highlight, { defaultProps } from "prism-react-renderer";
-import { LiveProvider, LiveEditor, LiveError, LivePreview } from "react-live";
-import theme from "prism-react-renderer/themes/nightOwl";
-// import Confetti from "react-dom-confetti";
-import styled from "styled-components";
-
-// const config = {
-//   angle: 90,
-//   spread: 360,
-//   startVelocity: 40,
-//   elementCount: 70,
-//   dragFriction: 0.12,
-//   duration: 3000,
-//   stagger: 3,
-//   width: "10px",
-//   height: "10px",
-//   perspective: "500px",
-
-//   colors: ["#a864fd", "#29cdff", "#78ff44", "#ff718d", "#fdff6a"],
-// };
+import React from 'react';
+import Highlight, { defaultProps } from 'prism-react-renderer';
+import { LiveProvider, LiveEditor, LiveError, LivePreview } from 'react-live';
+import theme from 'prism-react-renderer/themes/vsDark';
+import styled from 'styled-components';
 
 const copyToClipboard = str => {
-  const el = document.createElement("textarea");
+  const el = document.createElement('textarea');
   el.value = str;
-  el.setAttribute("readonly", "");
-  el.style.position = "absolute";
-  el.style.left = "-9999px";
+  el.setAttribute('readonly', '');
+  el.style.position = 'absolute';
+  el.style.left = '-9999px';
   document.body.appendChild(el);
   el.select();
-  document.execCommand("copy");
+  document.execCommand('copy');
   document.body.removeChild(el);
 };
 
-const Wrapp = styled.div`
-  font-size: 1em;
-  line-height: 120%;
-  overflow: auto;
+const Wrapp = styled.article`
+  position: relative;
+
+  width: 100%;
 `;
-const Wrapper = props => <div style={{ font: "8px" }} {...props} />;
-const ConfettiWrapper = props => (
-  <div style={{ position: "absolute", top: 0, right: 0 }} {...props} />
-);
 
 const Btn = styled.div`
   border-radius: 8px;
@@ -56,36 +36,64 @@ const Btn = styled.div`
   padding: 3px 2px;
   color: white;
 `;
-const Button = props => (
-  <button
-    style={{
-      border: "none",
-      boxShadow: "none",
-      textDecoration: "none",
-      position: "absolute",
-      top: 0,
-      right: 0,
-      margin: "8px",
-      padding: "8px 12px",
-      background: "#E2E8F022",
+const Pre = styled.pre`
+  background: #1e1e1e;
+  padding: 1rem 1.5rem;
+  border-radius: 5px;
+  margin: 3rem 0;
+  font-size: 0.9rem;
+  white-space: pre-wrap;
+  font-family: 'Courier New', Courier, monospace;
 
-      borderRadius: "8px",
-      cursor: "pointer",
-      color: "#E2E8F0",
-      fontSize: "14px",
-      fontFamily: "sans-serif",
-      lineHeight: "1",
-    }}
-    {...props}
-  />
-);
+  .token-line {
+    line-height: 1.5;
+  }
+  .code-tab {
+    position: absolute;
+    top: 0;
+    right: 5%;
+    color: rgb(156, 220, 254);
+    font-size: 0.7rem;
+    font-weight: 700;
+    transform: translateY(-100%);
+    text-transform: uppercase;
+    padding: 0.05rem 0.85rem 0;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    background: #1e1e1e;
+
+    @media only screen and (max-width: 768px) {
+      font-size: 0.6rem;
+    }
+  }
+`;
+
+const ButtonWrap = styled.button`
+  transform: translateY(-100%);
+  position: absolute;
+  top: 2.5rem;
+  right: 5%;
+  border: none;
+  box-shadow: none;
+  text-decoration: none;
+  background: #e2e8f022;
+  border-radius: 8px;
+  cursor: pointer;
+  color: #e2e8f0;
+  font-size: 14px;
+  line-height: 1;
+  padding: 8px 5px;
+  @media only screen and (max-width: 768px) {
+    display: none;
+  }
+`;
 
 export const Code = ({ codeString, children, language, ...props }) => {
   const [isCopied, setIsCopied] = React.useState(false);
 
-  if (props["react-live"]) {
+  if (props['react-live']) {
     return (
-      <LiveProvider code={codeString} noInline={true}>
+      <LiveProvider code={codeString} noInline={false}>
         <LiveEditor />
         <LiveError />
         <LivePreview />
@@ -101,26 +109,23 @@ export const Code = ({ codeString, children, language, ...props }) => {
           theme={theme}
         >
           {({ className, style, tokens, getLineProps, getTokenProps }) => (
-            <pre
+            <Pre
               className={className}
               style={{
                 ...style,
-                padding: "3rem 2rem 2rem 2rem",
-                marginBottom: "1.5rem",
-                position: "relative",
               }}
             >
-              <Button
+              <ButtonWrap
                 onClick={() => {
                   copyToClipboard(codeString);
                   setIsCopied(true);
                   setTimeout(() => setIsCopied(false), 3000);
                 }}
               >
-                {isCopied ? "🎉 Copied!" : "Copy"}
-              </Button>
+                {isCopied ? '🎉 Copied!' : 'Copy'}
+              </ButtonWrap>
 
-              <Btn>{language}</Btn>
+              <div className='code-tab'>{language}</div>
 
               {tokens.map((line, i) => (
                 <div {...getLineProps({ line, key: i })} style={{ style }}>
@@ -129,12 +134,9 @@ export const Code = ({ codeString, children, language, ...props }) => {
                   ))}
                 </div>
               ))}
-            </pre>
+            </Pre>
           )}
         </Highlight>
-        {/* <ConfettiWrapp>
-          <Confetti active={isCopied} config={config} />
-        </ConfettiWrapper> */}
       </Wrapp>
     );
   }

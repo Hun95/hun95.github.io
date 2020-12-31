@@ -1,8 +1,8 @@
-import React from "react";
-import { Link, useStaticQuery, graphql } from "gatsby";
+import React, { useState, useEffect } from 'react';
+import { Link, useStaticQuery, graphql } from 'gatsby';
 
-import styled from "styled-components";
-import PostInTags from "../components/Post-in-tags";
+import styled from 'styled-components';
+import PostInTags from '../components/Post-in-tags';
 const Post = () => {
   const data = useStaticQuery(graphql`
     query {

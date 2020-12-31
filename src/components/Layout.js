@@ -5,12 +5,12 @@
  * See: https://www.gatsbyjs.com/docs/use-static-query/
  */
 
-import React from "react";
-import Banner from "../components/Banner";
-import { useStaticQuery, graphql } from "gatsby";
-import styled from "styled-components";
-import Header from "./Header";
-import { GlobalStyle } from "./styles/GlobalStyles";
+import React from 'react';
+import Banner from '../components/Banner';
+import { useStaticQuery, graphql } from 'gatsby';
+import styled from 'styled-components';
+import Header from './Header';
+import { GlobalStyle } from './styles/GlobalStyles';
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
@@ -25,6 +25,7 @@ const Layout = ({ children }) => {
   return (
     <>
       <GlobalStyle />
+
       <Header siteTitle={data.site.siteMetadata?.title || `Title`} />
       <Main>{children}</Main>
     </>

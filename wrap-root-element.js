@@ -1,7 +1,7 @@
-import React from "react";
-import { MDXProvider } from "@mdx-js/react";
-import { Code } from "./src/components/Code";
-import { preToCodeBlock } from "mdx-utils";
+import React from 'react';
+import { MDXProvider } from '@mdx-js/react';
+import { Code } from './src/components/Code';
+import { preToCodeBlock } from 'mdx-utils';
 
 const components = {
   pre: preProps => {
