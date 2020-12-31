@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import logo from '../images/logo.png';
+import logo from '../images/logo.webp';
 import { Link } from 'gatsby';
 import styled from 'styled-components';
 import { menuData } from '../data/MenuData';

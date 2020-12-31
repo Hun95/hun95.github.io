@@ -1,6 +1,6 @@
-import React from "react";
-import styled from "styled-components";
-import BannerImg from "../images/banner2.jpg";
+import React from 'react';
+import styled from 'styled-components';
+import BannerImg from '../images/banner2.webp';
 const Banner = () => {
   return (
     <>
