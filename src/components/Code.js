@@ -43,6 +43,7 @@ const Pre = styled.pre`
   margin: 3rem 0;
   font-size: 0.9rem;
   white-space: pre-wrap;
+  word-break: break-all;
   font-family: 'Courier New', Courier, monospace;
 
   .token-line {

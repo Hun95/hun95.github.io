@@ -1,16 +1,16 @@
 ---
-title: "React Basic"
-subtitle: "리엑트 기본에 대해 배워봅시다."
+title: 'React Basic'
+subtitle: '리엑트 기본에 대해 배워봅시다.'
 date: 2020-12-21 14:06:59
 
-tags: ["react"]
+tags: ['react']
 ---
 
 # 🚀 첫 컴포넌트
 
 ```jsx
-import React from "react";
-import ReactDom from "react-dom";
+import React from 'react';
+import ReactDom from 'react-dom';
 function Greeting() {
   return (
     <div>
@@ -19,22 +19,22 @@ function Greeting() {
   );
 }
 
-ReactDom.render(<Greeting />, document.getElementById("root"));
+ReactDom.render(<Greeting />, document.getElementById('root'));
 ```
 
 ```jsx
-import React from "react";
-import ReactDom from "react-dom";
+import React from 'react';
+import ReactDom from 'react-dom';
 
 const Greeting = () => {
   return React.createElement(
-    "div",
+    'div',
     {},
-    React.createElement("h1", {}, "hello world")
+    React.createElement('h1', {}, 'hello world')
   );
 };
 
-ReactDom.render(<Greeting />, document.getElementById("root"));
+ReactDom.render(<Greeting />, document.getElementById('root'));
 ```
 
 두개가 같다.
@@ -49,15 +49,17 @@ className = class
 close every element
 formatting
 
+```plaintext
 Jsx fragment = <> </> = <React.Fragment></React.Fragment>
+```
 
 # 🚀 Nested Components, React Tools
 
 ## 🔨 Nested Components
 
 ```jsx
-import React from "react";
-import ReactDom from "react-dom";
+import React from 'react';
+import ReactDom from 'react-dom';
 // function Greeting() {
 //   return <h4>this is john and this is my first componet</h4>;
 // }
@@ -71,7 +73,7 @@ function Greeting() {
 }
 const Person = () => <h2>john doe</h2>;
 
-ReactDom.render(<Greeting />, document.getElementById("root"));
+ReactDom.render(<Greeting />, document.getElementById('root'));
 ```
 
 # 🚀 Mini Book project
@@ -100,9 +102,9 @@ style={{}} 내부에 넣는 속성이 더 stronger than index.css 등등
 # 🚀 JSX javascript
 
 ```jsx
-const author = "Jane";
+const author = 'Jane';
 const Book = () => {
-  const title = "I love you to the moon";
+  const title = 'I love you to the moon';
   return (
     <>
       <article className='book'>
@@ -257,16 +259,16 @@ job="developer" 이라고 값이 정의된 거다.
 
 ```jsx
 const firstBook = {
-  author: "jane",
-  title: "The ant",
+  author: 'jane',
+  title: 'The ant',
   img:
-    "https://img.etoday.co.kr/pto_db/2016/09/600/20160926045630_944170_1080_720.jpg",
+    'https://img.etoday.co.kr/pto_db/2016/09/600/20160926045630_944170_1080_720.jpg',
 };
 const secondBook = {
-  author: "kane",
-  title: "The useState",
+  author: 'kane',
+  title: 'The useState',
   img:
-    "https://img.etoday.co.kr/pto_db/2016/09/600/20160926045630_944170_1080_720.jpg",
+    'https://img.etoday.co.kr/pto_db/2016/09/600/20160926045630_944170_1080_720.jpg',
 };
 
 function BookList() {
@@ -417,24 +419,24 @@ children이 딸려서 같이 출력되기 때문이다.
 const books = [
   {
     id: 1,
-    author: "jane",
-    title: "The ant",
+    author: 'jane',
+    title: 'The ant',
     img:
-      "https://img.etoday.co.kr/pto_db/2016/09/600/20160926045630_944170_1080_720.jpg",
+      'https://img.etoday.co.kr/pto_db/2016/09/600/20160926045630_944170_1080_720.jpg',
   },
   {
     id: 2,
-    author: "kane",
-    title: "The useState",
+    author: 'kane',
+    title: 'The useState',
     img:
-      "https://img.etoday.co.kr/pto_db/2016/09/600/20160926045630_944170_1080_720.jpg",
+      'https://img.etoday.co.kr/pto_db/2016/09/600/20160926045630_944170_1080_720.jpg',
   },
   {
     id: 3,
-    author: "kane",
-    title: "The useState",
+    author: 'kane',
+    title: 'The useState',
     img:
-      "https://img.etoday.co.kr/pto_db/2016/09/600/20160926045630_944170_1080_720.jpg",
+      'https://img.etoday.co.kr/pto_db/2016/09/600/20160926045630_944170_1080_720.jpg',
   },
 ];
 
@@ -481,24 +483,24 @@ id 값은 고유의 값이기 때문에 key에는 id를 넣는 것을 추천한�
 const books = [
   {
     id: 1,
-    author: "jane",
-    title: "The ant",
+    author: 'jane',
+    title: 'The ant',
     img:
-      "https://img.etoday.co.kr/pto_db/2016/09/600/20160926045630_944170_1080_720.jpg",
+      'https://img.etoday.co.kr/pto_db/2016/09/600/20160926045630_944170_1080_720.jpg',
   },
   {
     id: 2,
-    author: "kane",
-    title: "The useState",
+    author: 'kane',
+    title: 'The useState',
     img:
-      "https://img.etoday.co.kr/pto_db/2016/09/600/20160926045630_944170_1080_720.jpg",
+      'https://img.etoday.co.kr/pto_db/2016/09/600/20160926045630_944170_1080_720.jpg',
   },
   {
     id: 3,
-    author: "kane",
-    title: "The useState",
+    author: 'kane',
+    title: 'The useState',
     img:
-      "https://img.etoday.co.kr/pto_db/2016/09/600/20160926045630_944170_1080_720.jpg",
+      'https://img.etoday.co.kr/pto_db/2016/09/600/20160926045630_944170_1080_720.jpg',
   },
 ];
 
