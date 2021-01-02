@@ -76,7 +76,8 @@ const BlogLayout = styled.div`
 const MDXpage = styled.div`
   padding: 2rem;
   background-color: #fff;
-
+  font-family: GmarketSansMedium;
+  font-size: 14px;
   @media only screen and (max-width: 768px) {
     padding: 0rem;
     margin: 0 1rem;

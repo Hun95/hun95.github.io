@@ -16,65 +16,6 @@ const copyToClipboard = str => {
   document.body.removeChild(el);
 };
 
-const Wrapp = styled.article`
-  position: relative;
-
-  width: 100%;
-`;
-
-const Pre = styled.pre`
-  background: #1e1e1e;
-  padding: 1rem 1.5rem;
-  border-radius: 5px;
-  margin: 3rem 0;
-  font-size: 0.9rem;
-  white-space: pre-wrap;
-  word-break: break-all;
-  font-family: 'Courier New', Courier, monospace;
-
-  .token-line {
-    line-height: 1.5;
-  }
-  .code-tab {
-    position: absolute;
-    top: 0;
-    right: 5%;
-    color: rgb(156, 220, 254);
-    font-size: 0.7rem;
-    font-weight: 700;
-    transform: translateY(-100%);
-    text-transform: uppercase;
-    padding: 0.05rem 0.85rem 0;
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
-    background: #1e1e1e;
-
-    @media only screen and (max-width: 768px) {
-      font-size: 0.6rem;
-    }
-  }
-`;
-
-const ButtonWrap = styled.button`
-  transform: translateY(-100%);
-  position: absolute;
-  top: 2.5rem;
-  right: 5%;
-  border: none;
-  box-shadow: none;
-  text-decoration: none;
-  background: #e2e8f022;
-  border-radius: 8px;
-  cursor: pointer;
-  color: #e2e8f0;
-  font-size: 14px;
-  line-height: 1;
-  padding: 8px 5px;
-  @media only screen and (max-width: 768px) {
-    display: none;
-  }
-`;
-
 export const Code = ({ codeString, children, language, ...props }) => {
   const [isCopied, setIsCopied] = React.useState(false);
 
@@ -128,3 +69,62 @@ export const Code = ({ codeString, children, language, ...props }) => {
     );
   }
 };
+
+const Wrapp = styled.article`
+  position: relative;
+
+  width: 100%;
+`;
+
+const Pre = styled.pre`
+  background: #1e1e1e;
+  padding: 1rem 1.5rem;
+  border-radius: 5px;
+  margin: 3rem 0;
+  font-size: 0.9rem;
+  white-space: pre-wrap;
+  word-break: break-all;
+  line-height: 2;
+  font-size: 14px;
+  .token-line {
+    line-height: 1.5;
+  }
+  .code-tab {
+    position: absolute;
+    top: 0;
+    right: 5%;
+    color: rgb(156, 220, 254);
+    font-size: 0.7rem;
+    font-weight: 700;
+    transform: translateY(-100%);
+    text-transform: uppercase;
+    padding: 0.05rem 0.85rem 0;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    background: #1e1e1e;
+
+    @media only screen and (max-width: 768px) {
+      font-size: 0.6rem;
+    }
+  }
+`;
+
+const ButtonWrap = styled.button`
+  transform: translateY(-100%);
+  position: absolute;
+  top: 2.5rem;
+  right: 5%;
+  border: none;
+  box-shadow: none;
+  text-decoration: none;
+  background: #e2e8f022;
+  border-radius: 8px;
+  cursor: pointer;
+  color: #e2e8f0;
+  font-size: 14px;
+  line-height: 1;
+  padding: 8px 5px;
+  @media only screen and (max-width: 768px) {
+    display: none;
+  }
+`;

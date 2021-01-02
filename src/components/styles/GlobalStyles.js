@@ -1,4 +1,4 @@
-import { createGlobalStyle } from "styled-components";
+import { createGlobalStyle } from 'styled-components';
 
 export const GlobalStyle = createGlobalStyle`
 @font-face {
@@ -261,6 +261,7 @@ a {
   text-decoration: none;
 }
 
+
 /* Media queries */
 
 @media (max-width: 42rem) {
@@ -274,5 +275,6 @@ a {
   }
 }
 
- 
+/* pre */
+
 `;
