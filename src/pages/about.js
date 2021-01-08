@@ -1,8 +1,8 @@
-import React from "react";
+import React from 'react';
 
-import Layout from "../components/Layout";
-import styled from "styled-components";
-import SEO from "../components/Seo";
+import Layout from '../components/Layout';
+import styled from 'styled-components';
+import SEO from '../components/Seo';
 const Box = styled.div`
   width: 50;
   height: auto;
@@ -12,8 +12,8 @@ const Box = styled.div`
 `;
 const AboutPage = () => (
   <Layout>
-    <SEO title="AboutPage" />
-
+    <SEO title='AboutPage' />
+    <Search name='asd' />
     <Box>hello</Box>
     <Box>hello</Box>
     <Box>hello</Box>
@@ -25,6 +25,10 @@ const AboutPage = () => (
     <Box>1</Box>
   </Layout>
 );
+
+const Search = ({ name }) => {
+  return <div>{name}</div>;
+};
 
 export default AboutPage;
 

@@ -13,23 +13,6 @@ const Header = ({ siteTitle }) => {
     }
   });
 
-  console.log(age);
-  const mouseOver = () => {
-    if (age[0]) {
-      setColor('red');
-
-      setTimeout(() => setColor(''), 1100);
-    } else if (age[1]) {
-      setColor('blue');
-
-      setTimeout(() => setColor(''), 1100);
-    } else if (age[2]) {
-      setColor('black');
-
-      setTimeout(() => setColor(''), 1100);
-    }
-  };
-
   return (
     <Nav>
       <NavTitle to='/'>
@@ -39,7 +22,6 @@ const Header = ({ siteTitle }) => {
       <NavMenu>
         {menuData.map((item, index) => (
           <NavItem
-            onClick={age}
             to={item.link}
             key={index}
             style={{ backgroundColor: color }}

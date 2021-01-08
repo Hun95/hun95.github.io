@@ -1,15 +1,17 @@
-import React from "react";
+import React from 'react';
 
-import Layout from "../components/Layout";
-import Post from "../components/Post";
-import SEO from "../components/Seo";
-import Submenu from "../components/Submenu";
-import styled from "styled-components";
-import Banner from "../components/Banner";
+import Layout from '../components/Layout';
+import Post from '../components/Post';
+import SEO from '../components/Seo';
+import Submenu from '../components/Submenu';
+import styled from 'styled-components';
+import Banner from '../components/Banner';
+
 const IndexPage = () => (
   <Layout>
     <SEO title='Home' />
     <Banner />
+
     <Mainwrapper>
       <Post />
       <Submenu />

@@ -1,12 +1,14 @@
-import React from "react";
-import { Link } from "gatsby";
-import styled from "styled-components";
+import React, { useState } from 'react';
+import { Link } from 'gatsby';
+import styled from 'styled-components';
 
 const PostInTags = ({ props }) => {
   return (
     <TagWrap>
       {props.map(tag => (
-        <Tag to={`tag/${tag}`}>{tag}</Tag>
+        <Tag to={`tag/${tag}`} key={tag}>
+          {tag}
+        </Tag>
       ))}
     </TagWrap>
   );

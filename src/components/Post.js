@@ -40,14 +40,14 @@ const Post = () => {
     <>
       <CardWrapper>
         {edges.map(({ node }) => (
-          <Link to={node.fields.slug}>
-            <Card>
+          <Card key={node.id}>
+            <Link to={node.fields.slug}>
               <CardTitle>🚀{node.frontmatter.title}</CardTitle>
               <CardSubTitle>◼ {node.frontmatter.subtitle}</CardSubTitle>
-              <PostInTags props={node.frontmatter.tags} />
-              <CardDate>📆{node.frontmatter.date}</CardDate>
-            </Card>
-          </Link>
+            </Link>
+            <PostInTags props={node.frontmatter.tags} />
+            <CardDate>📆{node.frontmatter.date}</CardDate>
+          </Card>
         ))}
       </CardWrapper>
     </>
@@ -72,7 +72,7 @@ const Card = styled.section`
   background: #ffffff;
   display: grid;
   grid-template-columns: repeat(2fr, 500px);
-  cursor: pointer;
+
   border-radius: 0 0 5px 5px;
   box-shadow: 0 20px 10px -15px rgba(197, 192, 249, 0.2);
   position: relative;
@@ -95,16 +95,11 @@ const CardTitle = styled.h2`
   height: 30px;
   display: -webkit-box;
   -webkit-line-clamp: 1;
+  cursor: pointer;
   -webkit-box-orient: vertical;
   overflow: hidden;
 
   font-weight: bold;
-
-  a {
-    color: black;
-  }
-  &:hover {
-  }
 `;
 
 const CardSubTitle = styled.p`
@@ -112,6 +107,7 @@ const CardSubTitle = styled.p`
   text-align: left;
   font-size: 10px;
   height: 30px;
+  cursor: pointer;
   margin-left: 20px;
   display: -webkit-box;
   -webkit-line-clamp: 2;
