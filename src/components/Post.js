@@ -3,6 +3,15 @@ import { Link, useStaticQuery, graphql } from 'gatsby';
 
 import styled from 'styled-components';
 import PostInTags from '../components/Post-in-tags';
+const getTags = items => {
+  let tempItems = items.map(items => {
+    return items.node.frontmatter.tags;
+  });
+  let newtagsArray = new Set(tempItems);
+  let categories = Array.from(newtagsArray);
+  categories = ['all', ...categories];
+  return categories;
+};
 const Post = () => {
   const data = useStaticQuery(graphql`
     query {
@@ -36,10 +45,26 @@ const Post = () => {
 
   const edges = data.allMdx.edges;
 
+  const [node, setNode] = useState(edges);
+  const [category, setCategory] = useState(getTags(node));
+  const handleItems = category => {
+    let tempItems = [...edges];
+    console.log(tempItems);
+    if (category === 'all') {
+      setNode(tempItems);
+      console.log('hi');
+    } else {
+      let items = tempItems.filter(
+        ({ node }) => node.frontmatter.tags === category
+      );
+      setNode(items);
+    }
+  };
+
   return (
     <>
       <CardWrapper>
-        {edges.map(({ node }) => (
+        {node.map(({ node }) => (
           <Card key={node.id}>
             <Link to={node.fields.slug}>
               <CardTitle>🚀{node.frontmatter.title}</CardTitle>
@@ -50,6 +75,15 @@ const Post = () => {
           </Card>
         ))}
       </CardWrapper>
+      <div>
+        {category.map((category, index) => {
+          return (
+            <button key={index} onClick={() => handleItems(category)}>
+              {category}
+            </button>
+          );
+        })}
+      </div>
     </>
   );
 };

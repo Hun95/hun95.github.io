@@ -1,8 +1,8 @@
 ---
-title: "javascript nuggets map"
-subtitle: "자바스크립트에서 가장 많이쓰이는 MAP 함수에 대해 알아보세요"
+title: 'javascript nuggets map'
+subtitle: '자바스크립트에서 가장 많이쓰이는 MAP 함수에 대해 알아보세요'
 date: 2020-12-09 10:24:29
-tags: ["javascript"]
+tags: 'javascript'
 ---
 
 ##### 들어가기 전에
@@ -62,7 +62,7 @@ map 함수 () 내부에 외부에서 정의한 함수 이름을 넣어도 된다
 예를들어 보겠습니다.
 
 ```js
-const someone = { name: "Lady Gaga", job: "Singer" };
+const someone = { name: 'Lady Gaga', job: 'Singer' };
 console.log(someone.name);
 ```
 
@@ -74,9 +74,9 @@ console.log(someone.name);
 
 ```js
 const peoples = [
-  { name: "Lady Gaga", job: "Singer" },
-  { name: "Paul Smith", job: "Singer" },
-  { name: "Paul Lee", job: "CEO" },
+  { name: 'Lady Gaga', job: 'Singer' },
+  { name: 'Paul Smith', job: 'Singer' },
+  { name: 'Paul Lee', job: 'CEO' },
 ];
 ```
 
@@ -110,26 +110,26 @@ Map 함수를 이용하여 코드를 짠다면,
 ```js
 const people = [
   {
-    name: "Lady gaga",
+    name: 'Lady gaga',
     age: 32,
-    job: "Singer",
+    job: 'Singer',
   },
   {
-    name: "Post Malon",
+    name: 'Post Malon',
     age: 28,
-    job: "Singer",
+    job: 'Singer',
   },
 
   {
-    name: "John Sina",
+    name: 'John Sina',
     age: 40,
-    job: "Wrestler",
+    job: 'Wrestler',
   },
 
   {
-    name: "Lee",
+    name: 'Lee',
     age: 60,
-    job: "President",
+    job: 'President',
   },
 ];
 ```
@@ -147,7 +147,7 @@ const peopleAgeReturn = people.map(ages => {
 });
 const peopleOld = people.map(old => old.age);
 const DoubbleAge = people.map(ages => ages.age * 2);
-const Hello = people.map(hello => "hello world");
+const Hello = people.map(hello => 'hello world');
 ```
 
 ```console
@@ -173,31 +173,31 @@ peopleAge, peopleAgeReturn, peopleOld 의 값이 같습니다.
 <script>
   const people = [
     {
-      name: "Lady gaga",
+      name: 'Lady gaga',
       age: 32,
-      job: "Singer",
+      job: 'Singer',
     },
     {
-      name: "Post Malon",
+      name: 'Post Malon',
       age: 28,
-      job: "Singer",
+      job: 'Singer',
     },
 
     {
-      name: "John Sina",
+      name: 'John Sina',
       age: 40,
-      job: "Wrestler",
+      job: 'Wrestler',
     },
 
     {
-      name: "Lee",
+      name: 'Lee',
       age: 60,
-      job: "President",
+      job: 'President',
     },
   ];
   const name = people.map(ages => `<h3>${ages.age}</h3>`);
-  const result = document.querySelector("#list");
-  result.innerHtml = name.join("");
+  const result = document.querySelector('#list');
+  result.innerHtml = name.join('');
 </script>
 ```
 
