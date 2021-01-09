@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import PostInTags from '../components/Post-in-tags';
 const getTags = items => {
   let tempItems = items.map(items => {
-    return items.node.frontmatter.tags;
+    return items.node.frontmatter.category;
   });
   let newtagsArray = new Set(tempItems);
   let categories = Array.from(newtagsArray);
@@ -25,6 +25,7 @@ const Post = () => {
               subtitle
               date(formatString: "YYYY년 MM월 DD일")
               tags
+              category
               # image {
               #   childImageSharp {
               #     fluid(maxWidth: 600) {
@@ -55,7 +56,7 @@ const Post = () => {
       console.log('hi');
     } else {
       let items = tempItems.filter(
-        ({ node }) => node.frontmatter.tags === category
+        ({ node }) => node.frontmatter.category === category
       );
       setNode(items);
     }
