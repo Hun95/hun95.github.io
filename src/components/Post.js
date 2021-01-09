@@ -1,71 +1,14 @@
-import React, { useState, useEffect } from 'react';
-import { Link, useStaticQuery, graphql } from 'gatsby';
+import React from 'react';
+import { Link } from 'gatsby';
 
 import styled from 'styled-components';
 import PostInTags from '../components/Post-in-tags';
-const getTags = items => {
-  let tempItems = items.map(items => {
-    return items.node.frontmatter.category;
-  });
-  let newtagsArray = new Set(tempItems);
-  let categories = Array.from(newtagsArray);
-  categories = ['all', ...categories];
-  return categories;
-};
-const Post = () => {
-  const data = useStaticQuery(graphql`
-    query {
-      allMdx(sort: { fields: [frontmatter___date], order: DESC }) {
-        edges {
-          node {
-            id
 
-            frontmatter {
-              title
-              subtitle
-              date(formatString: "YYYY년 MM월 DD일")
-              tags
-              category
-              # image {
-              #   childImageSharp {
-              #     fluid(maxWidth: 600) {
-              #       ...GatsbyImageSharpFluid
-              #     }
-              #   }
-              # }
-            }
-            fields {
-              slug
-            }
-            excerpt
-          }
-        }
-      }
-    }
-  `);
-
-  const edges = data.allMdx.edges;
-
-  const [node, setNode] = useState(edges);
-  const [category, setCategory] = useState(getTags(node));
-  const handleItems = category => {
-    let tempItems = [...edges];
-    console.log(tempItems);
-    if (category === 'all') {
-      setNode(tempItems);
-      console.log('hi');
-    } else {
-      let items = tempItems.filter(
-        ({ node }) => node.frontmatter.category === category
-      );
-      setNode(items);
-    }
-  };
-
+const Post = ({ edges }) => {
   return (
     <>
       <CardWrapper>
-        {node.map(({ node }) => (
+        {edges.map(({ node }) => (
           <Card key={node.id}>
             <Link to={node.fields.slug}>
               <CardTitle>🚀{node.frontmatter.title}</CardTitle>
@@ -76,15 +19,6 @@ const Post = () => {
           </Card>
         ))}
       </CardWrapper>
-      <div>
-        {category.map((category, index) => {
-          return (
-            <button key={index} onClick={() => handleItems(category)}>
-              {category}
-            </button>
-          );
-        })}
-      </div>
     </>
   );
 };
