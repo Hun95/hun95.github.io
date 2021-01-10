@@ -1,0 +1,1 @@
+{"componentChunkName":"component---src-templates-tags-page-js","path":"/tag/hello/","result":{"data":{"allMdx":{"totalCount":1,"edges":[{"node":{"fields":{"slug":"/javascriptNuggets/Reduce/"},"frontmatter":{"title":"javascript nuggets reduce"}}}]}},"pageContext":{"tag":"hello"}},"staticQueryHashes":["3649515864"]}
