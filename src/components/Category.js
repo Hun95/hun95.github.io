@@ -1,46 +1,33 @@
-import React, { useState, useEffect } from 'react';
-import Post from '../components/Post';
-const getTags = items => {
-  let tempItems = items.map(items => {
-    return items.node.frontmatter.category;
-  });
-  let newtagsArray = new Set(tempItems);
-  let categories = Array.from(newtagsArray);
-  categories = ['all', ...categories];
-  return categories;
-};
-
-const Category = ({ edges }) => {
-  const [node, setNode] = useState(edges);
-  const [category, setCategory] = useState(getTags(node));
-
-  const handleItems = category => {
-    let tempItems = [...edges];
-    console.log(tempItems);
-    if (category === 'all') {
-      setNode(tempItems);
-
-      console.log('hi');
-    } else {
-      let items = tempItems.filter(
-        ({ node }) => node.frontmatter.category === category
-      );
-      console.log(2);
-      setNode(items);
-    }
-  };
+import React from 'react';
+import styled from 'styled-components';
+const Category = ({ edges, click }) => {
   return (
-    <div>
-      {category.map((category, index) => {
+    <Wrap>
+      {edges.map((category, index) => {
         return (
-          <button key={index} onClick={() => handleItems(category)}>
+          <Button key={index} onClick={() => click(category)}>
             {category}
-          </button>
+          </Button>
         );
       })}
-      <Post edges={node} />
-    </div>
+    </Wrap>
   );
 };
 
 export default Category;
+
+const Button = styled.button`
+  background-color: #ffd42a;
+  color: black;
+  font-size: 15px;
+  margin-right: 1rem;
+  border: none;
+  border-radius: 2rem;
+  padding: 1% 1%;
+  &:hover {
+    background: #fff5cc;
+  }
+`;
+const Wrap = styled.div`
+  margin-bottom: 2rem;
+`;

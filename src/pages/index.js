@@ -7,7 +7,7 @@ import SEO from '../components/Seo';
 import Submenu from '../components/Submenu';
 import styled from 'styled-components';
 import Banner from '../components/Banner';
-
+import useCategory from '../hooks/useCategory';
 const IndexPage = () => {
   const data = useStaticQuery(graphql`
     query {
@@ -33,14 +33,15 @@ const IndexPage = () => {
     }
   `);
   const dataForm = data.allMdx.edges;
+  const { category, node, handleItems } = useCategory(dataForm);
 
   return (
     <Layout>
       <SEO title='Home' />
       <Banner />
-      <Category edges={dataForm} />
+      <Category edges={category} click={handleItems} />
       <Mainwrapper>
-        <Post edges={dataForm} />
+        <Post edges={node} />
         <Submenu />
       </Mainwrapper>
     </Layout>
