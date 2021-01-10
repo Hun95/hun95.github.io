@@ -8,7 +8,6 @@ module.exports = {
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-sass`,
     `gatsby-plugin-catch-links`,
-    `gatsby-transformer-remark`,
 
     // {
     //   resolve: `gatsby-source-filesystem`,
@@ -31,9 +30,19 @@ module.exports = {
               elements: [`h1`, `h2`, `h3`],
             },
           },
+          {
+            resolve: `gatsby-remark-images`,
+            options: {
+              maxWidth: 800,
+              quality: 100,
+              linkImagesToOriginal: false,
+              wrapperStyle: 'margin-bottom:2rem;',
+            },
+          },
         ],
       },
     },
+
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -41,7 +50,12 @@ module.exports = {
         path: `${__dirname}/src/pages`,
       },
     },
-
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `${__dirname}/content`,
+      },
+    },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -52,7 +66,7 @@ module.exports = {
 
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
-
+    `gatsby-transformer-remark`,
     `gatsby-transformer-json`,
 
     {

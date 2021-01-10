@@ -22,6 +22,12 @@ const BlogPostTemplate = ({ data, location }) => {
     <Layout location={location} title={siteTitle}>
       <BlogLayout>
         <MDXpage>
+          <HeadWrap>
+            <Title>{post.frontmatter.title}</Title>
+            <Sub>🤏 by 수염난친구</Sub>
+            <Sub>📆 {post.frontmatter.date}</Sub>
+          </HeadWrap>
+          <hr></hr>
           <MDXRenderer>{post.body}</MDXRenderer>
         </MDXpage>
         <Submenu></Submenu>
@@ -67,7 +73,9 @@ export const pageQuery = graphql`
 const BlogLayout = styled.div`
   display: grid;
   grid-template-columns: 4fr 1fr;
-
+  hr {
+    margin: 5rem 0;
+  }
   @media only screen and (max-width: 768px) {
     grid-template-columns: 1fr;
   }
@@ -82,3 +90,16 @@ const MDXpage = styled.div`
     margin: 0 1rem;
   }
 `;
+
+const Title = styled.h1`
+  text-align: center;
+  margin-bottom: 3rem;
+  padding: 0;
+`;
+
+const Sub = styled.p`
+  margin: 0 2rem;
+  padding: 0;
+`;
+
+const HeadWrap = styled.section``;

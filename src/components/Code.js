@@ -26,7 +26,7 @@ const Pre = styled.pre`
   background: #1e1e1e;
   padding: 1rem 1.5rem;
   border-radius: 5px;
-  margin: 3rem 0;
+  margin: 1.5rem 0;
   font-size: 0.9rem;
   white-space: pre-wrap;
   word-break: break-all;
