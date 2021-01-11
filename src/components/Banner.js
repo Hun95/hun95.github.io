@@ -61,17 +61,17 @@ export default Banner;
 const Banwrapper = styled.div`
   margin: 2rem 0;
   display: grid;
-  grid-template-columns: 1fr;
-
+  grid-template-columns: 4fr 1fr;
   background: white;
   height: auto;
-  svg {
-    width: 600px;
 
-    animation: fill 0.5 ease forwards 12s;
+  svg {
+    max-width: 100%;
+    margin-left: 10%;
     @media only screen and (max-width: 768px) {
-      width: 400px;
+      max-width: 100%;
     }
+    animation: fill 0.5 ease forwards 12s;
   }
   path:nth-child(1) {
     stroke-dasharray: 1341.0504150390625;
