@@ -39,7 +39,9 @@ const IndexPage = () => {
     <Layout>
       <SEO title='Home' />
       <Banner />
-      <Category edges={category} click={handleItems} />
+      <CateWrapper>
+        <Category edges={category} click={handleItems} />
+      </CateWrapper>
       <Mainwrapper>
         <Post edges={node} />
         <Submenu />
@@ -55,6 +57,14 @@ const Mainwrapper = styled.div`
   grid-template-columns: 4fr 1fr;
 
   justify-content: space-between;
+  @media only screen and (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
+`;
+
+const CateWrapper = styled.div`
+  display: grid;
+  grid-template-columns: 4fr 1fr;
   @media only screen and (max-width: 768px) {
     grid-template-columns: 1fr;
   }

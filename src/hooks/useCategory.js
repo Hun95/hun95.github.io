@@ -5,7 +5,7 @@ const getTags = items => {
   });
   let newtagsArray = new Set(tempItems);
   let categories = Array.from(newtagsArray);
-  categories = ['all', ...categories];
+  categories = ['All', ...categories];
   return categories;
 };
 
@@ -16,7 +16,7 @@ const useCategory = initValue => {
   const handleItems = category => {
     let tempItems = [...initValue];
 
-    if (category === 'all') {
+    if (category === 'All') {
       setNode(tempItems);
     } else {
       let items = tempItems.filter(
