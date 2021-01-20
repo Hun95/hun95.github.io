@@ -1,14 +1,14 @@
-import React from "react";
+import React from 'react';
 
-import Layout from "../components/Layout";
+import Layout from '../components/Layout/';
 // Components
-import { Link, graphql } from "gatsby";
+import { Link, graphql } from 'gatsby';
 
 const Tags = ({ pageContext, data }) => {
   const { tag } = pageContext;
   const { edges, totalCount } = data.allMdx;
   const tagHeader = `${totalCount} post${
-    totalCount === 1 ? "" : "s"
+    totalCount === 1 ? '' : 's'
   } tagged with "${tag}"`;
 
   return (
@@ -29,7 +29,7 @@ const Tags = ({ pageContext, data }) => {
               This links to a page that does not yet exist.
               You'll come back to it!
             */}
-      <Link to="/tag">All tags</Link>
+      <Link to='/tag'>All tags</Link>
     </Layout>
   );
 };

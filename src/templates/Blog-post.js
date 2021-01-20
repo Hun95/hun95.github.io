@@ -1,8 +1,8 @@
 import React from 'react';
 import { graphql } from 'gatsby';
-import Submenu from '../components/Submenu';
-import Layout from '../components/Layout';
 
+import Layout from '../components/Layout/';
+import SEO from '../components/Seo';
 import { DiscussionEmbed } from 'disqus-react';
 import styled from 'styled-components';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
@@ -20,6 +20,7 @@ const BlogPostTemplate = ({ data, location }) => {
 
   return (
     <Layout location={location} title={siteTitle}>
+      <SEO title='Blog' description='welocome to Blog' lang='ko' />
       <BlogLayout>
         <MDXpage>
           <HeadWrap>
@@ -30,7 +31,7 @@ const BlogPostTemplate = ({ data, location }) => {
           <hr></hr>
           <MDXRenderer>{post.body}</MDXRenderer>
         </MDXpage>
-        <Submenu></Submenu>
+
         <DiscussionEmbed shortname={disqusShortname} config={disqusConfig} />
       </BlogLayout>
     </Layout>

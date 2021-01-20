@@ -1,13 +1,13 @@
 import React from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
-import Category from '../components/Category';
-import Layout from '../components/Layout';
-import Post from '../components/Post';
-import SEO from '../components/Seo';
-import Submenu from '../components/Submenu';
 import styled from 'styled-components';
-import Banner from '../components/Banner';
-import useCategory from '../hooks/useCategory';
+
+/* Module */
+import SEO from '../components/Seo';
+import Layout from '../components/Layout/';
+import Banner from '../components/Banner/';
+// import useCategory from '../hooks/useCategory';
+import Nav from '../components/Nav/';
 const IndexPage = () => {
   const data = useStaticQuery(graphql`
     query {
@@ -33,19 +33,20 @@ const IndexPage = () => {
     }
   `);
   const dataForm = data.allMdx.edges;
-  const { category, node, handleItems } = useCategory(dataForm);
+  // const { category, node, handleItems } = useCategory(dataForm);
 
   return (
     <Layout>
-      <SEO title='Home' />
+      <SEO title='Blog' description='welocome to Blog' lang='ko' />
       <Banner />
-      <CateWrapper>
+
+      {/* <CateWrapper>
         <Category edges={category} click={handleItems} />
       </CateWrapper>
       <Mainwrapper>
         <Post edges={node} />
         <Submenu />
-      </Mainwrapper>
+      </Mainwrapper> */}
     </Layout>
   );
 };

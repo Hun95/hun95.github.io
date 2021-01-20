@@ -1,23 +1,5 @@
-import React from 'react';
 import styled from 'styled-components';
-const Category = ({ edges, click }) => {
-  return (
-    <>
-      <Wrap>
-        {edges.map((category, index) => {
-          return (
-            <Button key={index} onClick={() => click(category)}>
-              {category}
-            </Button>
-          );
-        })}
-      </Wrap>
-    </>
-  );
-};
-
-export default Category;
-
+import { FlexBox } from '../Global/Styled';
 const Button = styled.button`
   background-color: #ffd42a;
   color: black;
@@ -40,14 +22,14 @@ const Wrap = styled.div`
 
   padding: 1rem;
 
-  text-align: left;
   border: 2px solid #e6e6e6;
   border-radius: 1rem;
   overflow-x: auto;
-  display: flex;
-  flex-direction: row;
+  ${FlexBox}
 
   &::-webkit-scrollbar {
     display: none !important;
   }
 `;
+
+export { Button, Wrap };

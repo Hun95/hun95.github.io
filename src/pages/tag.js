@@ -1,12 +1,12 @@
-import React from "react";
-import PropTypes from "prop-types";
-import Layout from "../components/Layout";
+import React from 'react';
+import PropTypes from 'prop-types';
+import Layout from '../components/Layout/';
 // Utilities
-import kebabCase from "lodash/kebabCase";
-
+import kebabCase from 'lodash/kebabCase';
+import SEO from '../components/Seo';
 // Components
-import { Helmet } from "react-helmet";
-import { Link, graphql } from "gatsby";
+
+import { Link, graphql } from 'gatsby';
 
 const TagsPage = ({
   data: {
@@ -17,7 +17,7 @@ const TagsPage = ({
   },
 }) => (
   <Layout>
-    <Helmet title={title} />
+    <SEO title='Blog' description='welocome to Blog' lang='ko' />
     <div>
       <h1>Tags</h1>
       <ul>

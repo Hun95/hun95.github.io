@@ -1,23 +1,4 @@
-import React from 'react';
 import styled from 'styled-components';
-import { submenuData } from '../data/SubmenuData';
-const Submenu = () => {
-  return (
-    <>
-      <SubmenuWrap>
-        <Menu>
-          <p>Tool</p>
-          {submenuData.map(names => {
-            const { id, name } = names;
-            return <Item key={id}>▫ {name}</Item>;
-          })}
-        </Menu>
-      </SubmenuWrap>
-    </>
-  );
-};
-
-export default Submenu;
 
 const SubmenuWrap = styled.div`
   display: grid;
@@ -44,3 +25,5 @@ const Menu = styled.div`
 const Item = styled.div`
   margin-bottom: 10px;
 `;
+
+export { SubmenuWrap, Menu, Item };
