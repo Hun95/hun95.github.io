@@ -6,11 +6,18 @@ import { FlexBox } from '../Global/Styled';
 
 /* icon */
 
-export const NavContainer = styled(FlexBox)`
+export const Nav = styled(FlexBox)`
   padding: 1.0625rem 1.5px;
   align-items: center;
 `;
+export const NavContainer = styled.header`
+  position: relative;
+  z-index: 1;
 
+  &.ModalClose > section {
+    visibility: hidden;
+  }
+`;
 export const NavTitle = styled(Link)``;
 
 export const LogoImg = styled.img`
@@ -107,3 +114,52 @@ export const Button = styled.a.attrs({ type: 'button' })`
   font-weight: 700;
   ${breakDown.desktop({ display: 'none' })}
 `;
+
+export const MobileNavModal = styled.section`
+  @keyframes fade-in {
+    from {
+      visibility: hidden;
+      opcaity: 0;
+    }
+    1% {
+      visibility: visible;
+      opacity: 0;
+    }
+    to {
+      visibility: visible;
+      opacity: 1;
+    }
+  }
+
+  @keyframes fade-out {
+    from {
+      visibility: visible;
+      opcaity: 1;
+    }
+    99% {
+      visibility: visible;
+      opacity: 0;
+    }
+    to {
+      visibility: hidden;
+      opacity: 0;
+    }
+  }
+  position: fixed;
+
+  top: 5.575rem;
+  right: 0px;
+  left: 0px;
+  bottom: 0px;
+  background-image: linear-gradient(${setColor.darkBlue}, transparent);
+
+  &.openAnima {
+    animation: fade-in 2s ease-in-out forwards;
+  }
+
+  &.closeAnima {
+    animation: fade-out 2s ease-in-out forwards;
+  }
+`;
+
+// animation

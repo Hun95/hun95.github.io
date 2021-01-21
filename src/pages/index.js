@@ -38,6 +38,13 @@ const IndexPage = () => {
   return (
     <Layout>
       <SEO title='Blog' description='welocome to Blog' lang='ko' />
+      {/* 
+      <p>
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consectetur
+        natus sequi id quidem saepe cum quibusdam rem obcaecati, officia
+        delectus repellat consequatur expedita possimus. Ipsam a quod hic sequi
+        quibusdam.
+      </p> */}
       <Banner />
 
       {/* <CateWrapper>
