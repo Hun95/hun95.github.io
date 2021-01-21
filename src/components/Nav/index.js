@@ -22,10 +22,17 @@ const Header = () => {
   const [isHamburger, setIsHamburger] = useState(true);
 
   const mobile = useRef();
+  const initail = useRef(true);
   useEffect(() => {
+    if (initail.current) {
+      initail.current = false;
+
+      return;
+    }
     if (isHamburger) {
       mobile.current.classList.add('closeAnima');
       mobile.current.classList.remove('openAnima');
+
       console.log('close');
     } else {
       mobile.current.classList.remove('closeAnima');
