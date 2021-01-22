@@ -17,7 +17,6 @@ import {
 import { GiHamburgerMenu } from 'react-icons/gi';
 import { menuData } from '../../data/MenuData';
 import { AiOutlineClose } from 'react-icons/ai';
-import { Prev } from 'react-bootstrap/esm/PageItem';
 
 const Header = () => {
   const [isHamburger, setIsHamburger] = useState({
@@ -61,7 +60,7 @@ const Header = () => {
             </NavItem>
           ))}
         </NavMenu>
-        <Button>Request invite</Button>
+        <Button>함께 하기</Button>
       </Nav>
     </NavContainer>
   );

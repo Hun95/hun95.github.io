@@ -1,19 +1,17 @@
 import styled from 'styled-components';
-
+import { breakDown } from '../Global/Theme';
 export const Banwrapper = styled.div`
   margin: 2rem 0;
-  display: grid;
-  grid-template-columns: 4fr 1fr;
+  display: flex;
+
   background: white;
   height: auto;
-
+  justify-content: center;
+  ${breakDown.desktop({ margin: 0 })}
   svg {
-    max-width: 100%;
-    margin-left: 10%;
-    @media only screen and (max-width: 768px) {
-      max-width: 100%;
-    }
     animation: fill 0.5 ease forwards 12s;
+    width: 50%;
+    ${breakDown.desktop({ width: '70%' })}
   }
   path:nth-child(1) {
     stroke-dasharray: 1341.0504150390625;

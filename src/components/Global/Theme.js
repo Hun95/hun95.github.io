@@ -1,7 +1,7 @@
 import { css } from 'styled-components';
 
 export const setColor = {
-  signature: `rgb(254,213,45)`,
+  signature: '#fec32d',
   darkBlue: `hsl(233, 26%, 24%)`,
   limeGreen: `hsl(136,65%, 51%) `,
   birghtCyan: ` hsl(192, 70%, 51%)`,

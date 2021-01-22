@@ -113,11 +113,7 @@ export const Button = styled.a.attrs({ type: 'button' })`
   padding: 0.875rem 2.1875rem;
   border-radius: 50px;
   cursor: pointer;
-  background: linear-gradient(
-    to right,
-    ${setColor.limeGreen},
-    ${setColor.birghtCyan}
-  );
+  background: linear-gradient(to right, ${setColor.signature}, #ffb700);
 
   transition: opactiy 300ms ease-in-out;
   &:hover {

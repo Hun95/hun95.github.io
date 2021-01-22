@@ -56,7 +56,7 @@ a, a:visited {
 }
 body{
   margin:0;
-  padding:0;
+  padding: 0;
   line-Height: 1.3;
   font-size:1.125rem;
   top:0;
