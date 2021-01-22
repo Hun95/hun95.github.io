@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState } from 'react';
+import React, { useRef, useEffect, useState, useMemo } from 'react';
 import { Link } from 'gatsby';
 import logo from '../../images/logo.webp';
 import {
@@ -17,42 +17,36 @@ import {
 import { GiHamburgerMenu } from 'react-icons/gi';
 import { menuData } from '../../data/MenuData';
 import { AiOutlineClose } from 'react-icons/ai';
+import { Prev } from 'react-bootstrap/esm/PageItem';
 
 const Header = () => {
-  const [isHamburger, setIsHamburger] = useState(true);
+  const [isHamburger, setIsHamburger] = useState({
+    boolean: true,
+    animation: null,
+  });
 
-  const mobile = useRef();
-  const initail = useRef(true);
-  useEffect(() => {
-    if (initail.current) {
-      initail.current = false;
-
-      return;
-    }
-    if (isHamburger) {
-      mobile.current.classList.add('closeAnima');
-      mobile.current.classList.remove('openAnima');
-
-      console.log('close');
-    } else {
-      mobile.current.classList.remove('closeAnima');
-      mobile.current.classList.add('openAnima');
-      console.log('open');
-    }
-  }, [isHamburger]);
+  const { boolean, animation } = isHamburger;
+  const handleChange = prevState => {
+    setIsHamburger({
+      ...prevState,
+      boolean: !boolean,
+      animation: boolean ? 'yes' : 'no',
+    });
+  };
+  console.log(animation);
   return (
-    <NavContainer className={`${isHamburger ? 'ModalClose' : ' '} `}>
-      <MobileNavModal ref={mobile}></MobileNavModal>
+    <NavContainer className={boolean ? 'ModalClose' : ' '}>
+      <MobileNavModal open={animation}></MobileNavModal>
       <Nav space>
         <Link to='/'>
           <LogoImg src={logo} />
         </Link>
 
         <MobileNav
-          transition={isHamburger}
-          onClick={() => setIsHamburger(!isHamburger)}
+          transition={animation}
+          onClick={isHamburger => handleChange(isHamburger)}
         >
-          {isHamburger ? <GiHamburgerMenu /> : <AiOutlineClose />}
+          {boolean ? <GiHamburgerMenu /> : <AiOutlineClose />}
         </MobileNav>
 
         <NavMenu>

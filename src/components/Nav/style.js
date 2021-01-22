@@ -31,9 +31,11 @@ export const MobileNav = styled.button.attrs({ type: 'button' })`
   background: none;
   cursor: pointer;
   ${({ transition }) => {
-    if (transition) {
-      return css``;
-    } else {
+    if (transition === 'yes') {
+      return css`
+        animation: openModal 0.4s ease-out forwards;
+      `;
+    } else if (transition === 'no') {
       return css`
         animation: closeModal 0.4s ease-out forwards;
       `;
@@ -46,6 +48,17 @@ export const MobileNav = styled.button.attrs({ type: 'button' })`
     }
     50% {
       transform: translateY(-50%);
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
+  @keyframes openModal {
+    0% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(50%);
     }
     100% {
       transform: translateY(0);
@@ -152,14 +165,23 @@ export const MobileNavModal = styled.section`
   left: 0px;
   bottom: 0px;
   background-image: linear-gradient(${setColor.darkBlue}, transparent);
-
-  &.openAnima {
+  ${({ open }) => {
+    if (open === 'yes') {
+      return css`
+        animation: fade-in 300ms ease-in-out forwards;
+      `;
+    } else if (open === 'no') {
+      return css`
+        animation: fade-out 300ms ease-in-out forwards;
+      `;
+    }
+  }}/* &.openAnima {
     animation: fade-in 2s ease-in-out forwards;
   }
 
   &.closeAnima {
     animation: fade-out 2s ease-in-out forwards;
-  }
+  } */
 `;
 
 // animation
