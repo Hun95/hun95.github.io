@@ -1,7 +1,7 @@
 import React from 'react';
 import Layout from '../components/Layout/';
 import SEO from '../components/Seo';
-const chat = () => {
+const Chat = () => {
   return (
     <Layout>
       <SEO title='chat' description='welocome to chat' lang='ko' />
@@ -12,4 +12,4 @@ const chat = () => {
   );
 };
 
-export default chat;
+export default Chat;
