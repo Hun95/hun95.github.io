@@ -35,7 +35,8 @@ const Blog = () => {
     <Layout>
       <SEO title='Blog' description='welocome to Blog' lang='ko' />
       <Category edges={category} click={handleItems} />
-      <Post edges={node} />
+      준비중..
+      {/* <Post edges={node} /> */}
     </Layout>
   );
 };

@@ -1,5 +1,6 @@
 import React, { useRef, useEffect, useState, useMemo } from 'react';
 import { Link } from 'gatsby';
+
 import logo from '../../images/logo.webp';
 import {
   NavContainer,
@@ -13,6 +14,8 @@ import {
   MobileNav,
   Button,
   MobileNavModal,
+  MobileItem,
+  MobileMenu,
 } from './style';
 import { GiHamburgerMenu } from 'react-icons/gi';
 import { menuData } from '../../data/MenuData';
@@ -32,37 +35,54 @@ const Header = () => {
       animation: boolean ? 'yes' : 'no',
     });
   };
-  console.log(animation);
+  console.log(boolean);
   return (
-    <NavContainer className={boolean ? 'ModalClose' : ' '}>
-      <MobileNavModal open={animation}></MobileNavModal>
-      <Nav space>
-        <Link to='/'>
-          <LogoImg src={logo} />
-        </Link>
+    <>
+      <NavContainer className={boolean ? 'ModalClose' : ' '}>
+        <MobileNavModal open={animation}></MobileNavModal>
+        <Nav space>
+          <Link to='/'>
+            <LogoImg src={logo} />
+          </Link>
 
-        <MobileNav
-          transition={animation}
-          onClick={isHamburger => handleChange(isHamburger)}
-        >
-          {boolean ? <GiHamburgerMenu /> : <AiOutlineClose />}
-        </MobileNav>
+          <MobileNav
+            transition={animation}
+            onClick={isHamburger => handleChange(isHamburger)}
+          >
+            {boolean ? <GiHamburgerMenu /> : <AiOutlineClose />}
+          </MobileNav>
 
-        <NavMenu>
+          <NavMenu>
+            {menuData.map((item, index) => (
+              <NavItem
+                to={item.link}
+                key={index}
+                activeStyle={activeColor}
+                partiallyActive={true}
+              >
+                {item.mobileTitle}
+              </NavItem>
+            ))}
+          </NavMenu>
+          <Button>함께 하기</Button>
+        </Nav>
+      </NavContainer>
+
+      {!boolean && (
+        <MobileMenu>
           {menuData.map((item, index) => (
-            <NavItem
+            <MobileItem
               to={item.link}
               key={index}
               activeStyle={activeColor}
               partiallyActive={true}
             >
               {item.mobileTitle}
-            </NavItem>
+            </MobileItem>
           ))}
-        </NavMenu>
-        <Button>함께 하기</Button>
-      </Nav>
-    </NavContainer>
+        </MobileMenu>
+      )}
+    </>
   );
 };
 

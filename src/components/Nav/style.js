@@ -7,8 +7,9 @@ import { FlexBox } from '../Global/Styled';
 /* icon */
 
 export const Nav = styled(FlexBox)`
-  padding: 1.0625rem 1.5px;
+  padding: 1.0625rem calc((100vw - 970px) / 2);
   align-items: center;
+  background: white;
 `;
 export const NavContainer = styled.header`
   position: relative;
@@ -79,22 +80,17 @@ export const NavItem = styled(Link)`
     position: absolute;
     display: block;
     height: 5px;
-    background: linear-gradient(
-      to right,
-      ${setColor.limeGreen},
-      ${setColor.birghtCyan}
-    );
+    background: linear-gradient(to right, ${setColor.signature}, #ffb700);
     left: 0;
     right: 0;
     bottom: -30px;
     content: '';
     opacity: 0;
-    transition: opacity 300ms ease-in-out;
+    transition: opacity 200ms ease-in-out;
   }
 
   &:hover {
     color: ${setColor.signature};
-    transition: color 300ms ease-in-out;
 
     &::before {
       opacity: 1;
@@ -156,10 +152,11 @@ export const MobileNavModal = styled.section`
   }
   position: fixed;
 
-  top: 5.575rem;
+  top: 0;
   right: 0px;
   left: 0px;
   bottom: 0px;
+  z-index: -1;
   background-image: linear-gradient(${setColor.darkBlue}, transparent);
   ${({ open }) => {
     if (open === 'yes') {
@@ -171,13 +168,28 @@ export const MobileNavModal = styled.section`
         animation: fade-out 300ms ease-in-out forwards;
       `;
     }
-  }}/* &.openAnima {
-    animation: fade-in 2s ease-in-out forwards;
-  }
-
-  &.closeAnima {
-    animation: fade-out 2s ease-in-out forwards;
-  } */
+  }}
 `;
 
-// animation
+export const MobileMenu = styled.ul`
+  background: white;
+  padding: 1.625rem;
+  margin: 1.5rem auto;
+  border-radius: 5px;
+  z-index: 1;
+  position: sticky;
+  top: 5rem;
+  width: calc(100% - 5rem);
+  /* left: 50%;
+  transform: translateX(-50%); */
+`;
+export const MobileItem = styled(Link)`
+  display: block;
+  padding: 0.625rem;
+  color: #222;
+  text-align: center;
+  &:hover {
+    background: ${setColor.signature};
+    opacity: 0.75;
+  }
+`;

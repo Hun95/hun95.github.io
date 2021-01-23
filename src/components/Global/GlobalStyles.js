@@ -1,4 +1,4 @@
-import { createGlobalStyle } from 'styled-components';
+import { createGlobalStyle, css, styled } from 'styled-components';
 import { setColor } from './Theme';
 export const GlobalStyle = createGlobalStyle`
 
@@ -63,7 +63,7 @@ body{
   bottom:0;
   left:0;
   right:0;
-
+  
 }
 
 

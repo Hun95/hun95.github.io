@@ -18,11 +18,8 @@ const Layout = ({ children }) => {
   return (
     <>
       <GlobalStyle />
-
-      <Main>
-        <Nav siteTitle={data.site.siteMetadata?.title || `Title`} />
-        {children}
-      </Main>
+      <Nav siteTitle={data.site.siteMetadata?.title || `Title`} />
+      <Main>{children}</Main>
     </>
   );
 };
