@@ -1,2 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[11],{QQwb:function(t,e,n){"use strict";n.r(e);var a=n("q1tI"),c=n.n(a),l=n("Zttt"),o=n("9CUm");e.default=function(){return c.a.createElement(l.a,null,c.a.createElement(o.a,{title:"chat",description:"welocome to chat",lang:"ko"}),c.a.createElement("h3",{style:{display:"flex",justifyContent:"center"}},"🔨🔨준비중..."))}}}]);
-//# sourceMappingURL=component---src-pages-chat-js-58814312b0d251b341d5.js.map
