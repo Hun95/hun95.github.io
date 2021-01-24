@@ -5,7 +5,7 @@ const PostInTags = ({ props }) => {
     <TagWrap>
       {props.map(tag => (
         <Tag to={`tag/${tag}`} key={tag}>
-          {tag}
+          #{tag}
         </Tag>
       ))}
     </TagWrap>

@@ -35,7 +35,7 @@ const Header = () => {
       animation: boolean ? 'yes' : 'no',
     });
   };
-  console.log(boolean);
+
   return (
     <>
       <NavContainer className={boolean ? 'ModalClose' : ' '}>
@@ -43,6 +43,7 @@ const Header = () => {
         <Nav space>
           <Link to='/'>
             <LogoImg src={logo} />
+            <span>수염난친구들</span>
           </Link>
 
           <MobileNav

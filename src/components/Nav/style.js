@@ -18,12 +18,20 @@ export const NavContainer = styled.header`
   &.ModalClose > section {
     visibility: hidden;
   }
+  span {
+    position: absolute;
+    top: 50%;
+    text-align: center;
+    transform: translateY(-50%);
+    margin-left: 0.75rem;
+  }
 `;
 export const NavTitle = styled(Link)``;
 
 export const LogoImg = styled.img`
   width: 50px;
   height: 50px;
+  margin-top: 0.5rem;
 `;
 export const MobileNav = styled.button.attrs({ type: 'button' })`
   font-size: 1.5rem;

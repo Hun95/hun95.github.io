@@ -5,6 +5,7 @@ import Post from '../components/Post/';
 import Category from '../components/Category';
 import useCategory from '../hooks/useCategory';
 import { useStaticQuery, graphql } from 'gatsby';
+import { PageWrapper } from '../components/Global/Styled';
 const Blog = () => {
   const data = useStaticQuery(graphql`
     query {
@@ -30,13 +31,16 @@ const Blog = () => {
     }
   `);
   const dataForm = data.allMdx.edges;
+
   const { category, node, handleItems } = useCategory(dataForm);
   return (
     <Layout>
-      <SEO title='Blog' description='welocome to Blog' lang='ko' />
-      <Category edges={category} click={handleItems} />
-      준비중..
-      {/* <Post edges={node} /> */}
+      <PageWrapper>
+        <SEO title='Blog' description='welocome to Blog' lang='ko' />
+        <Category edges={category} click={handleItems} />
+
+        <Post edges={node} />
+      </PageWrapper>
     </Layout>
   );
 };
