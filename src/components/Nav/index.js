@@ -26,7 +26,7 @@ const Header = () => {
     boolean: true,
     animation: null,
   });
-
+  const outSide = useRef();
   const { boolean, animation } = isHamburger;
   const handleChange = prevState => {
     setIsHamburger({
@@ -36,10 +36,24 @@ const Header = () => {
     });
   };
 
+  const isOutSide = ({ prevState }) => {
+    if (outSide) {
+      setIsHamburger({
+        ...prevState,
+        boolean: !boolean,
+        animation: boolean ? 'yes' : 'no',
+      });
+    }
+  };
+
   return (
     <>
       <NavContainer className={boolean ? 'ModalClose' : ' '}>
-        <MobileNavModal open={animation}></MobileNavModal>
+        <MobileNavModal
+          ref={outSide}
+          onClick={() => isOutSide(isHamburger)}
+          open={animation}
+        ></MobileNavModal>
         <Nav space>
           <Link to='/'>
             <LogoImg src={logo} />
