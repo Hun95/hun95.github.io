@@ -33,6 +33,7 @@ const Blog = () => {
   const dataForm = data.allMdx.edges;
 
   const { category, node, handleItems } = useCategory(dataForm);
+
   return (
     <Layout>
       <PageWrapper>

@@ -9,6 +9,7 @@ module.exports = {
     `gatsby-plugin-sass`,
     `gatsby-plugin-catch-links`,
     `gatsby-plugin-styled-components`,
+    `gatsby-plugin-react-head`,
     // {
     //   resolve: `gatsby-source-filesystem`,
     //   options: {

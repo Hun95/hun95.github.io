@@ -25,6 +25,7 @@ export const NavContainer = styled.header`
     transform: translateY(-50%);
     margin-left: 0.75rem;
   }
+  color: black;
 `;
 export const NavTitle = styled(Link)``;
 

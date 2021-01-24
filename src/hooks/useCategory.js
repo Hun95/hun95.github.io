@@ -12,7 +12,7 @@ const getTags = items => {
 const useCategory = initValue => {
   const [node, setNode] = useState(initValue);
   const [category, setCategory] = useState(getTags(node));
-
+  console.log(category);
   const handleItems = category => {
     let tempItems = [...initValue];
 
