@@ -42,6 +42,7 @@ border-radius: 20px;
    font-size:100%;
    box-sizing: border-box;
   -webkit-box-sizing: inherit;
+
  }
  *, *::before, *::after {
      font-family: 'Iropke Batang', sans-serif;
@@ -63,9 +64,11 @@ body{
   bottom:0;
   left:0;
   right:0;
-  
+
 }
 
+ 
+  
 
 
 

@@ -45,7 +45,16 @@ const Header = () => {
       });
     }
   };
-
+  console.log(boolean, animation);
+  useEffect(() => {
+    if (animation === 'yes') {
+      document.body.style.overflow = 'hidden';
+    } else if (animation === 'no') {
+      document.body.style.overflow = 'auto';
+    } else if (animation === null) {
+      document.body.style.overflow = 'auto';
+    }
+  }, [isHamburger]);
   return (
     <>
       <NavContainer className={boolean ? 'ModalClose' : ' '}>

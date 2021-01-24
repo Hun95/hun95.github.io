@@ -167,6 +167,7 @@ export const MobileNavModal = styled.section`
   bottom: 0px;
   z-index: -1;
   background-image: linear-gradient(${setColor.darkBlue}, transparent);
+
   ${({ open }) => {
     if (open === 'yes') {
       return css`
@@ -174,6 +175,7 @@ export const MobileNavModal = styled.section`
       `;
     } else if (open === 'no') {
       return css`
+        overflow-y: hidden;
         animation: fade-out 300ms ease-in-out forwards;
       `;
     }
@@ -186,11 +188,11 @@ export const MobileMenu = styled.ul`
   margin: 1.5rem auto;
   border-radius: 5px;
   z-index: 1;
-  position: sticky;
-  top: 5rem;
+  position: absolute;
+  top: 8rem;
+  left: 50%;
+  transform: translateX(-50%);
   width: calc(100% - 5rem);
-  /* left: 50%;
-  transform: translateX(-50%); */
 `;
 export const MobileItem = styled(Link)`
   display: block;
