@@ -18,7 +18,7 @@ const Layout = ({ children }) => {
   return (
     <>
       <GlobalStyle />
-      <Link
+      {/* <Link
         rel='canonical'
         content='https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.8/ScrollMagic.min.js'
       />
@@ -33,7 +33,7 @@ const Layout = ({ children }) => {
       <Link
         rel='canonical'
         content='https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenMax.min.js'
-      />
+      /> */}
 
       <Nav siteTitle={data.site.siteMetadata?.title || `Title`} />
       <Main>{children}</Main>

@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
 import styled from 'styled-components';
-
+import { Controller, Scene } from 'react-scrollmagic';
+import Sequence from '../components/Sequence';
 /* Module */
 import SEO from '../components/Seo';
 import Layout from '../components/Layout/';
@@ -34,7 +35,7 @@ const IndexPage = () => {
   `);
   const dataForm = data.allMdx.edges;
   // const { category, node, handleItems } = useCategory(dataForm);
-
+  const ref = useRef();
   return (
     <Layout>
       <SEO title='Blog' description='welocome to Blog' lang='ko' />
@@ -46,7 +47,21 @@ const IndexPage = () => {
         quibusdam.
       </p> */}
       <Banner />
-
+      <Controller>
+        <Scene duration='200%' triggerHook='onLeave' pin>
+          {progress => (
+            <div
+              style={{
+                objectFit: 'cover',
+                height: '100vh',
+                position: 'relative',
+              }}
+            >
+              <Sequence ref={ref} progress={progress} />
+            </div>
+          )}
+        </Scene>
+      </Controller>
       {/* <CateWrapper>
         <Category edges={category} click={handleItems} />
       </CateWrapper>

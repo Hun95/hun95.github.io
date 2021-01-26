@@ -45,7 +45,7 @@ const Header = () => {
       });
     }
   };
-  console.log(boolean, animation);
+
   useEffect(() => {
     if (animation === 'yes') {
       document.body.style.overflow = 'hidden';
