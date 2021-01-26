@@ -1,0 +1,2 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[15],{d95y:function(e,t,n){"use strict";n.r(t);var a=n("q1tI"),o=n.n(a),l=(n("OiGJ"),n("Zttt")),r=n("9CUm");t.default=function(){return o.a.createElement(l.a,null,o.a.createElement(r.a,{title:"together",description:"welocome to together",lang:"ko"}),o.a.createElement("h3",{style:{display:"flex",justifyContent:"center"}},"🔨🔨준비중..."))}}}]);
+//# sourceMappingURL=component---src-pages-together-js-61140ccace0ca5be2374.js.map
