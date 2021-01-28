@@ -1,11 +1,24 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import Layout from '../components/Layout/';
 import SEO from '../components/Seo';
 
 import styled from 'styled-components';
 import { Controller, Scene } from 'react-scrollmagic';
 import Sequence from '../components/Sequence';
+
 const Chat = () => {
+  const [div, setDiv] = useState(false);
+  const addDiv = () => {
+    if (window.pageYOffset >= 400) {
+      setDiv(true);
+      console.log('hi');
+    } else {
+      setDiv(false);
+    }
+  };
+  useEffect(() => {
+    window.addEventListener('scroll', addDiv);
+  });
   const ref = useRef();
   return (
     <Layout>
@@ -19,6 +32,19 @@ const Chat = () => {
           )}
         </Scene>
       </Controller>
+      {div && (
+        <h1
+          style={{
+            position: 'absolute',
+            width: '200px',
+            top: '500px',
+            left: '500px',
+            zIndex: 50,
+          }}
+        >
+          hi
+        </h1>
+      )}
     </Layout>
   );
 };

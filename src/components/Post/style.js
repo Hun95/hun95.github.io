@@ -19,9 +19,13 @@ export const Card = styled.section`
   text-decoration: none;
   box-shadow: 0 20px 10px -15px rgba(197, 192, 249, 0.2);
   height: 250px;
+  position: relative;
+  z-index: 2;
   &:hover {
     transition: all 0.3s ease-in-out;
     transform: translateY(-5px);
+    position: relative;
+    z-index: 2;
   }
 `;
 

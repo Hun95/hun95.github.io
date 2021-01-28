@@ -43,6 +43,4 @@ const Layout = ({ children }) => {
 
 export default Layout;
 
-const Main = styled.div`
-  padding: 0.5rem calc((100vw - 970px) / 2);
-`;
+const Main = styled.div``;

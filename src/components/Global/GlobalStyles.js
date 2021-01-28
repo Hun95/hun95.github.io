@@ -25,6 +25,25 @@ export const GlobalStyle = createGlobalStyle`
     font-weight: normal;
     font-style: normal;
 }
+
+@font-face {
+    font-family: 'ChosunKg';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@1.0/ChosunKg.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'ChosunKm';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@1.0/ChosunKm.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'ChosunGs';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@1.0/ChosunGs.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
 ${
   '' /* body::-webkit-scrollbar {
 width: 13px;
@@ -45,7 +64,7 @@ border-radius: 20px;
 
  }
  *, *::before, *::after {
-     font-family: 'Iropke Batang', sans-serif;
+     font-family: 'ChosunKm', sans-serif;
      -webkit-box-sizing: inherit;
      box-sizing:inherit;
    
@@ -60,10 +79,7 @@ body{
   padding: 0;
   line-Height: 1.3;
   font-size:1.125rem;
-  top:0;
-  bottom:0;
-  left:0;
-  right:0;
+
 
 }
 

@@ -16,6 +16,7 @@ import {
   MobileNavModal,
   MobileItem,
   MobileMenu,
+  Blur,
 } from './style';
 import { GiHamburgerMenu } from 'react-icons/gi';
 import { menuData } from '../../data/MenuData';
@@ -26,7 +27,9 @@ const Header = () => {
     boolean: true,
     animation: null,
   });
+  const [isHide, setIsHide] = useState(false);
   const outSide = useRef();
+  const nav = useRef();
   const { boolean, animation } = isHamburger;
   const handleChange = prevState => {
     setIsHamburger({
@@ -46,6 +49,16 @@ const Header = () => {
     }
   };
 
+  const headerChange = () => {
+    if (window.pageYOffset >= 200) {
+      setIsHide(true);
+    } else {
+      setIsHide(false);
+    }
+  };
+  useEffect(() => {
+    window.addEventListener('scroll', headerChange);
+  });
   useEffect(() => {
     if (animation === 'yes') {
       document.body.style.overflow = 'hidden';
@@ -57,7 +70,12 @@ const Header = () => {
   }, [isHamburger]);
   return (
     <>
-      <NavContainer className={boolean ? 'ModalClose' : ' '}>
+      <NavContainer
+        className={boolean ? 'ModalClose' : ' '}
+        ref={nav}
+        stick={isHide}
+      >
+        {isHide && <Blur />}
         <MobileNavModal
           ref={outSide}
           onClick={() => isOutSide(isHamburger)}
@@ -88,7 +106,7 @@ const Header = () => {
               </NavItem>
             ))}
           </NavMenu>
-          <Button>함께 하기</Button>
+          <Button>함께하기</Button>
         </Nav>
       </NavContainer>
 

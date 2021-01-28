@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useRef, useEffect, useCallback } from 'react';
 import { Banwrapper } from './style';
 
 const Banner = () => {
@@ -9,9 +9,26 @@ const Banner = () => {
   //   }
   //   console.log(logo);
   // }, []);
+  const [Show, setShow] = useState(false);
+  const BannerRef = useRef();
+
+  const headerChange = useCallback(() => {
+    if (window.pageYOffset >= BannerRef.current.offsetTop - 400) {
+      setShow(true);
+    } else {
+      setShow(false);
+    }
+  }, [BannerRef]);
+  useEffect(() => {
+    window.addEventListener('scroll', headerChange);
+    return () => {
+      window.removeEventListener('scroll', headerChange);
+    };
+  });
+
   return (
     <>
-      <Banwrapper>
+      <Banwrapper show={Show} ref={BannerRef}>
         <svg
           id='main'
           width='1303'

@@ -5,28 +5,44 @@ import { setColor, breakDown, breakUp } from '../Global/Theme';
 import { FlexBox } from '../Global/Styled';
 
 /* icon */
-
-export const Nav = styled(FlexBox)`
-  padding: 1.0625rem calc((100vw - 970px) / 2);
-  align-items: center;
-  background: white;
-`;
 export const NavContainer = styled.header`
-  position: relative;
-  z-index: 1;
-
+  ${({ stick }) => {
+    if (stick) {
+      return css`
+        position: sticky;
+        top: 20px;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        z-index: 5;
+      `;
+    } else {
+      return css`
+        position: relative;
+        top: 20px;
+        z-index: 4;
+        background: transparent;
+      `;
+    }
+  }}
   &.ModalClose > section {
     visibility: hidden;
   }
   span {
     position: absolute;
     top: 50%;
-    text-align: center;
     transform: translateY(-50%);
     margin-left: 0.75rem;
+    text-align: center;
+    color: white;
   }
-  color: black;
 `;
+export const Nav = styled(FlexBox)`
+  padding: 0 calc((100vw - 970px) / 2);
+
+  align-items: center;
+`;
+
 export const NavTitle = styled(Link)``;
 
 export const LogoImg = styled.img`
@@ -40,6 +56,7 @@ export const MobileNav = styled.button.attrs({ type: 'button' })`
   border: none;
   background: none;
   cursor: pointer;
+
   ${({ transition }) => {
     if (transition === 'yes') {
       return css`
@@ -81,6 +98,8 @@ export const LogoTitle = styled.span``;
 export const NavItem = styled(Link)`
   font-weight: 400;
   position: relative;
+  z-index: 3;
+
   &:not(:last-child) {
     margin-right: 32px;
   }
@@ -113,7 +132,6 @@ export const NavMenu = styled.div`
 `;
 
 export const Button = styled.a.attrs({ type: 'button' })`
-  background: gray;
   border: none;
   padding: 0.875rem 2.1875rem;
   border-radius: 50px;
@@ -125,7 +143,7 @@ export const Button = styled.a.attrs({ type: 'button' })`
     opacity: 0.75;
   }
   color: white;
-  font-weight: 700;
+
   ${breakDown.desktop({ display: 'none' })}
 `;
 
@@ -165,7 +183,8 @@ export const MobileNavModal = styled.section`
   right: 0px;
   left: 0px;
   bottom: 0px;
-  z-index: -1;
+  z-index: 1;
+
   background-image: linear-gradient(${setColor.darkBlue}, transparent);
 
   ${({ open }) => {
@@ -187,7 +206,7 @@ export const MobileMenu = styled.ul`
   padding: 1.625rem;
   margin: 1.5rem auto;
   border-radius: 5px;
-  z-index: 1;
+  z-index: 10;
   position: absolute;
   top: 8rem;
   left: 50%;
@@ -203,4 +222,20 @@ export const MobileItem = styled(Link)`
     background: ${setColor.signature};
     opacity: 0.75;
   }
+`;
+
+export const Blur = styled.div`
+  height: 80px;
+  top: 0;
+  left: 0;
+  right: 0;
+  position: absolute;
+  overflow: hidden;
+  -webkit-filter: blur(20px);
+  -moz-filter: blur(20px);
+  -o-filter: blur(20px);
+  -ms-filter: blur(20px);
+  z-index: -500;
+  background-color: white;
+  background-size: cover;
 `;
