@@ -41,10 +41,10 @@ const IndexPage = () => {
     <Layout>
       <SEO title='Blog' description='welocome to Blog' lang='ko' />
       <VideoSection />
-      <Controller>
-        <Scene duration='200%' triggerHook='onLeave' pin>
+      <Controller style={{ position: 'relative', zIndex: '2' }}>
+        <Scene duration='400%' triggerHook='onLeave' pin>
           {progress => (
-            <div style={{ height: '100vh', position: 'relative', zIndex: 2 }}>
+            <div style={{ height: '100vh', position: 'relative', zIndex: '2' }}>
               <Sequence ref={ref} progress={progress} />
             </div>
           )}

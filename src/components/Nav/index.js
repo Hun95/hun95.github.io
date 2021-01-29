@@ -59,15 +59,15 @@ const Header = () => {
   useEffect(() => {
     window.addEventListener('scroll', headerChange);
   });
-  useEffect(() => {
-    if (animation === 'yes') {
-      document.body.style.overflow = 'hidden';
-    } else if (animation === 'no') {
-      document.body.style.overflow = 'auto';
-    } else if (animation === null) {
-      document.body.style.overflow = 'auto';
-    }
-  }, [isHamburger]);
+  // useEffect(() => {
+  //   if (animation === 'yes') {
+  //     document.body.style.overflow = 'hidden';
+  //   } else if (animation === 'no') {
+  //     document.body.style.overflow = 'auto';
+  //   } else if (animation === null) {
+  //     document.body.style.overflow = 'auto';
+  //   }
+  // }, [isHamburger]);
   return (
     <>
       <NavContainer
@@ -75,7 +75,7 @@ const Header = () => {
         ref={nav}
         stick={isHide}
       >
-        {isHide && <Blur />}
+        {/* {isHide && <Blur />} */}
         <MobileNavModal
           ref={outSide}
           onClick={() => isOutSide(isHamburger)}
@@ -108,22 +108,16 @@ const Header = () => {
           </NavMenu>
           <Button>함께하기</Button>
         </Nav>
+        {!boolean && (
+          <MobileMenu>
+            {menuData.map((item, index) => (
+              <MobileItem to={item.link} key={index}>
+                {item.mobileTitle}
+              </MobileItem>
+            ))}
+          </MobileMenu>
+        )}
       </NavContainer>
-
-      {!boolean && (
-        <MobileMenu>
-          {menuData.map((item, index) => (
-            <MobileItem
-              to={item.link}
-              key={index}
-              activeStyle={activeColor}
-              partiallyActive={true}
-            >
-              {item.mobileTitle}
-            </MobileItem>
-          ))}
-        </MobileMenu>
-      )}
     </>
   );
 };

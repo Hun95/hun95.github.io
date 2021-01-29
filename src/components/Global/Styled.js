@@ -16,6 +16,6 @@ export const FlexBox = styled.div`
 `;
 
 export const PageWrapper = styled.div`
-  padding: 1rem 5rem;
+  padding: 4rem calc((100vw - 970px) / 2);
   ${breakDown.desktop({ padding: '1rem 1rem' })}
 `;

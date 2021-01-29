@@ -20,7 +20,9 @@ export const NavContainer = styled.header`
       return css`
         position: relative;
         top: 20px;
+        right: 0;
         z-index: 4;
+
         background: transparent;
       `;
     }
@@ -28,6 +30,7 @@ export const NavContainer = styled.header`
   &.ModalClose > section {
     visibility: hidden;
   }
+
   span {
     position: absolute;
     top: 50%;
@@ -35,11 +38,13 @@ export const NavContainer = styled.header`
     margin-left: 0.75rem;
     text-align: center;
     color: white;
+    text-shadow: 0 0 2px #222;
   }
 `;
 export const Nav = styled(FlexBox)`
   padding: 0 calc((100vw - 970px) / 2);
-
+  position: relative;
+  z-index: 11;
   align-items: center;
 `;
 
@@ -52,11 +57,11 @@ export const LogoImg = styled.img`
 `;
 export const MobileNav = styled.button.attrs({ type: 'button' })`
   font-size: 1.5rem;
-  color: black;
+  color: ${setColor.grayishBlue};
   border: none;
   background: none;
   cursor: pointer;
-
+  display: block;
   ${({ transition }) => {
     if (transition === 'yes') {
       return css`
@@ -68,7 +73,6 @@ export const MobileNav = styled.button.attrs({ type: 'button' })`
       `;
     }
   }}
-
   @keyframes closeModal {
     0% {
       transform: translateY(0);
@@ -185,6 +189,9 @@ export const MobileNavModal = styled.section`
   bottom: 0px;
   z-index: 1;
 
+  content: ' ';
+  max-width: 100%;
+
   background-image: linear-gradient(${setColor.darkBlue}, transparent);
 
   ${({ open }) => {
@@ -194,24 +201,27 @@ export const MobileNavModal = styled.section`
       `;
     } else if (open === 'no') {
       return css`
-        overflow-y: hidden;
         animation: fade-out 300ms ease-in-out forwards;
       `;
     }
   }}
 `;
 
-export const MobileMenu = styled.ul`
-  background: white;
-  padding: 1.625rem;
-  margin: 1.5rem auto;
-  border-radius: 5px;
-  z-index: 10;
+export const MobileContainer = styled.div``;
+export const MobileMenu = styled.nav`
   position: absolute;
-  top: 8rem;
+  top: 300%;
   left: 50%;
-  transform: translateX(-50%);
+
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+
+  border-radius: 5px;
+
+  z-index: 10;
   width: calc(100% - 5rem);
+
+  padding: 2rem 0;
 `;
 export const MobileItem = styled(Link)`
   display: block;
@@ -229,6 +239,7 @@ export const Blur = styled.div`
   top: 0;
   left: 0;
   right: 0;
+  z-index: 1;
   position: absolute;
   overflow: hidden;
   -webkit-filter: blur(20px);

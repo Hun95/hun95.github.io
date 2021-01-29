@@ -61,6 +61,7 @@ border-radius: 20px;
    font-size:100%;
    box-sizing: border-box;
   -webkit-box-sizing: inherit;
+  
 
  }
  *, *::before, *::after {
@@ -80,6 +81,7 @@ body{
   line-Height: 1.3;
   font-size:1.125rem;
 
+  display:block;
 
 }
 

@@ -17,8 +17,8 @@ const VideoSection = () => {
       </HeroBg>
       <HeroContent>
         <HeroItems>
-          <HeroH1>당신의</HeroH1>
-          <HeroP>지름길</HeroP>
+          <HeroH1>더 다양한</HeroH1>
+          <HeroP>경험</HeroP>
         </HeroItems>
       </HeroContent>
     </VideoContainer>
