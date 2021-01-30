@@ -35,7 +35,7 @@ const HeroBg = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
-  overflow: hidden;
+  object-fit: cover;
 `;
 const HeroContent = styled.div`
   z-index: 3;
@@ -51,7 +51,7 @@ const HeroItems = styled.div`
   justify-content: center;
   align-items: center;
   text-align: center;
-  height: 100vh;
+
   max-height: 100%;
   padding: 0;
   color: #fff;

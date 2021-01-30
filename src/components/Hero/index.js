@@ -1,28 +1,11 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { Container, Image, Text } from './style';
 import image from '../../images/banner2.webp';
-
+import useTextAction from '../../hooks/useTextAction';
 const Hero = () => {
-  const [scroll, setScroll] = useState(false);
-
-  const HeroRef = useRef();
-
-  const headerChange = useCallback(() => {
-    if (window.pageYOffset >= HeroRef.current.offsetTop - 450) {
-      setScroll(true);
-    } else {
-      setScroll(false);
-    }
-  }, [HeroRef]);
-  useEffect(() => {
-    window.addEventListener('scroll', headerChange);
-    return () => {
-      window.removeEventListener('scroll', headerChange);
-    };
-  });
-
+  const { isShow, showRef } = useTextAction();
   return (
-    <Container ref={HeroRef} rotate={scroll}>
+    <Container ref={showRef} rotate={isShow}>
       <Image src={image} />
       <Text>It's Show Time</Text>
     </Container>

@@ -1,34 +1,12 @@
 import React, { useState, useRef, useEffect, useCallback } from 'react';
 import { Banwrapper } from './style';
-
+import useTextAction from '../../hooks/useTextAction';
 const Banner = () => {
-  // useEffect(() => {
-  //   const logo = document.querySelectorAll('#main path');
-  //   for (let i = 0; i < logo.length; i++) {
-  //     console.log(`${logo[i].getTotalLength()}`);
-  //   }
-  //   console.log(logo);
-  // }, []);
-  const [Show, setShow] = useState(false);
-  const BannerRef = useRef();
-
-  const headerChange = useCallback(() => {
-    if (window.pageYOffset >= BannerRef.current.offsetTop - 400) {
-      setShow(true);
-    } else {
-      setShow(false);
-    }
-  }, [BannerRef]);
-  useEffect(() => {
-    window.addEventListener('scroll', headerChange);
-    return () => {
-      window.removeEventListener('scroll', headerChange);
-    };
-  });
+  const { isShow, showRef } = useTextAction();
 
   return (
     <>
-      <Banwrapper show={Show} ref={BannerRef}>
+      <Banwrapper show={isShow} ref={showRef}>
         <svg
           id='main'
           width='1303'
