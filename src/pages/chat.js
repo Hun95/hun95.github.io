@@ -10,7 +10,7 @@ const Chat = () => {
   return (
     <Layout>
       <SEO title='chat' description='welocome to chat' lang='ko' />
-
+      {/* 
       <g
         clip-path='url(#__lottie_element_85)'
         transform='matrix(1,0,0,1,-83,0)'
@@ -207,7 +207,7 @@ const Chat = () => {
             style='display: inherit;'
           ></path>
         </g>
-      </g>
+      </g> */}
     </Layout>
   );
 };
