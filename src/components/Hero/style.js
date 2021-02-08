@@ -9,11 +9,11 @@ export const Container = styled.div`
   padding: 1.0625rem calc((100vw - 970px) / 2);
   visibility: hidden;
   margin-top: 100px;
-  ${({ rotate }) => {
-    if (rotate) {
+  ${({ kill }) => {
+    if (kill) {
       return css`
-        animation: 1s init;
         visibility: visible;
+        animation: init 2s;
       `;
     }
   }}

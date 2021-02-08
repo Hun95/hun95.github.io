@@ -21,7 +21,7 @@ import {
 import { GiHamburgerMenu } from 'react-icons/gi';
 import { menuData } from '../../data/MenuData';
 import { AiOutlineClose } from 'react-icons/ai';
-
+import { useGlobalContext } from '../../context/MainPageProvider';
 const Header = () => {
   const [isHamburger, setIsHamburger] = useState({
     boolean: true,
@@ -50,7 +50,7 @@ const Header = () => {
   };
 
   const headerChange = () => {
-    if (window.pageYOffset >= 200) {
+    if (window.pageYOffset >= 10) {
       setIsHide(true);
     } else {
       setIsHide(false);
@@ -68,6 +68,9 @@ const Header = () => {
   //     document.body.style.overflow = 'auto';
   //   }
   // }, [isHamburger]);
+
+  //test here //
+
   return (
     <>
       <NavContainer

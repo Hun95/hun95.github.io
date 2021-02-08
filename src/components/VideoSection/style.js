@@ -5,8 +5,7 @@ export const VideoContainer = styled.section`
   display: flex;
   justify-content: center;
   align-items: center;
-  justify-content: center;
-  align-items: center;
+
   height: 100vh;
   position: relative;
   margin-top: -65px;

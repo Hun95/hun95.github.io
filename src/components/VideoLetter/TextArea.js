@@ -1,14 +1,16 @@
-import React, { useRef } from 'react';
+import React, { useRef, useEffect } from 'react';
 import styled, { css } from 'styled-components';
 import useText from '../../hooks/useText';
 const TextArea = () => {
-  const { isShow, showRef, isDisappear } = useText({
+  const textsRef = useRef();
+  const { isShows, showRef, isDisappear } = useText({
     number: 1000,
     disappear: 1400,
+    showRef: textsRef,
   });
 
   return (
-    <Container ref={showRef} rotate={isShow} dis={isDisappear}>
+    <Container ref={textsRef} rotate={isShows} dis={isDisappear}>
       <Text>LOVE</Text>
     </Container>
   );
@@ -23,12 +25,15 @@ export const Container = styled.div`
   transform: translate(-50%, -50%);
   z-index: 20;
   visibility: hidden;
+  width: 1px;
+  background: white;
 
   ${({ rotate }) => {
     if (rotate) {
       return css`
         visibility: visible;
-        animation: init 300ms;
+        transition: all 2s ease-in-out;
+        font-size: 120px;
       `;
     }
   }}
@@ -39,19 +44,27 @@ export const Container = styled.div`
         visibility: hidden;
       `;
     }
-  }}
-
-  @keyframes init {
-    from {
-      transform: rotate(0);
+  }} /* @keyframes anime {
+    0% {
+      transform: matrix(1, 0, 0, 1, 0, 1);
+      opacity: 0.7;
     }
-    to {
-      transform: rotate(180);
+    25% {
+      transform: matrix(1, 0, 0, 1, 0, 10);
+      opacity: 1;
     }
-  }
+    50% {
+      transform: matrix(1, 0, 0, 1, 0, 1);
+      opacity: 0.7;
+    }
+    100% {
+      transform: matrix(1, 0, 0, 1, 0, 0);
+      opacity: 0;
+    }
+  } */
 `;
 
 export const Text = styled.h1`
   color: white;
-  font-size: 200px;
+  font-size: 20px;
 `;

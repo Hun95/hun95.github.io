@@ -2,11 +2,11 @@ import React, { useState, useRef, useEffect, useCallback } from 'react';
 import { Banwrapper } from './style';
 import useTextAction from '../../hooks/useTextAction';
 const Banner = () => {
-  const { isShow, showRef } = useTextAction();
-
+  const bannerRef = useRef();
+  const { isShow } = useTextAction(bannerRef);
   return (
     <>
-      <Banwrapper show={isShow} ref={showRef}>
+      <Banwrapper show={isShow} ref={bannerRef}>
         <svg
           id='main'
           width='1303'

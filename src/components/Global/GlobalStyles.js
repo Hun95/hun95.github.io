@@ -44,6 +44,7 @@ export const GlobalStyle = createGlobalStyle`
     font-weight: normal;
     font-style: normal;
 }
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
 ${
   '' /* body::-webkit-scrollbar {
 width: 13px;
@@ -61,7 +62,7 @@ border-radius: 20px;
    font-size:100%;
    box-sizing: border-box;
   -webkit-box-sizing: inherit;
-  
+  scroll-behavior:smooth;
 
  }
  *, *::before, *::after {

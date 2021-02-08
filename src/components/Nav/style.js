@@ -10,7 +10,7 @@ export const NavContainer = styled.header`
     if (stick) {
       return css`
         position: sticky;
-        top: 20px;
+        top: 0;
         bottom: 0;
         right: 0;
         left: 0;
@@ -18,8 +18,8 @@ export const NavContainer = styled.header`
       `;
     } else {
       return css`
-        position: relative;
-        top: 20px;
+        position: fixed;
+        top: 0;
         right: 0;
         z-index: 4;
 

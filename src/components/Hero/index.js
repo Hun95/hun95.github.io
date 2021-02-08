@@ -3,9 +3,11 @@ import { Container, Image, Text } from './style';
 import image from '../../images/banner2.webp';
 import useTextAction from '../../hooks/useTextAction';
 const Hero = () => {
-  const { isShow, showRef } = useTextAction();
+  const textRef = useRef();
+  const { isSecond } = useTextAction(textRef);
+
   return (
-    <Container ref={showRef} rotate={isShow}>
+    <Container ref={textRef} kill={isSecond}>
       <Image src={image} />
       <Text>It's Show Time</Text>
     </Container>
