@@ -1,2 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[12],{QQwb:function(t,e,n){"use strict";n.r(e);var a=n("q1tI"),c=n.n(a),o=n("Zttt"),i=n("9CUm");n("ZbKm"),n("GHFI");e.default=function(){return c.a.createElement(o.a,null,c.a.createElement(i.a,{title:"chat",description:"welocome to chat",lang:"ko"}))}}}]);
-//# sourceMappingURL=component---src-pages-chat-js-811a673b3b0082c91cc6.js.map
