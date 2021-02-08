@@ -1,7 +1,7 @@
 import React, { useRef, useEffect } from 'react';
 import styled from 'styled-components';
 import { useGlobalContext } from '../../context/MainPageProvider';
-import imageOne from '../../images/secondSectionImage.jpg';
+import imageOne from '../../images/secondSectionImage.webp';
 const FirstSection = () => {
   const {
     firstRef,
