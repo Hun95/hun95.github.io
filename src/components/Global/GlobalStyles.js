@@ -44,7 +44,12 @@ export const GlobalStyle = createGlobalStyle`
     font-weight: normal;
     font-style: normal;
 }
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
+
+@font-face {
+  font-family: 'NotoSan';
+  src: url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
+}
+
 ${
   '' /* body::-webkit-scrollbar {
 width: 13px;
@@ -66,7 +71,7 @@ border-radius: 20px;
 
  }
  *, *::before, *::after {
-     font-family: 'ChosunKm', sans-serif;
+     font-family: 'NotoSan', sans-serif;
      -webkit-box-sizing: inherit;
      box-sizing:inherit;
    
@@ -88,7 +93,12 @@ body{
 
  
   
-
+#show-scene-0 #scroll-section-0 .sticky-elem,
+#show-scene-1 #scroll-seciton-1 .sticky-elem,
+#show-scene-2 #scroll-seciton-2 .sticky-elem,
+#show-scene-3 #scroll-seciton-3 .sticky-elem {
+  display: block;
+}
 
 
 

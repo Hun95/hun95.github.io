@@ -12,7 +12,7 @@ const Chat = () => {
       window.pageYOffset /
       (containerRef.current.offsetHeight - window.innerHeight);
 
-    console.log(progress);
+    // console.log(progress);
   });
 
   return (
