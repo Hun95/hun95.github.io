@@ -34,11 +34,10 @@ const MainPageProvider = ({ children }) => {
         aWidthIn: [5, 60, { start: 0.02, end: 0.12 }],
         aPosition: [0, 10, { start: 0.12, end: 0.15 }],
         aOpacityOut: [1, 0, { start: 0.14, end: 0.16 }],
-        bWidth: [0, 7, { start: 0.15, end: 0.4 }],
-
+        bWidth: [1, 7, { start: 0.2, end: 0.4 }],
         cOpacityIn: [0, 1, { start: 0.3, end: 0.4 }],
         bOpacityOut: [1, 0, { start: 0.4, end: 0.45 }],
-
+        bOpacityIn: [0, 1, { start: 0.15, end: 0.2 }],
         dOpactiyIn: [0, 1, { start: 0.45, end: 0.55 }],
         eOpactiyIn: [0, 1, { start: 0.65, end: 0.75 }],
         fOpactiyIn: [0, 1, { start: 0.85, end: 0.95 }],
@@ -174,6 +173,7 @@ const MainPageProvider = ({ children }) => {
           objs.firstA.current.style.display = 'fixed';
           objs.firstA.current.style.animation = 'none';
 
+          objs.firstA.current.style.top = '70vh';
           objs.firstA.current.style.width = `${calcValues(
             newValues.aWidthIn,
             currentYOffset
@@ -191,16 +191,20 @@ const MainPageProvider = ({ children }) => {
           );
         }
         if (scrollRatio <= 0.4) {
+          objs.firstB.current.style.opacity = calcValues(
+            newValues.bOpacityIn,
+            currentYOffset
+          );
           objs.firstB.current.style.transform = `scale(${calcValues(
             newValues.bWidth,
             currentYOffset
           )})`;
         }
         if (scrollRatio <= 0.5) {
-          objs.firstB.current.style.opacity = calcValues(
-            newValues.bOpacityOut,
-            currentYOffset
-          );
+          // objs.firstB.current.style.opacity = calcValues(
+          //   newValues.bOpacityOut,
+          //   currentYOffset
+          // );
           objs.firstC.current.style.opacity = calcValues(
             newValues.cOpacityIn,
             currentYOffset
