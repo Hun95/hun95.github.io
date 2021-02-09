@@ -30,9 +30,9 @@ const FirstSection = () => {
       <canvas ref={firstA} width='200' height='200' />
       <Img ref={firstB} src={imageOne} />
       <BlueBack ref={firstC}></BlueBack>
-      <Tile ref={firstD}>경험에 가치를 부여하다.</Tile>
-      <Tile ref={firstE}>oh my god.</Tile>
-      <Tile ref={firstF}>nooo.</Tile>
+      <Tile ref={firstD}>경험에</Tile>
+      <Tile ref={firstE}>가치를</Tile>
+      <Tile ref={firstF}>더하다</Tile>
     </Container>
   );
 };

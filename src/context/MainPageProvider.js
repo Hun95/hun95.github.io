@@ -15,6 +15,7 @@ const MainPageProvider = ({ children }) => {
   const [currentScene, setCurrentScene] = useState(0);
   const [prevScrollHeight, setPrevScrollHeight] = useState(0);
   const [enterNewScene, setEnterNewScene] = useState(false);
+  const [firstRender, setFirstRender] = useState(true);
   const SceneData = [
     {
       id: 0,
@@ -44,6 +45,8 @@ const MainPageProvider = ({ children }) => {
         dOpactiyOut: [1, 0, { start: 0.6, end: 0.65 }],
         eOpactiyOut: [1, 0, { start: 0.75, end: 0.8 }],
         fOpactiyOut: [1, 0, { start: 0.95, end: 1 }],
+        cOpactiyOut: [1, 0, { start: 0.95, end: 0.99 }],
+        bWidthout: [7, 1, { start: 0.95, end: 0.99 }],
       },
     },
 
@@ -61,12 +64,16 @@ const MainPageProvider = ({ children }) => {
   const [scene, setScene] = useState(SceneData);
 
   useEffect(() => {
+    setFirstRender(false);
     setHeight();
+  }, [firstRender]);
+  useEffect(() => {
     scrollLoop();
     playAnimation();
     window.addEventListener('scroll', () => {
       setYoffset(window.pageYOffset);
     });
+
     return () => {
       window.removeEventListener('scroll', () => {
         setYoffset(window.pageYOffset);
@@ -201,10 +208,6 @@ const MainPageProvider = ({ children }) => {
           )})`;
         }
         if (scrollRatio <= 0.5) {
-          // objs.firstB.current.style.opacity = calcValues(
-          //   newValues.bOpacityOut,
-          //   currentYOffset
-          // );
           objs.firstC.current.style.opacity = calcValues(
             newValues.cOpacityIn,
             currentYOffset
@@ -242,8 +245,15 @@ const MainPageProvider = ({ children }) => {
             newValues.fOpactiyOut,
             currentYOffset
           );
+          objs.firstC.current.style.opacity = calcValues(
+            newValues.cOpactiyOut,
+            currentYOffset
+          );
+
+          objs.firstB.current.style.opacity = 0;
         }
         break;
+        case1: break;
     }
   };
   return (
