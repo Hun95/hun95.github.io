@@ -75,6 +75,13 @@ const HeroContainer = styled.div`
     max-width: 80vw;
   }
   margin-bottom: 70vh;
+
+  @media screen and (max-width: 768px) {
+    grid-template-columns: 1fr;
+    h1 {
+      font-size: 50px;
+    }
+  }
 `;
 
 const MainText = styled.h2`

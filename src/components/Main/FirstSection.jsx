@@ -1,5 +1,6 @@
 import React, { useRef, useEffect } from 'react';
 import styled from 'styled-components';
+
 import { useGlobalContext } from '../../context/MainPageProvider';
 import imageOne from '../../images/secondSectionImage.webp';
 const FirstSection = () => {
@@ -99,6 +100,7 @@ const BlueBack = styled.div`
   background: linear-gradient(#0053a3, #01307e);
   width: 100%;
   height: 100vh;
+  object-fit: cover;
   opacity: 0;
   position: fixed;
   top: 0;

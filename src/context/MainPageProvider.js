@@ -11,11 +11,14 @@ const MainPageProvider = ({ children }) => {
   const firstE = useRef();
   const firstF = useRef();
   const secondRef = useRef();
+  const thirdRef = useRef();
+  const canvasRef = useRef();
   const [yOffset, setYoffset] = useState(0);
   const [currentScene, setCurrentScene] = useState(0);
   const [prevScrollHeight, setPrevScrollHeight] = useState(0);
   const [enterNewScene, setEnterNewScene] = useState(false);
   const [firstRender, setFirstRender] = useState(true);
+  const [sequence, setSequence] = useState(0);
   const SceneData = [
     {
       id: 0,
@@ -59,6 +62,21 @@ const MainPageProvider = ({ children }) => {
         section: secondRef,
       },
     },
+
+    {
+      id: 2,
+      type: 'sticky',
+      heightNum: 5,
+      scrollHeight: 0,
+      objs: {
+        section: thirdRef,
+        videoImages: [],
+      },
+      values: {
+        videoImageCount: 300,
+        imageSequence: [0, 299],
+      },
+    },
   ];
 
   const [scene, setScene] = useState(SceneData);
@@ -67,9 +85,18 @@ const MainPageProvider = ({ children }) => {
     setFirstRender(false);
     setHeight();
   }, [firstRender]);
+
   useEffect(() => {
+    setCanvasImage();
+    // console.log(scene[2].objs.videoImages);
+  }, []);
+
+  useEffect(() => {
+    setSceneNum();
     scrollLoop();
     playAnimation();
+    playVideo();
+    console.log(currentScene);
     window.addEventListener('scroll', () => {
       setYoffset(window.pageYOffset);
     });
@@ -99,8 +126,8 @@ const MainPageProvider = ({ children }) => {
     for (let i = 0; i < scene.length; i++) {
       scene[i].objs.section.current.style.height = `${scene[i].scrollHeight}px`;
     }
-    setSceneNum();
   };
+
   const setSceneNum = () => {
     let totalScrollHeight = 0;
     for (let i = 0; i < scene.length; i++) {
@@ -118,20 +145,21 @@ const MainPageProvider = ({ children }) => {
     setPrevScrollHeight(0); //선언하는 게 아니라 for문이 돌면서 값이 초기화 됨.
     setEnterNewScene(false);
     for (let i = 0; i < currentScene; i++) {
-      setPrevScrollHeight(prevScrollHeight + scene[i].scrollHeight);
+      setPrevScrollHeight(
+        prevScrollHeight => prevScrollHeight + scene[i].scrollHeight
+      );
     }
     if (yOffset > prevScrollHeight + scene[currentScene].scrollHeight) {
       setEnterNewScene(true);
-      if (currentScene === 0) return;
-
+      if (currentScene <= 0) return;
       setCurrentScene(currentScene => currentScene++);
     }
     if (yOffset < prevScrollHeight) {
       setEnterNewScene(true);
+
       setCurrentScene(currentScene => currentScene--);
     }
     if (enterNewScene) return;
-
     document.body.setAttribute('id', `show-scene-${currentScene}`);
   };
 
@@ -165,15 +193,25 @@ const MainPageProvider = ({ children }) => {
 
     return rv;
   };
-
+  const setCanvasImage = () => {
+    let imgElem;
+    for (let i = 0; i < scene[2].values.videoImageCount; i++) {
+      imgElem = new Image();
+      imgElem.src = `/Image/IMG_${6726 + i}.JPG`;
+      scene[2].objs.videoImages.push(imgElem);
+    }
+  };
   const playAnimation = () => {
     const objs = scene[currentScene].objs;
     const newValues = scene[currentScene].values;
 
-    const currentYOffset = yOffset - prevScrollHeight;
+    let currentYOffset = yOffset - prevScrollHeight;
+
     const newHeight = scene[currentScene].scrollHeight;
     const scrollRatio = currentYOffset / newHeight;
-
+    // console.log(`yOffset:${yOffset}`);
+    // console.log(`prevScrollHeight:${prevScrollHeight}`);
+    // console.log(`currentYOffset:${currentYOffset}`);
     switch (currentScene) {
       case 0:
         if (scrollRatio <= 0.2) {
@@ -252,16 +290,44 @@ const MainPageProvider = ({ children }) => {
 
           objs.firstB.current.style.opacity = 0;
         }
+
         break;
-        case1: break;
+      case 2:
+        break;
     }
   };
+
+  const playVideo = () => {
+    switch (currentScene) {
+      case 2:
+        const objs = scene[currentScene].objs;
+        const newValues = scene[currentScene].values;
+
+        let currentYOffset = yOffset - prevScrollHeight;
+
+        setSequence(
+          Math.round(calcValues(newValues.imageSequence, currentYOffset))
+        );
+        if (sequence < 0) {
+          return;
+        } else if (sequence > 300) {
+          return;
+        }
+        console.log(sequence);
+        const context = canvasRef.current.getContext('2d');
+
+        context.drawImage(scene[2].objs.videoImages[sequence], 0, 0);
+    }
+  };
+
   return (
     <MainPageContext.Provider
       value={{
         firstRef,
         secondRef,
+        thirdRef,
         scene,
+        canvasRef,
         firstA,
         firstB,
         firstC,
