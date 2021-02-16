@@ -7,7 +7,7 @@ const ThirdSection = () => {
 
   return (
     <Container ref={thirdRef}>
-      <canvas ref={canvasRef} width='1920' height='1080'></canvas>
+      <canvas ref={canvasRef} width='3840' height='2160'></canvas>
     </Container>
   );
 };
@@ -15,7 +15,7 @@ const ThirdSection = () => {
 export default ThirdSection;
 
 const Container = styled.section`
-  height: 100vh;
+  height: 200vh;
   width: 100%;
   canvas {
     max-width: 100%;
