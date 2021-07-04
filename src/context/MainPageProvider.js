@@ -1,4 +1,4 @@
-import React, { useRef, useState, useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 // import SceneData from '../data/SceneData';
 const MainPageContext = React.createContext();
 
@@ -92,15 +92,30 @@ const MainPageProvider = ({ children }) => {
   ];
 
   const [scene, setScene] = useState(SceneData);
-
+  const [firstloading, setfirstloading] = useState(null);
   useEffect(() => {
     setFirstRender(false);
     setHeight();
     setSequence(0);
   }, [firstRender]);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    setCanvasImage();
+    const as = async () => {
+      try {
+        await setCanvasImage();
+        setLoading(true);
+      } catch (err) {
+        console.log(err);
+      }
+      setTimeout(() => {
+        setLoading(false);
+      }, 3000);
+    };
+
+    if (!firstloading) {
+      as();
+    }
   }, []);
 
   useEffect(() => {
@@ -127,11 +142,11 @@ const MainPageProvider = ({ children }) => {
   useEffect(() => {
     setSceneNum();
     scrollLoop();
-
     playAnimation();
   }, [yOffset]);
 
   const setHeight = () => {
+    setfirstloading(true);
     let newArr = scene.map(element => {
       const { heightNum, type, objs } = element;
       if (type === 'sticky') {
@@ -186,6 +201,7 @@ const MainPageProvider = ({ children }) => {
     }
     if (enterNewScene) return;
     document.body.setAttribute('id', `show-scene-${currentScene}`);
+    setfirstloading(false);
   };
 
   const calcValues = (values, currentYOffset) => {
@@ -352,6 +368,7 @@ const MainPageProvider = ({ children }) => {
         firstD,
         firstE,
         firstF,
+        loading,
       }}
     >
       {children}

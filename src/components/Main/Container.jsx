@@ -1,10 +1,19 @@
-import React from 'react';
-import styled from 'styled-components';
 import FirstSection from './FirstSection';
+import FourthSection from './FourthSection';
+import React from 'react';
 import SecondSection from './SecondSection';
 import ThirdSection from './ThirdSection';
-import FourthSection from './FourthSection';
+import styled from 'styled-components';
+import { useGlobalContext } from '../../context/MainPageProvider';
 const Container = () => {
+  const { loading } = useGlobalContext();
+  if (loading) {
+    return (
+      <div style={{ position: 'absolute', top: '50%', left: '50%' }}>
+        LOADING...
+      </div>
+    );
+  }
   return (
     <Section>
       <FirstSection />
