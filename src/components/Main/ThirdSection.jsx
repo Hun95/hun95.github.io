@@ -7,9 +7,7 @@ const ThirdSection = () => {
 
   return (
     <Container ref={thirdRef}>
-      <CanvasContainer>
-        <canvas ref={canvasRef} width='3840' height='2160'></canvas>
-      </CanvasContainer>
+      <canvas ref={canvasRef} width='3840' height='2160'></canvas>
     </Container>
   );
 };
@@ -17,20 +15,15 @@ const ThirdSection = () => {
 export default ThirdSection;
 
 const Container = styled.section`
-  height: 100vh;
+  height: 200vh;
   width: 100%;
-`;
-
-const CanvasContainer = styled.div`
-  top: 0;
-  height: 100%;
-  left: 0;
-  width: 100%;
-  position: fixed;
-
   canvas {
-    position: absolute;
-    top: 50%;
-    left: 50%;
+    max-width: 100%;
+    max-height: 100%;
+
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    z-index: -1;
   }
 `;

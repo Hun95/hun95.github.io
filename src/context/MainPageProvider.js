@@ -71,7 +71,6 @@ const MainPageProvider = ({ children }) => {
       scrollHeight: 0,
       objs: {
         section: thirdRef,
-        canvasRef: canvasRef,
         videoImages: [],
       },
       values: {
@@ -102,16 +101,6 @@ const MainPageProvider = ({ children }) => {
   useEffect(() => {
     setCanvasImage();
   }, []);
-
-  useEffect(() => {
-    window.addEventListener('resize', setHeight());
-    window.addEventListener('load', setHeight());
-
-    return () => {
-      window.removeEventListener('resize', setHeight());
-      window.removeEventListener('load', setHeight());
-    };
-  }, [yOffset]);
 
   useEffect(() => {
     window.addEventListener('scroll', () => {
@@ -149,8 +138,6 @@ const MainPageProvider = ({ children }) => {
     for (let i = 0; i < scene.length; i++) {
       scene[i].objs.section.current.style.height = `${scene[i].scrollHeight}px`;
     }
-    const heightRatio = window.innerHeight / 1500;
-    scene[2].objs.canvasRef.current.style.transform = `translate3d(-50%,-50%,0) scale(${heightRatio})`;
   };
 
   const setSceneNum = () => {
