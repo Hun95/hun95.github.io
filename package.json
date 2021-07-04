@@ -73,5 +73,6 @@
   },
   "bugs": {
     "url": "https://github.com/gatsbyjs/gatsby/issues"
-  }
+  },
+  "proxy": "https://interactive-hun95.vercel.app/"
 }
