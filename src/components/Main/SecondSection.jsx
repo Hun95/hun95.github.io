@@ -1,9 +1,9 @@
+import Banner from '../Banner/';
 import React from 'react';
+import camera from '../../images/camera.jpg';
+import design from '../../images/design.jpg';
 import styled from 'styled-components';
 import { useGlobalContext } from '../../context/MainPageProvider';
-import design from '../../images/design.jpg';
-import camera from '../../images/camera.jpg';
-import Banner from '../Banner/';
 const SecondSection = () => {
   const { secondRef } = useGlobalContext();
   return (
@@ -26,9 +26,7 @@ const SecondSection = () => {
         <h1>
           사진
           <br />
-          동영상
-          <br />
-          무료촬영
+          취미로
         </h1>
       </HeroContainer>
       <MainText>

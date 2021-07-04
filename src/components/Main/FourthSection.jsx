@@ -1,7 +1,7 @@
 import React from 'react';
-import { useGlobalContext } from '../../context/MainPageProvider';
 import logo from '../../images/mainlogo.jpg';
 import styled from 'styled-components';
+import { useGlobalContext } from '../../context/MainPageProvider';
 
 const FourthSection = () => {
   const { fourthRef } = useGlobalContext();
@@ -9,28 +9,16 @@ const FourthSection = () => {
     <div ref={fourthRef}>
       <ImgContainer>
         <img src={logo} />
-        <h1>WE ARE</h1>
+        <h1>I AM</h1>
         <br />
-        <h1>수염난친구들</h1>
-        <h2>
-          <b style={{ color: '#003D8D' }}>제작</b>
-          <br />
-          50만원부터.
-        </h2>
-
-        <h2>
-          <b style={{ color: '#003D8D' }}>관리비</b>
-          <br />
-          10,000원 / 년
-          <br />
-        </h2>
+        <h1>수염난친구</h1>
 
         <h2>
           <b style={{ color: '#003D8D' }}>PLEASURE</b>
           <br />
-          당신의 기쁨을 위해
+          인터렉션을 제작하는 것에
           <br />
-          일합니다.
+          기쁨을 느낍니다.
         </h2>
         <ContactButton href='https://www.naver.com'>Contact Us</ContactButton>
 

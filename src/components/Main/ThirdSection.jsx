@@ -1,6 +1,6 @@
 import React from 'react';
-import { useGlobalContext } from '../../context/MainPageProvider';
 import styled from 'styled-components';
+import { useGlobalContext } from '../../context/MainPageProvider';
 
 const ThirdSection = () => {
   const { thirdRef, canvasRef } = useGlobalContext();
